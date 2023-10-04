@@ -917,7 +917,7 @@
                                                 </a>
 
                                                 <form action="{{ route('users.destroy', $user->id) }}"
-                                                    method="POST">
+                                                    method="POST" class="formEliminar">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="flex items-center text-danger">
@@ -949,3 +949,33 @@
     <!-- END: JS Assets-->
 </body>
 </html>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    (function() {
+        'use strict'
+        //crear la clase formEliminar dentro del form del boton borrar
+        //recordar que cada registro a eliminar esta contenido en un form
+        var forms = document.querySelectorAll('.formEliminar')
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                    Swal.fire({
+                        title: '¿Deseas eliminar el usuario?',
+                        icon: 'info',
+                        showCancelButton: true,
+                        confirmButtonColor: '#20c997',
+                        cancelButtonColor: '#6c757d',
+                        confirmButtonText: 'Confirmar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            this.submit();
+                            Swal.fire('¡Eliminado!',
+                                'El registro ha sido eliminado exitosamente.', 'success');
+                        }
+                    })
+                }, false)
+            })
+    })()
+</script>
