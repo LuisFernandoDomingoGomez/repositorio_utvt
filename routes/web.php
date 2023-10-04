@@ -21,7 +21,6 @@ Route::get('/', function () {
 // Vistas de Crud
 Route::resource('roles', App\Http\Controllers\RolController::class);
 Route::resource('users', App\Http\Controllers\UserController::class);
-Route::resource('blogs', App\Http\Controllers\BlogController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
