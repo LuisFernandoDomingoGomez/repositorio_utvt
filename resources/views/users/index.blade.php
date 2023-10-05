@@ -829,8 +829,14 @@
                 <div class="intro-y box p-5 mt-5">
                     <div class="flex flex-col sm:flex-row sm:items-end xl:items-start flex-wrap">
                         <form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto" action="{{ route('users.index') }}" method="GET">
-                            <input class="form-control me-2" type="text" name="busqueda" placeholder="Búsqueda" aria-label="Search">
-                            <button class="btn btn-outline-success flex-shrink-0" type="submit" value="enviar">Buscar</button>
+                            <div class="input-group" style="max-width: 400px;"> <!-- Ajusta el ancho máximo según tus preferencias -->
+                                <input class="form-control me-2" type="text" name="busqueda" placeholder="Búsqueda" aria-label="Search" style="height: 35px;"> <!-- Ajusta la altura según tus preferencias -->
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-outline-success" value="enviar" style="line-height: 1; display: flex; align-items: center; height: 35px;"> <!-- Ajusta la altura según tus preferencias -->
+                                        <i class="fa fa-search fa"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </form>
                         <div class="flex mt-5 sm:mt-0">
                             <button id="tabulator-print"
