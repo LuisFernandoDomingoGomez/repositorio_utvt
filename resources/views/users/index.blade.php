@@ -827,9 +827,10 @@
                 </div>
                 <!-- BEGIN: HTML Table Data -->
                 <div class="intro-y box p-5 mt-5">
-                    <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
-                        <form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto">
-                            Listado
+                    <div class="flex flex-col sm:flex-row sm:items-end xl:items-start flex-wrap">
+                        <form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto" action="{{ route('users.index') }}" method="GET">
+                            <input class="form-control me-2" type="text" name="busqueda" placeholder="Búsqueda" aria-label="Search">
+                            <button class="btn btn-outline-success flex-shrink-0" type="submit" value="enviar">Buscar</button>
                         </form>
                         <div class="flex mt-5 sm:mt-0">
                             <button id="tabulator-print"
@@ -932,9 +933,15 @@
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
-                    {!! $users->links() !!}
+
+                    <!-- Paginacion -->
+                    <div class="card-footer py-4">
+                        <nav class="d-flex justify-content-end" aria-label="...">
+                            {!! $users->links() !!}
+                        </nav>
+                    </div>
+
                 </div>
                 <!-- END: HTML Table Data -->
             </div>

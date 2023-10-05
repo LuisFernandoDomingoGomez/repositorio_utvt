@@ -863,6 +863,14 @@
                                 </tbody>
                             </table>
                         </div>
+                        
+                        <!-- Paginacion -->
+                        <div class="card-footer py-4">
+                            <nav class="d-flex justify-content-end" aria-label="...">
+                                {!! $roles->links() !!}
+                            </nav>
+                        </div>
+
                     </div>
                 </div>
                 <!-- END: HTML Table Data -->

@@ -25,22 +25,25 @@ class UserController extends Controller
          $this->middleware('permission:borrar-usuario', ['only' => ['destroy']]);
     }
 
-    /**
-     * Display a listing of the users
-     *
-     * @param  \App\Models\User  $model
-     * @return \Illuminate\View\View
-     */
-    public function index(User $model)
+    public function index(Request $request)
     {
-        $users = User::paginate(5);
+        $busqueda = $request->busqueda;
+        $users = User::where('name','LIKE','%'.$busqueda.'%')
+                          ->orWhere('email','LIKE','%'.$busqueda.'%')
+                          ->latest('id')
+                          ->paginate(15);
+        $data = [
+            'users'=>$users,
+            'busqueda'=>$busqueda,
+        ];
+
         $user = User::count();
         $role = Role::count();
 
         return view('users.index', compact('users'), [
             'role' => $role,
             'user' => $user
-        ])
+        ], $data)
         ->with('i', (request()->input('page', 1) - 1) * $users->perPage());
     }
 
