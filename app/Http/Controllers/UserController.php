@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
+use PDF;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -23,6 +24,7 @@ class UserController extends Controller
          $this->middleware('permission:crear-usuario', ['only' => ['create','store']]);
          $this->middleware('permission:editar-usuario', ['only' => ['edit','update']]);
          $this->middleware('permission:borrar-usuario', ['only' => ['destroy']]);
+         $this->middleware('permission:generar-pdf-lista-usuarios', ['only' => ['pdf']]);
     }
 
     public function index(Request $request)
@@ -45,6 +47,14 @@ class UserController extends Controller
             'user' => $user
         ], $data)
         ->with('i', (request()->input('page', 1) - 1) * $users->perPage());
+    }
+
+    public function pdf()
+    {
+        $users = User::paginate(200);
+
+        $pdf = PDF::loadView('users.pdf',['users'=>$users]);
+        return $pdf->setPaper('a4', 'landscape')->stream('user.pdf');
     }
 
     public function create()

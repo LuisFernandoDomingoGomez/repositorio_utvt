@@ -839,14 +839,15 @@
                             </div>
                         </form>
                         <div class="flex mt-5 sm:mt-0">
-                            <button id="tabulator-print"
-                                class="btn btn-outline-secondary w-1/2 sm:w-auto mr-2"> <i
-                                    data-lucide="printer" class="w-4 h-4 mr-2"></i> Print </button>
+                            <a href="{{ route('users.pdf') }}" class="btn btn-outline-secondary w-1/2 sm:w-auto mr-2">
+                                <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Imprimir
+                            </a>
+
                             <div class="dropdown w-1/2 sm:w-auto">
                                 <button
                                     class="dropdown-toggle btn btn-outline-secondary w-full sm:w-auto"
                                     aria-expanded="false" data-tw-toggle="dropdown"> <i
-                                        data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export <i
+                                        data-lucide="file-text" class="w-4 h-4 mr-2"></i> Exportar <i
                                         data-lucide="chevron-down"
                                         class="w-4 h-4 ml-auto sm:ml-2"></i> </button>
                                 <div class="dropdown-menu w-40">
