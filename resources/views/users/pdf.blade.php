@@ -18,7 +18,26 @@
             margin-bottom: 20px;
         }
         .header img {
-            max-width: 120px;
+            max-width: 180px;
+        }
+        .logos {
+            display: flex;
+            align-items: center;
+        }
+        .logos img {
+            margin-right: 10px; /* Espacio entre los logos */
+        }
+        .logo-1 {
+            width: 120px; /* Ancho del primer logotipo */
+            height: auto; /* Altura ajustada automáticamente */
+        }
+        .logo-2 {
+            width: 65px; /* Ancho del segundo logotipo */
+            height: auto; /* Altura ajustada automáticamente */
+        }
+        .logo-3 {
+            width: 180px; /* Ancho del tercer logotipo */
+            height: auto; /* Altura ajustada automáticamente */
         }
         h2 {
             text-align: center;
@@ -45,8 +64,12 @@
 
 <body>
     <div class="header">
-        <!-- Logo de la institución 1 -->
-        <img src="dist/images/utvt_logo.png" alt="Logo 1">
+        <!-- Logos de las instituciones -->
+        <div class="logos">
+            <img src="dist/images/logo_edomex.png" alt="Logo 1" class="logo-1" style="margin-right: 630px;">
+            <img src="dist/images/utvt_logo.png" alt="Logo 2" class="logo-2">
+            <img src="dist/images/logo_edomex2.png" alt="Logo 3" class="logo-3">
+        </div>
     </div>
     <h2>Listado de Usuarios</h2>
     <table>
