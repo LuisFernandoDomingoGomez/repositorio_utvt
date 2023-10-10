@@ -29,7 +29,7 @@ class SeederTablePermisos extends Seeder
             'crear-usuario', 
             'editar-usuario', 
             'borrar-usuario',
-            'generar-pdf-lista-usuarios',
+            'generar-listados-usuarios',
         ]; 
  
         foreach($permisos as $permiso) { 

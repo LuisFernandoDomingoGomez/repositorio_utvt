@@ -800,7 +800,7 @@
                     </h2>
 
                     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-                        <button class="btn btn-primary shadow-md mr-2">Agregar</button>
+                        <a class="btn btn-primary shadow-md mr-2" href="{{ route('roles.create') }}">Agregar</a>
                         <div class="dropdown ml-auto sm:ml-0">
                             <button class="dropdown-toggle btn px-2 box" aria-expanded="false"
                                 data-tw-toggle="dropdown">
@@ -827,7 +827,7 @@
                             <table class="table mt-2">
                                 <thead class="table-light">
                                     <tr>
-                                        <th class="whitespace-nowrap">N°</th>
+                                        <th class="whitespace-nowrap">No.</th>
                                         <th class="whitespace-nowrap">Rol</th>
                                         <th class="whitespace-nowrap " align="center">Acciones </th>
                                     </tr>

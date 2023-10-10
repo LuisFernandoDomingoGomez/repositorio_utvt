@@ -850,52 +850,46 @@
                         <div class="overflow-x-auto">
                             <div class="intro-y box py-5 sm:py-5 mt-5">
                                 @if ($errors->any())
-                            <div class="alert alert-outline-danger alert-dismissible show flex items-center mb-2" role="alert">
-                                <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i>
-                            <strong>¡Revise los campos! </strong>
-                                @foreach ($errors->all() as $error)
-                                    <span class="badge badge-danger">{{ $error }}</span>
-                                @endforeach
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                        @endif
+                                <div class="alert alert-outline-danger alert-dismissible show flex items-center mb-2" role="alert">
+                                        <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i>
+                                        <strong>¡Revise los campos! </strong>
+                                    @foreach ($errors->all() as $error)
+                                        <span class="badge badge-danger">{{ $error }}</span>
+                                    @endforeach
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @endif
                                 {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
-
                                     <div class="font-medium text-base">Configuracion de Perfil</div>
                                     <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
                                         <div class="intro-y col-span-12 sm:col-span-6">
                                             <label for="input-wizard-1" class="form-label">Nombre</label>
                                             {!! Form::text('name', null, array('class' => 'form-control')) !!}
                                         </div>
-
                                         <div class="intro-y col-span-12 sm:col-span-6">
                                             <label for="input-wizard-4" class="form-label">Correo Electronico</label>
                                             {!! Form::text('email', null, array('class' => 'form-control')) !!}
                                         </div>
-
                                         <div class="intro-y col-span-12 sm:col-span-6">
                                             <label for="input-wizard-4" class="form-label">Password</label>
                                             {!! Form::password('password', array('class' => 'form-control')) !!}
                                         </div>
-
                                         <div class="intro-y col-span-12 sm:col-span-6">
-                                            <label for="input-wizard-4" class="form-label">Password confirmar</label>
+                                            <label for="input-wizard-4" class="form-label">Confirmar Password</label>
                                             {!! Form::password('confirm-password', array('class' => 'form-control')) !!}
                                         </div>
-
                                         <div class="intro-y col-span-12 sm:col-span-6">
                                             <label for="input-wizard-6" class="form-label" >Tipo de Rol </label>
                                             {!! Form::select('roles[]', $roles,[], array('class' => 'form-control')) !!}
                                         </div>
-
                                         <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
-                                            <button type="submit" class="btn btn-secondary w-24">Regresar</button>
-                                            <button class="btn btn-primary w-24 ml-2">Guardar</button>
+                                            <a class="btn btn-secondary w-24" href="{{ route('users.index') }}">Regresar</a>
+                                            <button type="submit" class="btn btn-primary ml-2">Guardar</button>
                                         </div>
                                     </div>
-                                    {!! Form::close() !!}
+                                {!! Form::close() !!}
                             </div>
                         </div>
                     </div>

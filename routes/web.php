@@ -26,6 +26,10 @@ Route::resource('users', App\Http\Controllers\UserController::class);
 Route::get('users.pdf', 'App\Http\Controllers\UserController@pdf')->name('users.pdf');
 
 
+//Exportacion a Excel
+Route::get('/export', 'App\Http\Controllers\UserController@export')->name('users.export');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

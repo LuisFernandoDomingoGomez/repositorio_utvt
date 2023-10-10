@@ -807,7 +807,7 @@
                     </h2>
 
                     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-                        <button class="btn btn-primary shadow-md mr-2">Agregar</button>
+                        <a class="btn btn-primary shadow-md mr-2" href="{{ route('users.create') }}">Agregar</a>
                         <div class="dropdown ml-auto sm:ml-0">
                             <button class="dropdown-toggle btn px-2 box" aria-expanded="false"
                                 data-tw-toggle="dropdown">
@@ -853,24 +853,12 @@
                                 <div class="dropdown-menu w-40">
                                     <ul class="dropdown-content">
                                         <li>
-                                            <a id="tabulator-export-csv" href="javascript:;"
-                                                class="dropdown-item"> <i data-lucide="file-text"
-                                                    class="w-4 h-4 mr-2"></i> Export CSV </a>
+                                            <a id="tabulator-export-pdf" href="{{ route('users.downloadPdf') }}"
+                                                class="dropdown-item"> <i class="fas fa-file-pdf w-4 h-4 mr-2"></i> Export PDF </a>
                                         </li>
                                         <li>
-                                            <a id="tabulator-export-json" href="javascript:;"
-                                                class="dropdown-item"> <i data-lucide="file-text"
-                                                    class="w-4 h-4 mr-2"></i> Export JSON </a>
-                                        </li>
-                                        <li>
-                                            <a id="tabulator-export-xlsx" href="javascript:;"
-                                                class="dropdown-item"> <i data-lucide="file-text"
-                                                    class="w-4 h-4 mr-2"></i> Export XLSX </a>
-                                        </li>
-                                        <li>
-                                            <a id="tabulator-export-html" href="javascript:;"
-                                                class="dropdown-item"> <i data-lucide="file-text"
-                                                    class="w-4 h-4 mr-2"></i> Export HTML </a>
+                                            <a id="tabulator-export-xlsx" href="{{ route('users.export') }}"
+                                                class="dropdown-item"> <i class="fas fa-file-excel w-4 h-4 mr-2"></i> Export XLSX </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -881,57 +869,42 @@
                         <div class="overflow-x-auto">
 
                             <table class="table mt-5">
-
                                 <thead class="table-light">
-
                                     <tr>
-
-                                        <th class="whitespace-nowrap">ID</th>
+                                        <th class="whitespace-nowrap">No.</th>
                                         <th class="whitespace-nowrap">Nombre</th>
                                         <th class="whitespace-nowrap">Correo</th>
                                         <th class="whitespace-nowrap">Rol</th>
-                                        <th class="whitespace-nowrap">Fecha de creacion</th>
                                         <th class="whitespace-nowrap " align="center">Acciones </th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php
+                                        $i = ($users->currentPage() - 1) * $users->perPage() + 1;
+                                    @endphp
                                     @foreach ($users as $user )
-
-
                                     <tr>
-                                        <td>{{ $user->id }}</td>
+                                        <td>{{ $i++ }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>
                                             @if(!empty($user->getRoleNames()))
                                                 @foreach ($user->getRoleNames() as $rolNombre)
-                                                {{ $rolNombre }}
+                                                    {{ $rolNombre }}
                                                 @endforeach
                                             @endif
                                         </td>
-                                        <td>{{ $user->created_at }}</td>
-
-
                                         <td class="table-report__action w-56">
                                             <div class="flex justify-center items-center">
-                                                <!-- mostrar informacion
-                                                <a class="flex items-center mr-3" href="javascript:;">
-                                                    <i data-lucide="eye" class="w-4 h-4 mr-1"></i> show
-                                                </a>
-
-                                            -->
                                                 <a class="flex items-center mr-3" href="{{ route('users.edit', $user->id) }}">
                                                     <i data-lucide="check-square" class="w-4 h-4 mr-1"></i>
                                                 </a>
-
-                                                <form action="{{ route('users.destroy', $user->id) }}"
-                                                    method="POST" class="formEliminar">
+                                                <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="formEliminar">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="flex items-center text-danger">
                                                         <i data-lucide="trash-2" class="w-5 h-10 mr-1"></i>
                                                     </button>
-                                                    </a>
                                                 </form>
                                             </div>
                                         </td>
