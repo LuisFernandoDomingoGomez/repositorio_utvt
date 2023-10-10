@@ -18,15 +18,14 @@
             <div class="block xl:grid grid-cols-2 gap-4">
                 <!-- BEGIN: Login Info -->
                 <div class="hidden xl:flex flex-col min-h-screen">
-
-                    <div class="my-auto">
-                        <img alt="Midone - HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="dist/images/illustration.svg">
-                        <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
-
+                        <div class="my-auto">
+                            <img alt="Midone - HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="dist/images/illustration.svg">
+                            <div class="-intro-x text-white font-medium text-3xl leading-tight mt-10">
                             <br>
-                            Inicia sesión con tu cuenta
+                            Inicia sesión con tu cuenta.
                         </div>
-                        <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-slate-400">Administracion UTVT</div>
+                        <div class="-intro-x mt-5 text-base text-white dark:text-slate-400">Si aún no tienes registro, acude al Departamento de Sistemas.</div>
+                        <div class="-intro-x mt-5 text-base text-white text-opacity-70 dark:text-slate-400">UTVT #EstáDeModaSerCuervo</div>
                     </div>
                 </div>
                 <!-- END: Login Info -->
@@ -35,18 +34,21 @@
 
                 <div class="h-screen xl:h-auto flex py-5 xl:py-0 my-10 xl:my-0">
                     <div class="my-auto mx-auto xl:ml-20 bg-white dark:bg-darkmode-600 xl:bg-transparent px-5 sm:px-8 py-8 xl:p-0 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
-                        <a href="" class="-intro-x flex items-center pt-5">
-                            <img alt="Midone - HTML Admin Template" class="w-32" src="dist/images/utvt_logo.png">
+                        <div class="-intro-x flex items-center justify-center pt-5">
+                            <img alt="Midone - HTML Admin Template" class="w-64" src="dist/images/cuervos_logo.png">
                             {{-- <span class="text-white text-lg ml-3"> UTVT </span>  --}}
-                        </a>
-                        <br>
-                        <br>
-                        <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">
-                            Iniciar sesion
+                        </div>
+                        <br><br>
+                        <h2 class="intro-x font-bold text-2xl xl:text-3xl xl:text-left" style="text-align: center;">
+                            Bienvenid@ CuervITo
                         </h2>
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
-                        <div class="intro-x mt-2 text-slate-400 xl:hidden text-center">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</div>
+                        <div class="intro-x mt-2 text-slate-400 xl:hidden text-center">Inicia sesión con tu cuenta de correo electronico registrado.</div>
+                        <br>
+                        <div class="intro-x mt-2 text-slate-400 xl:hidden text-center">Si aún no tienes tu registro, acude al Departamento de Sistemas.</div>
+                        <br>
+                        <div class="intro-x mt-2 xl:hidden text-center" style="color: green;">UTVT #EstádeModaSerCuervo</div>
 
                         <div class="intro-x mt-8">
                             <input type="email" class="intro-x login__input form-control py-3 px-4 block" placeholder="Email" name="email" :value="old('email')" required autofocus />
@@ -61,7 +63,7 @@
 
                             @if (Route::has('password.request'))
                                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                                    {{ __('Forgot your password?') }}
+                                    {{ __('Olvidé mi contraseña') }}
                                 </a>
                             @endif
                             <br>

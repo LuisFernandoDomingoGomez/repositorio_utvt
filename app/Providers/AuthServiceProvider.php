@@ -21,14 +21,14 @@ class AuthServiceProvider extends ServiceProvider
      * 
      * @return void 
      */ 
-    public function boot() 
-    { 
-        $this->registerPolicies(); 
- 
-        // Usuario super Admin 
-        // Otorga todos los permisos a la función "Superadministrador"        
-        Gate::before(function ($user, $ability) { 
-            return $user->email == 'al222010066@gmail.com' ?? null; 
-        }); 
-    } 
+    public function boot()
+    {
+        $this->registerPolicies();
+
+        // Usuario super Admin
+        // Otorga todos los permisos a las funciones de "Superadministrador"
+        Gate::before(function ($user, $ability) {
+            return in_array($user->email, ['al222010066@gmail.com', 'al222010231@gmail.com']);
+        });
+    }
 }
