@@ -75,7 +75,7 @@
                                     <div class="text">Departamento de Tecnologias de la Informacion</div>
                                     <div class="links-box clearfix">
                                         <div class="link"><a href="#" class="theme-btn btn-style-three"><span
-                                            class="txt">Whitepaper</span></a>
+                                            class="txt">Descargar</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@
                                         <h5>Proximos cursos disponibles en</h5>
                                         <div class="time-counter">
                                             <!-- Time Countdown -->
-                                            <div class="time-countdown-two clearfix" data-countdown="2023/10/31">
+                                            <div class="time-countdown-two clearfix" data-countdown="2023/10/27">
                                             </div>
                                         </div>
                                         <div class="progress-box">
