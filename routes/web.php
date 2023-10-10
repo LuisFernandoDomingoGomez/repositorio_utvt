@@ -24,6 +24,7 @@ Route::resource('users', App\Http\Controllers\UserController::class);
 
 //Generacion de vistas PDF
 Route::get('users.pdf', 'App\Http\Controllers\UserController@pdf')->name('users.pdf');
+Route::get('users.download-pdf', 'App\Http\Controllers\UserController@downloadPdf')->name('users.downloadPdf');
 
 
 //Exportacion a Excel

@@ -60,6 +60,14 @@ class UserController extends Controller
         return $pdf->setPaper('a4', 'landscape')->stream('user.pdf');
     }
 
+    public function downloadPdf()
+    {
+        $users = User::paginate(200);
+        $pdf = PDF::loadView('users.pdf', ['users' => $users]);
+        
+        // Descargar automáticamente el PDF
+        return $pdf->setPaper('a4', 'landscape')->download('users.pdf');
+    }
 
     public function export()
     {
