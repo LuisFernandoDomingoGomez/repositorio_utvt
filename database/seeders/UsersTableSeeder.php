@@ -9,7 +9,7 @@ class UsersTableSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('users')->insert([ 
+        DB::table('users')->insert([
             'name' => 'Fernando',
             'email' => 'al222010066@gmail.com',
             'email_verified_at' => now(),
@@ -18,13 +18,22 @@ class UsersTableSeeder extends Seeder
             'updated_at' => now()
         ]);
 
-        DB::table('users')->insert([ 
-            'name' => 'Karla', 
+        DB::table('users')->insert([
+            'name' => 'Karla',
             'email' => 'al222010231@gmail.com',
-            'email_verified_at' => now(), 
-            'password' => Hash::make('123456789'), 
-            'created_at' => now(), 
-            'updated_at' => now() 
-        ]); 
-    } 
+            'email_verified_at' => now(),
+            'password' => Hash::make('123456789'),
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Porfirio',
+            'email' => 'al222011231@gmail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('123456789'),
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+    }
 }
