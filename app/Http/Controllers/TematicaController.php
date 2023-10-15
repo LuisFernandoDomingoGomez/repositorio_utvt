@@ -2,12 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\Tematica;
 use App\Models\Carrera;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Hash;
+
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Traits\HasRoles;
 
 class TematicaController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:ver-tematica|crear-tematica|editar-tematica|borrar-tematica')->only('index');
+         $this->middleware('permission:crear-tematica', ['only' => ['create','store']]);
+         $this->middleware('permission:editar-tematica', ['only' => ['edit','update']]);
+         $this->middleware('permission:borrar-tematica', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $tematicas = Tematica::paginate(25);

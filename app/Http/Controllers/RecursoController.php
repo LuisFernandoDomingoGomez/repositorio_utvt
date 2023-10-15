@@ -2,14 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\Recurso;
 use App\Models\Carrera;
 use App\Models\Asignatura;
 use App\Models\Tematica;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Hash;
+
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Traits\HasRoles;
 
 class RecursoController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:ver-recurso|crear-recurso|editar-recurso|borrar-recurso')->only('index');
+         $this->middleware('permission:crear-recurso', ['only' => ['create','store']]);
+         $this->middleware('permission:editar-recurso', ['only' => ['edit','update']]);
+         $this->middleware('permission:borrar-recurso', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $recursos = Recurso::paginate();

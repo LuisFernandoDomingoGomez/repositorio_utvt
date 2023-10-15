@@ -2,12 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\Asignatura;
 use App\Models\Carrera;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Hash;
+
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Traits\HasRoles;
 
 class AsignaturaController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:ver-asignatura|crear-asignatura|editar-asignatura|borrar-asignatura')->only('index');
+         $this->middleware('permission:crear-asignatura', ['only' => ['create','store']]);
+         $this->middleware('permission:editar-asignatura', ['only' => ['edit','update']]);
+         $this->middleware('permission:borrar-asignatura', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $asignaturas = Asignatura::paginate(10);

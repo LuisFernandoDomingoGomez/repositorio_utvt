@@ -2,11 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\Carrera;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Hash;
+
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Traits\HasRoles;
 
 class CarreraController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:ver-carrera|crear-carrera|editar-carrera|borrar-carrera')->only('index');
+         $this->middleware('permission:crear-carrera', ['only' => ['create','store']]);
+         $this->middleware('permission:editar-carrera', ['only' => ['edit','update']]);
+         $this->middleware('permission:borrar-carrera', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $carreras = Carrera::paginate();
