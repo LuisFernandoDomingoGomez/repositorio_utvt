@@ -22,6 +22,11 @@ Route::get('/', function () {
 Route::resource('roles', App\Http\Controllers\RolController::class);
 Route::resource('users', App\Http\Controllers\UserController::class);
 
+Route::resource('carreras', App\Http\Controllers\CarreraController::class);
+Route::resource('asignaturas', App\Http\Controllers\AsignaturaController::class);
+Route::resource('tematicas', App\Http\Controllers\TematicaController::class);
+Route::resource('recursos', App\Http\Controllers\RecursoController::class);
+
 //Generacion de vistas PDF
 Route::get('users.pdf', 'App\Http\Controllers\UserController@pdf')->name('users.pdf');
 Route::get('users.download-pdf', 'App\Http\Controllers\UserController@downloadPdf')->name('users.downloadPdf');
