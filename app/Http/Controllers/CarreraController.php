@@ -45,12 +45,6 @@ class CarreraController extends Controller
             ->with('success', 'Carrera creada con exito.');
     }
 
-    public function show($id)
-    {
-        $carrera = Carrera::find($id);
-        return view('carrera.show', compact('carrera'));
-    }
-
     public function edit($id)
     {
         $carrera = Carrera::find($id);
