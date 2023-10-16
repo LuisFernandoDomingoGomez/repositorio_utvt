@@ -19,7 +19,8 @@
                 <!-- BEGIN: Login Info -->
                 <div class="hidden xl:flex flex-col min-h-screen">
                         <div class="my-auto">
-                            <img alt="Midone - HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="dist/images/illustration.svg">
+                        <img alt="Midone - HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="dist/images/login.svg">
+                            <p>Imagen de <a href="https://www.freepik.es/vector-gratis/ilustracion-concepto-cuenta_5464649.htm#query=login&position=14&from_view=keyword&track=sph">storyset</a> en Freepik</p>
                             <div class="-intro-x text-white font-medium text-3xl leading-tight mt-10">
                             <br>
                             Inicia sesión con tu cuenta.
@@ -82,4 +83,4 @@
         <script src="dist/js/app.js"></script>
         <!-- END: JS Assets-->
     </body>
-</html>
+</html

@@ -3746,7 +3746,7 @@ select{
 }
 .bg-cyan-900{
     --tw-bg-opacity: 1;
-    background-color: rgb(22 78 99 / var(--tw-bg-opacity));
+    background-color: rgb(-167 77 42 / var(--tw-bg-opacity));
 }
 .bg-blue-800{
     --tw-bg-opacity: 1;
@@ -4266,7 +4266,7 @@ select{
    */
 /* Default colors */
 :root {
-    --color-primary: 22 78 99;
+    --color-primary: -167 77 42;
     --color-secondary: 226 232 240;
     --color-success: 13 148 136;
     --color-info: 6 182 212;
