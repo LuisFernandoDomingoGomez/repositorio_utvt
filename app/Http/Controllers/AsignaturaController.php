@@ -49,13 +49,6 @@ class AsignaturaController extends Controller
             ->with('success', 'Asignatura creada con exito.');
     }
 
-    public function show($id)
-    {
-        $asignatura = Asignatura::find($id);
-
-        return view('asignatura.show', compact('asignatura'));
-    }
-
     public function edit($id)
     {
         $asignatura = Asignatura::find($id);

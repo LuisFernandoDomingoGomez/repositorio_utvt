@@ -12,9 +12,9 @@
     <meta name="keywords"
         content="admin template, Enigma Admin Template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="LEFT4CODE">
-    <title>Carreras | Edicion</title>
+    <title>Asignaturas | Inicio</title>
     <!-- BEGIN: CSS Assets-->
-    <link rel="stylesheet" href="/dist/css/app.css"/>
+    <link rel="stylesheet" href="dist/css/app.css"/>
     <!-- END: CSS Assets-->
 </head>
 <!-- END: Head -->
@@ -106,7 +106,7 @@
 
             <!-- BEGIN: Logo -->
             <a href="" class="logo -intro-x hidden md:flex xl:w-[180px] block">
-                <img alt="Midone - HTML Admin Template" class="logo__image w-20" src="/dist/images/utvt_white.png">
+                <img alt="Midone - HTML Admin Template" class="logo__image w-20" src="dist/images/utvt_white.png">
             </a>
             <!-- END: Logo -->
 
@@ -114,8 +114,7 @@
             <nav aria-label="breadcrumb" class="-intro-x h-[45px] mr-auto">
                 <ol class="breadcrumb breadcrumb-light">
                     <li class="breadcrumb-item"><a href="#">Administracion</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('carreras.index') }}">Carreras</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Edicion</li>
+                    <li class="breadcrumb-item active" aria-current="page">Asignaturas</li>
                 </ol>
             </nav>
             <!-- END: Breadcrumb -->
@@ -235,31 +234,114 @@
         <!-- BEGIN: Content -->
         <div class="content">
             <div class="content">
-                <div class="intro-y flex flex-col sm:flex-row items-center mt-1">
+                <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
                     <h2 class="text-lg font-medium mr-auto">
-                        Edicion de Carrera
+                        Gestion de Asignaturas
                     </h2>
-                </div>
-                <!-- BEGIN: HTML Table Data -->
-                <div class="intro-y box p-5 mt-5">
-                    <div class="overflow-x-auto scrollbar-hidden">
-                        <div class="overflow-x-auto">
-                            <div class="intro-y box py-5 sm:py-5">
-                                @if ($errors->any())
-                                <div class="alert alert-outline-danger alert-dismissible show flex items-center mb-2" role="alert">
-                                        <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i>
-                                        <strong>¡Revise los campos!</strong>
-                                        <span class="badge badge-danger"></span>
-                                </div>
-                                @endif
-                                <form method="POST" action="{{ route('carreras.update', $carrera->id) }}"  role="form" enctype="multipart/form-data">
-                                    {{ method_field('PATCH') }}
-                                    @csrf
-                                    @include('carrera.form')
-                                </form>
+
+                    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+                        <a class="btn btn-primary shadow-md mr-2" href="{{ route('asignaturas.create') }}">Agregar</a>
+                        <div class="dropdown ml-auto sm:ml-0">
+                            <button class="dropdown-toggle btn px-2 box" aria-expanded="false"
+                                data-tw-toggle="dropdown">
+                                <span class="w-5 h-5 flex items-center justify-center"><i
+                                    class="w-4 h-4" data-lucide="plus"></i></span>
+                            </button>
+                            <div class="dropdown-menu w-40">
+                                <ul class="dropdown-content">
+                                    <li>
+                                        <a href="{{ route('asignaturas.create') }}" class="dropdown-item"> <i data-lucide="asignaturas" class="w-14 h-14 mr-2"></i>Agregar Asignatura</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
+                </div>
+                <!-- BEGIN: HTML Table Data -->
+                <div class="intro-y box p-5 mt-5">
+                    <div class="flex flex-col sm:flex-row sm:items-end xl:items-start flex-wrap">
+                        <div class="flex mt-5 sm:mt-0">
+                            <a href="{{ route('users.pdf') }}" class="btn btn-outline-secondary w-1/2 sm:w-auto mr-2">
+                                <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Imprimir
+                            </a>
+                            <div class="dropdown w-1/2 sm:w-auto">
+                                <button
+                                    class="dropdown-toggle btn btn-outline-secondary w-full sm:w-auto"
+                                    aria-expanded="false" data-tw-toggle="dropdown"> <i
+                                        data-lucide="file-text" class="w-4 h-4 mr-2"></i> Exportar <i
+                                        data-lucide="chevron-down"
+                                        class="w-4 h-4 ml-auto sm:ml-2"></i> </button>
+                                <div class="dropdown-menu w-40">
+                                    <ul class="dropdown-content">
+                                        <li>
+                                            <a id="tabulator-export-pdf" href="{{ route('users.downloadPdf') }}"
+                                                class="dropdown-item"> <i class="fas fa-file-pdf w-4 h-4 mr-2"></i> Export PDF </a>
+                                        </li>
+                                        <li>
+                                            <a id="tabulator-export-xlsx" href="{{ route('users.export') }}"
+                                                class="dropdown-item"> <i class="fas fa-file-excel w-4 h-4 mr-2"></i> Export XLSX </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
+                    <div class="overflow-x-auto scrollbar-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="table mt-5">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="whitespace-nowrap">No.</th>
+                                        <th class="whitespace-nowrap">Nombre</th>
+                                        <th class="whitespace-nowrap">Carrera afiliada</th>
+                                        <th class="whitespace-nowrap " align="center">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $i = ($asignaturas->currentPage() - 1) * $asignaturas->perPage() + 1;
+                                    @endphp
+                                    @foreach ($asignaturas as $asignatura )
+                                    <tr>
+                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $asignatura->name }}</td>
+                                        <td>{{ $asignatura->carrera->name }}</td>
+                                        <td class="table-report__action w-56">
+                                            <div class="flex justify-center items-center">
+                                                <!-- <a class="flex items-center mr-3" href="{{ route('asignaturas.show', $asignatura->id) }}">
+                                                    <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                                                </a> -->
+                                                <a class="flex items-center mr-3" href="{{ route('asignaturas.edit', $asignatura->id) }}">
+                                                    <i data-lucide="check-square" class="w-4 h-4 mr-1"></i>
+                                                </a>
+                                                <form action="{{ route('asignaturas.destroy', $asignatura->id) }}" method="POST" class="formEliminar">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="flex items-center text-danger">
+                                                        <i data-lucide="trash-2" class="w-5 h-10 mr-1"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Paginacion -->
+                    <div class="card-footer py-4">
+                        <nav class="d-flex justify-content-end" aria-label="...">
+                            {!! $asignaturas->links() !!}
+                        </nav>
+                    </div>
+
                 </div>
                 <!-- END: HTML Table Data -->
             </div>
@@ -274,3 +356,33 @@
     <!-- END: JS Assets-->
 </body>
 </html>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    (function() {
+        'use strict'
+        //crear la clase formEliminar dentro del form del boton borrar
+        //recordar que cada registro a eliminar esta contenido en un form
+        var forms = document.querySelectorAll('.formEliminar')
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                    Swal.fire({
+                        title: '¿Deseas eliminar la asignatura?',
+                        icon: 'info',
+                        showCancelButton: true,
+                        confirmButtonColor: '#20c997',
+                        cancelButtonColor: '#6c757d',
+                        confirmButtonText: 'Confirmar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            this.submit();
+                            Swal.fire('¡Eliminado!',
+                                'El registro ha sido eliminado exitosamente.', 'success');
+                        }
+                    })
+                }, false)
+            })
+    })()
+</script>

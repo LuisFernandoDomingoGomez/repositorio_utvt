@@ -12,7 +12,7 @@
     <meta name="keywords"
         content="admin template, Enigma Admin Template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="LEFT4CODE">
-    <title>Carreras | Edicion</title>
+    <title>Asignaturas | Edicion</title>
     <!-- BEGIN: CSS Assets-->
     <link rel="stylesheet" href="/dist/css/app.css"/>
     <!-- END: CSS Assets-->
@@ -114,7 +114,7 @@
             <nav aria-label="breadcrumb" class="-intro-x h-[45px] mr-auto">
                 <ol class="breadcrumb breadcrumb-light">
                     <li class="breadcrumb-item"><a href="#">Administracion</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('carreras.index') }}">Carreras</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('asignaturas.index') }}">Asignaturas</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Edicion</li>
                 </ol>
             </nav>
@@ -237,7 +237,7 @@
             <div class="content">
                 <div class="intro-y flex flex-col sm:flex-row items-center mt-1">
                     <h2 class="text-lg font-medium mr-auto">
-                        Edicion de Carrera
+                        Edicion de Asignatura
                     </h2>
                 </div>
                 <!-- BEGIN: HTML Table Data -->
@@ -252,10 +252,10 @@
                                         <span class="badge badge-danger"></span>
                                 </div>
                                 @endif
-                                <form method="POST" action="{{ route('carreras.update', $carrera->id) }}"  role="form" enctype="multipart/form-data">
+                                <form method="POST" action="{{ route('asignaturas.update', $asignatura->id) }}"  role="form" enctype="multipart/form-data">
                                     {{ method_field('PATCH') }}
                                     @csrf
-                                    @include('carrera.form')
+                                    @include('asignatura.form')
                                 </form>
                             </div>
                         </div>
