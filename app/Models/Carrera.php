@@ -25,16 +25,16 @@ class Carrera extends Model
     {
         return $this->hasMany('App\Models\Asignatura', 'carrera_id', 'id');
     }
-    
-    // Relacion con Tematicas
-    public function tematicas()
-    {
-        return $this->hasMany('App\Models\Tematica', 'carrera_id', 'id');
-    }
 
     // Relacion con Recursos
     public function recursos()
     {
         return $this->hasMany('App\Models\Recurso', 'carrera_id', 'id');
+    }
+
+    // Relacion con Tematicas
+    public function tematicas()
+    {
+        return $this->hasMany('App\Models\Tematica', 'carrera_id', 'id');
     }
 }

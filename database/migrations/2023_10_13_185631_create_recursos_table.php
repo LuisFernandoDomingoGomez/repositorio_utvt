@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('recursos', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->text('descripcion');
+            $table->text('descripcion')->nullable();
             $table->unsignedBigInteger('carrera_id')->nullable();
             $table->unsignedBigInteger('asignatura_id')->nullable();
             $table->unsignedBigInteger('tematica_id')->nullable();
@@ -23,8 +23,11 @@ return new class extends Migration
             $table->boolean('anonimo')->default(false); // Campo para indicar si es anonimo
             $table->text('archivo'); // Campo pata subir el archivo
             $table->enum('tipo', ['imagen', 'video', 'documento']); // Categorizar o clasificar los recursos
-            $table->enum('estado', ['pendiente', 'aprobado', 'rechazado'])->default('pendiente'); // Estado de recursos
             $table->timestamps();
+            $table->foreign('carrera_id')->references('id')->on('carreras')->onDelete('cascade');
+            $table->foreign('asignatura_id')->references('id')->on('asignaturas')->onDelete('cascade');
+            $table->foreign('tematica_id')->references('id')->on('tematicas')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -12,12 +12,12 @@ class Tematica extends Model
 
     protected $perPage = 20;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name','carrera_id'];
 
     // Relacion con Carreras
     public function carrera()
     {
-        return $this->belongsTo('App\Models\Carrera', 'carrera_id', 'id');
+        return $this->hasOne('App\Models\Carrera', 'id', 'carrera_id');
     }
 
     // Relacion con Recursos
