@@ -49,13 +49,6 @@ class TematicaController extends Controller
             ->with('success', 'Tematica created successfully.');
     }
 
-    public function show($id)
-    {
-        $tematica = Tematica::find($id);
-
-        return view('tematica.show', compact('tematica'));
-    }
-
     public function edit($id)
     {
         $tematica = Tematica::find($id);
