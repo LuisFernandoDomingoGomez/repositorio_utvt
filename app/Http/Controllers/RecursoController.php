@@ -19,10 +19,10 @@ class RecursoController extends Controller
 {
     function __construct()
     {
-         $this->middleware('permission:ver-recurso|crear-recurso|editar-recurso|borrar-recurso')->only('index');
-         $this->middleware('permission:crear-recurso', ['only' => ['create','store']]);
-         $this->middleware('permission:editar-recurso', ['only' => ['edit','update']]);
-         $this->middleware('permission:borrar-recurso', ['only' => ['destroy']]);
+        $this->middleware('permission:ver-recurso|crear-recurso|editar-recurso|borrar-recurso')->only('index');
+        $this->middleware('permission:crear-recurso', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-recurso', ['only' => ['edit','update']]);
+        $this->middleware('permission:borrar-recurso', ['only' => ['destroy']]);
     }
 
     public function index()
@@ -47,10 +47,29 @@ class RecursoController extends Controller
     {
         request()->validate(Recurso::$rules);
 
+        // Crear el recurso con el estado "pendiente"
         $recurso = Recurso::create($request->all());
 
         return redirect()->route('recursos.index')
             ->with('success', 'Recurso creado con exito.');
+    }
+
+    // Métodos para aprobar y rechazar recursos
+    
+    public function approve(Recurso $recurso)
+    {
+        $recurso->update(['estado' => 'aprobado']);
+        // Agregar notificaciones o registros
+        return redirect()->route('recursos.index')
+            ->with('success', 'Recurso aprobado con éxito.');
+    }
+
+    public function reject(Recurso $recurso)
+    {
+        $recurso->update(['estado' => 'rechazado']);
+        // Agregar notificaciones o registros
+        return redirect()->route('recursos.index')
+            ->with('success', 'Recurso rechazado con éxito.');
     }
 
     public function show($id)
