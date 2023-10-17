@@ -42,7 +42,7 @@
                 </li>
                 <li class="menu__devider my-6"></li>
                 <li>
-                    <a href="/" class="menu menu--active">
+                    <a href="{{ route('recursos.index') }}" class="menu menu--active">
                         <div class="menu__icon"><i data-lucide="inbox"></i></div>
                         <div class="menu__title">Recursos de Aprendizaje</div>
                     </a>
@@ -166,14 +166,14 @@
         <nav class="side-nav">
             <ul>
                 <li>
-                    <a href="javascript:;.html" class="side-menu side-menu--active">
+                    <a href="/" class="side-menu side-menu--active">
                         <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
                         <div class="side-menu__title">Principal</div>
                     </a>
                 </li>
 
                 <li>
-                    <a href="javascript:;.html" class="side-menu side-menu">
+                    <a href="{{ route('recursos.index') }}" class="side-menu side-menu">
                         <div class="side-menu__icon"> <i data-lucide="inbox"></i> </div>
                         <div class="side-menu__title">Recursos de Aprendizaje</div>
                     </a>
