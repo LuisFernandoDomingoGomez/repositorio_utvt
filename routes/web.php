@@ -27,6 +27,12 @@ Route::resource('asignaturas', App\Http\Controllers\AsignaturaController::class)
 Route::resource('tematicas', App\Http\Controllers\TematicaController::class);
 Route::resource('recursos', App\Http\Controllers\RecursoController::class);
 
+
+// Rutas personalizadas para aprobación y rechazo
+// Route::post('recursos/{recurso}/approve', 'App\Http\Controllers\RecursoController@approve')->name('recursos.approve');
+// Route::post('recursos/{recurso}/reject', 'App\Http\Controllers\RecursoController@reject')->name('recursos.reject');
+
+
 //Generacion de vistas PDF
 Route::get('users.pdf', 'App\Http\Controllers\UserController@pdf')->name('users.pdf');
 Route::get('users.download-pdf', 'App\Http\Controllers\UserController@downloadPdf')->name('users.downloadPdf');

@@ -8,11 +8,9 @@ class Recurso extends Model
 {
     static $rules = [
 		'titulo' => 'required',
-		'user_id' => 'required',
 		'anonimo' => 'required',
 		'archivo' => 'required',
 		'tipo' => 'required',
-		'estado' => 'required',
     ];
 
     protected $perPage = 20;
