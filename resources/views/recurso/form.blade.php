@@ -65,12 +65,6 @@
             {{ Form::text('tipo', $recurso->tipo, ['class' => 'form-input w-full rounded-md focus:outline-none focus:ring focus:border-blue-300' . ($errors->has('tipo') ? ' border-red-500' : ''), 'placeholder' => 'Tipo']) }}
             {!! $errors->first('tipo', '<p class="text-red-500 text-xs mt-1">:message</p>') !!}
         </div>
-        <br>
-        <div class="form-group">
-            {{ Form::label('estado', 'Estado', ['class' => 'block text-gray-700 text-sm font-bold mb-2']) }}
-            {{ Form::text('estado', $recurso->estado, ['class' => 'form-input w-full rounded-md focus:outline-none focus:ring focus:border-blue-300' . ($errors->has('estado') ? ' border-red-500' : ''), 'placeholder' => 'Estado']) }}
-            {!! $errors->first('estado', '<p class="text-red-500 text-xs mt-1">:message</p>') !!}
-        </div>
     </div>
     <div class="box-footer mt-4">
         <div class="float-right">

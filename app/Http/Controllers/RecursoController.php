@@ -59,6 +59,11 @@ class RecursoController extends Controller
         // Crear el recurso y asignar el user_id antes de guardarlo
         $recurso = new Recurso($request->all());
         $recurso->user_id = $user->id;
+
+        // Asignar el estado como "pendiente"
+        $recurso->estado = 'pendiente';
+
+
         $recurso->save();
 
         return redirect()->route('recursos.index')
