@@ -298,7 +298,7 @@
                                     <tr>
                                         <th class="whitespace-nowrap">No.</th>
                                         <th class="whitespace-nowrap">Titulo</th>
-                                        <th class="whitespace-nowrap">Tematica</th>
+                                        <th class="whitespace-nowrap">Carrera</th>
                                         <th class="whitespace-nowrap " align="center">Acciones</th>
                                     </tr>
                                 </thead>

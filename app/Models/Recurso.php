@@ -9,7 +9,6 @@ class Recurso extends Model
     static $rules = [
 		'titulo' => 'required',
 		'anonimo' => 'required',
-		'archivo' => 'required',
 		'tipo' => 'required',
     ];
 
