@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Http\Requests\UserRequest;
 use App\Models\Recurso;
 use App\Models\Carrera;
@@ -35,7 +36,12 @@ class RecursoController extends Controller
 
     public function create()
     {
-        $recurso = new Recurso();
+        $user = auth()->user();
+
+        $recurso = new Recurso([
+            'user_id' => $user->id,
+        ]);
+
         $carrera = Carrera::pluck('name','id');
         $asignatura = Asignatura::pluck('name','id');
         $tematica = Tematica::pluck('name','id');
@@ -47,8 +53,13 @@ class RecursoController extends Controller
     {
         request()->validate(Recurso::$rules);
 
-        // Crear el recurso con el estado "pendiente"
-        $recurso = Recurso::create($request->all());
+        // Obtener al usuario autenticado
+        $user = auth()->user();
+
+        // Crear el recurso y asignar el user_id antes de guardarlo
+        $recurso = new Recurso($request->all());
+        $recurso->user_id = $user->id;
+        $recurso->save();
 
         return redirect()->route('recursos.index')
             ->with('success', 'Recurso creado con exito.');
@@ -56,7 +67,7 @@ class RecursoController extends Controller
 
     // Métodos para aprobar y rechazar recursos
     
-    public function approve(Recurso $recurso)
+    /*public function approve(Recurso $recurso)
     {
         $recurso->update(['estado' => 'aprobado']);
         // Agregar notificaciones o registros
@@ -70,7 +81,7 @@ class RecursoController extends Controller
         // Agregar notificaciones o registros
         return redirect()->route('recursos.index')
             ->with('success', 'Recurso rechazado con éxito.');
-    }
+    }*/
 
     public function show($id)
     {

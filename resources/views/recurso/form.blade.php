@@ -25,7 +25,7 @@
             </div>
         </div>
         <br>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="grid grid-cols-4 gap-4">
             <div class="form-group col-span-2">
                 {{ Form::label('descripcion', 'Descripción', ['class' => 'block text-gray-700 text-sm font-bold mb-2']) }}
                 {{ Form::textarea('descripcion', $recurso->descripcion, ['class' => 'form-input w-full rounded-md focus:outline-none focus:ring focus:border-blue-300' . ($errors->has('descripcion') ? ' border-red-500' : ''), 'placeholder' => 'Descripción', 'rows' => 3]) }}
@@ -35,41 +35,37 @@
             <div class="form-group col-span-2">
                 {{ Form::label('archivo', 'Subir archivo', ['class' => 'block text-gray-700 text-sm font-bold mb-2']) }}
                 {{ Form::file('archivo', ['class' => 'hidden', 'id' => 'file-input']) }}
-                <div id="file-drop" class="w-full h-60 border-dashed border-2 border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer">
-                    <svg class="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                <div id="file-drop" class="w-full h-60 border-dashed border-2 border-green-400 rounded-lg flex flex-col items-center justify-center cursor-pointer">
+                    <svg class="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 8v12h-5v12h-4l11 10 11-10h-4V20h-5V8z"></path>
                     </svg>
-                    <p class="text-gray-400 text-sm md:text-base lg:text-lg mt-2">Arrastra y suelta archivos aquí o haz clic para seleccionar</p>
+                    <p class="text-green-400 text-xs md:text-sm lg:text-base mt-1">Agregar archivos</p>
+                    <p class="text-green-400 text-xs md:text-sm lg:text-base mt-1">o arrastra y suelta</p>
                 </div>
                 <p id="file-name" class="mt-2 text-gray-700 text-sm"></p>
             </div>
         </div>
+        <br>
+        <div class="grid grid-cols-2 gap-4">
+            <div class="form-group">
+                {{ Form::label('autor', 'Autor', ['class' => 'block text-gray-700 text-sm font-bold mb-2']) }}
+                {{ Form::text('autor', $recurso->autor, ['class' => 'form-input w-full rounded-md focus:outline-none focus:ring focus:border-blue-300' . ($errors->has('autor') ? ' border-red-500' : ''), 'placeholder' => 'Autor']) }}
+                {!! $errors->first('autor', '<p class="text-red-500 text-xs mt-1">:message</p>') !!}
+            </div>
 
-
+            <div class="form-group">
+                {{ Form::label('anonimo', 'Anónimo', ['class' => 'block text-gray-700 text-sm font-bold mb-2']) }}
+                {{ Form::select('anonimo', ['0' => 'No', '1' => 'Sí'], $recurso->anonimo, ['class' => 'form-select w-full rounded-md focus:outline-none focus:ring focus:border-blue-300', 'placeholder' => 'Selecciona una opción']) }}
+                {!! $errors->first('anonimo', '<p class="text-red-500 text-xs mt-1">:message</p>') !!}
+            </div>
+        </div>
+        <br>
         <div class="form-group">
             {{ Form::label('tipo', 'Tipo', ['class' => 'block text-gray-700 text-sm font-bold mb-2']) }}
             {{ Form::text('tipo', $recurso->tipo, ['class' => 'form-input w-full rounded-md focus:outline-none focus:ring focus:border-blue-300' . ($errors->has('tipo') ? ' border-red-500' : ''), 'placeholder' => 'Tipo']) }}
             {!! $errors->first('tipo', '<p class="text-red-500 text-xs mt-1">:message</p>') !!}
         </div>
-
-        <div class="form-group">
-            {{ Form::label('autor', 'Autor', ['class' => 'block text-gray-700 text-sm font-bold mb-2']) }}
-            {{ Form::text('autor', $recurso->autor, ['class' => 'form-input w-full rounded-md focus:outline-none focus:ring focus:border-blue-300' . ($errors->has('autor') ? ' border-red-500' : ''), 'placeholder' => 'Autor']) }}
-            {!! $errors->first('autor', '<p class="text-red-500 text-xs mt-1">:message</p>') !!}
-        </div>
-
-        <div class="form-group">
-            {{ Form::label('user_id', 'User Id', ['class' => 'block text-gray-700 text-sm font-bold mb-2']) }}
-            {{ Form::text('user_id', $recurso->user_id, ['class' => 'form-input w-full rounded-md focus:outline-none focus:ring focus:border-blue-300' . ($errors->has('user_id') ? ' border-red-500' : ''), 'placeholder' => 'User Id']) }}
-            {!! $errors->first('user_id', '<p class="text-red-500 text-xs mt-1">:message</p>') !!}
-        </div>
-
-        <div class="form-group">
-            {{ Form::label('anonimo', 'Anónimo', ['class' => 'block text-gray-700 text-sm font-bold mb-2']) }}
-            {{ Form::text('anonimo', $recurso->anonimo, ['class' => 'form-input w-full rounded-md focus:outline-none focus:ring focus:border-blue-300' . ($errors->has('anonimo') ? ' border-red-500' : ''), 'placeholder' => 'Anónimo']) }}
-            {!! $errors->first('anonimo', '<p class="text-red-500 text-xs mt-1">:message</p>') !!}
-        </div>
-
+        <br>
         <div class="form-group">
             {{ Form::label('estado', 'Estado', ['class' => 'block text-gray-700 text-sm font-bold mb-2']) }}
             {{ Form::text('estado', $recurso->estado, ['class' => 'form-input w-full rounded-md focus:outline-none focus:ring focus:border-blue-300' . ($errors->has('estado') ? ' border-red-500' : ''), 'placeholder' => 'Estado']) }}
