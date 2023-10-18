@@ -52,4 +52,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+/*
+Route::get('/view-document/{path}', function ($path) {
+    // Asegúrate de que $path apunte al archivo que deseas mostrar.
+    // En este caso, los archivos se encuentran en la carpeta "public/dist/docs".
+    $filePath = public_path('dist/docs/' . $path);
+
+    // A continuación, especifica los valores necesarios para $file_url y $file_data.
+    $file_url = asset('/public/dist/docs/' . $path);
+
+    return Preview::show($path, $filePath, $file_url);
+})->name('view-document');
+*/
+
 require __DIR__.'/auth.php';

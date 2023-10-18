@@ -62,8 +62,6 @@ class RecursoController extends Controller
 
         // Asignar el estado como "pendiente"
         $recurso->estado = 'pendiente';
-
-
         $recurso->save();
 
         return redirect()->route('recursos.index')
