@@ -26,12 +26,22 @@ class RecursoController extends Controller
         $this->middleware('permission:borrar-recurso', ['only' => ['destroy']]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $recursos = Recurso::paginate();
+        $busqueda = $request->busqueda;
 
-        return view('recurso.index', compact('recursos'))
-            ->with('i', (request()->input('page', 1) - 1) * $recursos->perPage());
+        $recursos = Recurso::where('titulo', 'LIKE', '%' . $busqueda . '%')
+                    ->orWhere('descripcion', 'LIKE', '%' . $busqueda . '%')
+                    ->orderBy('carrera_id', 'asc') // Cambia latest('id') a orderBy('id', 'desc')
+                    ->paginate(15);
+
+        $data = [
+            'recursos' => $recursos,
+            'busqueda' => $busqueda,
+        ];
+
+        return view('recurso.index', compact('recursos'), $data)
+        ->with('i', (request()->input('page', 1) - 1) * $recursos->perPage());
     }
 
     public function create()
