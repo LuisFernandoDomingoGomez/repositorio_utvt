@@ -13,22 +13,57 @@ use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
+use PDF;
+use App\Exports\AsignaturasExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class AsignaturaController extends Controller
 {
     function __construct()
     {
-         $this->middleware('permission:ver-asignatura|crear-asignatura|editar-asignatura|borrar-asignatura')->only('index');
-         $this->middleware('permission:crear-asignatura', ['only' => ['create','store']]);
-         $this->middleware('permission:editar-asignatura', ['only' => ['edit','update']]);
-         $this->middleware('permission:borrar-asignatura', ['only' => ['destroy']]);
+        $this->middleware('permission:ver-asignatura|crear-asignatura|editar-asignatura|borrar-asignatura')->only('index');
+        $this->middleware('permission:crear-asignatura', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-asignatura', ['only' => ['edit','update']]);
+        $this->middleware('permission:borrar-asignatura', ['only' => ['destroy']]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $asignaturas = Asignatura::paginate(10);
+        $busqueda = $request->busqueda;
 
-        return view('asignatura.index', compact('asignaturas'))
-            ->with('i', (request()->input('page', 1) - 1) * $asignaturas->perPage());
+        $asignaturas = Asignatura::where('name', 'LIKE', '%' . $busqueda . '%')
+                    ->orderBy('carrera_id', 'asc') // Cambia latest('id') a orderBy('id', 'desc')
+                    ->paginate(15);
+
+        $data = [
+            'asignaturas' => $asignaturas,
+            'busqueda' => $busqueda,
+        ];
+
+        return view('asignatura.index', compact('asignaturas'), $data)
+        ->with('i', (request()->input('page', 1) - 1) * $asignaturas->perPage());
+    }
+
+    public function pdf()
+    {
+        $asignaturas = Asignatura::paginate(200);
+
+        $pdf = PDF::loadView('asignatura.pdf',['asignaturas'=>$asignaturas]);
+        return $pdf->stream();
+    }
+
+    public function downloadPdf()
+    {
+        $asignaturas = Asignatura::paginate(200);
+        $pdf = PDF::loadView('asignatura.pdf', ['asignaturas' => $asignaturas]);
+        
+        // Descargar automáticamente el PDF
+        return $pdf->setPaper('a4')->download('asignatura.pdf');
+    }
+
+    public function export()
+    {
+        return Excel::download(new AsignaturasExport, 'asignatura.xlsx');
     }
 
     public function create()

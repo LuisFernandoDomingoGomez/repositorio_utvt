@@ -37,9 +37,16 @@ Route::resource('recursos', App\Http\Controllers\RecursoController::class);
 Route::get('users.pdf', 'App\Http\Controllers\UserController@pdf')->name('users.pdf');
 Route::get('users.download-pdf', 'App\Http\Controllers\UserController@downloadPdf')->name('users.downloadPdf');
 
+Route::get('asignatura.pdf', 'App\Http\Controllers\AsignaturaController@pdf')->name('asignatura.pdf');
+Route::get('asignatura.download-pdf', 'App\Http\Controllers\AsignaturaController@downloadPdf')->name('asignatura.downloadPdf');
+
+Route::get('tematica.pdf', 'App\Http\Controllers\TematicaController@pdf')->name('tematica.pdf');
+Route::get('tematica.download-pdf', 'App\Http\Controllers\TematicaController@downloadPdf')->name('tematica.downloadPdf');
 
 //Exportacion a Excel
-Route::get('/export', 'App\Http\Controllers\UserController@export')->name('users.export');
+Route::get('users.export', 'App\Http\Controllers\UserController@export')->name('users.export');
+Route::get('asignatura.export', 'App\Http\Controllers\AsignaturaController@export')->name('asignatura.export');
+Route::get('tematica.export', 'App\Http\Controllers\TematicaController@export')->name('tematica.export');
 
 
 Route::get('/dashboard', function () {
