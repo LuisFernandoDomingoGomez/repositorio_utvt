@@ -44,6 +44,34 @@ class RecursoController extends Controller
         ->with('i', (request()->input('page', 1) - 1) * $recursos->perPage());
     }
 
+    public function detectarTipoArchivo($archivo)
+    {
+        $extension = strtolower($archivo->getClientOriginalExtension());
+
+        $tiposArchivo = [
+            'imagen' => ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg', 'tiff', 'ico'],
+            'video' => ['mp4', 'mov', 'avi', 'mkv', 'wmv', 'flv', 'webm', 'm4v'],
+            'audio' => ['mp3', 'wav', 'flac', 'aac', 'ogg'],
+            'documento' => ['pdf', 'docx', 'pptx', 'xlsx', 'csv', 'doc', 'ppt', 'xls', 'odt', 'ods', 'odp'],
+            'comprimido' => ['zip', 'rar', '7z', 'tar', 'gz'],
+            'adobe' => ['ai', 'psd', 'indd'],
+            'texto' => ['txt', 'sql', 'html', 'xml', 'css', 'js', 'php', 'java', 'ts', 'c', 'cpp', 'cs', 'py', 'rb', 'pl'],
+            'cad' => ['dwg', 'dxf', 'sldprt', 'sldasm', 'slddrw', 'slddrw', 'dwf', 'dwt', 'dws', 'rvt', 'dwf', 'rfa', '3ds'],
+            'virtualizacion' => ['ova', 'ovf', 'vmdk', 'vmx', 'qcow2'],
+            'redes' => ['pkt', 'pka', 'ccna', 'pks'],
+        ];
+        
+
+        foreach ($tiposArchivo as $tipo => $extensiones) {
+            if (in_array($extension, $extensiones)) {
+                return $tipo;
+            }
+        }
+
+        return 'desconocido'; // Tipo por defecto si no se detecta
+    }
+
+
     public function create()
     {
         $user = auth()->user();
@@ -70,13 +98,20 @@ class RecursoController extends Controller
         $recurso = new Recurso($request->all());
         $recurso->user_id = $user->id;
 
-        // Asignar el estado como "pendiente"
-        $recurso->estado = 'pendiente';
+        // Detectar y asignar automáticamente el tipo del archivo
+        if ($request->hasFile('archivo')) {
+            $tipoArchivo = $this->detectarTipoArchivo($request->file('archivo'));
+            $recurso->tipo = $tipoArchivo;
+        }
+
+        $recurso->estado = 'pendiente'; // Asignar el estado como "pendiente"
+
         $recurso->save();
 
         return redirect()->route('recursos.index')
-            ->with('success', 'Recurso creado con exito.');
+            ->with('success', 'Recurso creado con éxito.');
     }
+
 
     // Métodos para aprobar y rechazar recursos
     

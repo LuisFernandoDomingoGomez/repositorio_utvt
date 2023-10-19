@@ -22,7 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id'); // Agregar este campo para vincular al usuario que crea el recurso
             $table->boolean('anonimo')->default(false); // Campo para indicar si es anonimo
             $table->text('archivo')->nullable(); // Campo pata subir el archivo
-            $table->enum('tipo', ['imagen', 'video', 'documento']); // Categorizar o clasificar los recursos
+            $table->string('tipo');
             $table->timestamps();
             $table->foreign('carrera_id')->references('id')->on('carreras')->onDelete('cascade');
             $table->foreign('asignatura_id')->references('id')->on('asignaturas')->onDelete('cascade');

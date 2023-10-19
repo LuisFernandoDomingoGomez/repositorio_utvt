@@ -32,6 +32,8 @@
                 {!! $errors->first('descripcion', '<p class="text-red-500 text-xs mt-1">:message</p>') !!}
             </div>
 
+            {{ Form::hidden('tipo', null, ['id' => 'tipo-archivo']) }}
+
             <div class="form-group col-span-2">
                 {{ Form::label('archivo', 'Subir archivo', ['class' => 'block text-gray-700 text-sm font-bold mb-2']) }}
                 {{ Form::file('archivo', ['class' => 'hidden', 'id' => 'file-input']) }}
@@ -59,12 +61,6 @@
                 {!! $errors->first('anonimo', '<p class="text-red-500 text-xs mt-1">:message</p>') !!}
             </div>
         </div>
-        <br>
-        <div class="form-group">
-            {{ Form::label('tipo', 'Tipo', ['class' => 'block text-gray-700 text-sm font-bold mb-2']) }}
-            {{ Form::text('tipo', $recurso->tipo, ['class' => 'form-input w-full rounded-md focus:outline-none focus:ring focus:border-blue-300' . ($errors->has('tipo') ? ' border-red-500' : ''), 'placeholder' => 'Tipo']) }}
-            {!! $errors->first('tipo', '<p class="text-red-500 text-xs mt-1">:message</p>') !!}
-        </div>
     </div>
     <div class="box-footer mt-4">
         <div class="float-right">
@@ -78,6 +74,7 @@
     const fileDrop = document.getElementById('file-drop');
     const fileInput = document.getElementById('file-input');
     const fileNameDisplay = document.getElementById('file-name');
+    const tipoArchivoInput = document.getElementById('tipo-archivo');
 
     fileDrop.addEventListener('dragover', (e) => {
         e.preventDefault();
@@ -110,11 +107,29 @@
             // Muestra el nombre del archivo seleccionado
             fileNameDisplay.textContent = 'Archivo seleccionado: ' + file.name;
 
-            // Aquí puedes procesar el archivo y/o enviarlo al servidor según tus necesidades.
-            // Por ejemplo, subir el archivo al servidor.
-            // const formData = new FormData();
-            // formData.append('archivo', file);
-            // Realizar una solicitud AJAX o utilizar fetch() para enviar el archivo al servidor.
+            // Detecta la extensión del archivo
+            const extension = file.name.split('.').pop().toLowerCase();
+
+            // Define un objeto con extensiones y tipos de archivo
+            const tiposArchivo = {
+                'imagen': ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg', 'tiff', 'ico'],
+                'video': ['mp4', 'mov', 'avi', 'mkv', 'wmv', 'flv', 'webm', 'm4v'],
+                'audio': ['mp3', 'wav', 'flac', 'aac', 'ogg'],
+                'documento': ['pdf', 'docx', 'pptx', 'xlsx', 'csv', 'doc', 'ppt', 'xls', 'odt', 'ods', 'odp'],
+                'comprimido': ['zip', 'rar', '7z', 'tar', 'gz'],
+                'adobe': ['ai', 'psd', 'indd'],
+                'texto': ['txt', 'sql', 'html', 'xml', 'css', 'js', 'php', 'java', 'ts', 'c', 'cpp', 'cs', 'py', 'rb', 'pl'],
+                'cad': ['dwg', 'dxf', 'sldprt', 'sldasm', 'slddrw', 'slddrw', 'dwf', 'dwt', 'dws', 'rvt', 'dwf', 'rfa', '3ds'],
+                'virtualizacion': ['ova', 'ovf', 'vmdk', 'vmx', 'qcow2'],
+                'redes': ['pkt', 'pka', 'ccna', 'pks'],
+            };
+
+            // Asigna el tipo de archivo al campo oculto
+            if (tiposArchivo.hasOwnProperty(extension)) {
+                tipoArchivoInput.value = tiposArchivo[extension];
+            } else {
+                tipoArchivoInput.value = 'desconocido';
+            }
         }
     }
 </script>
