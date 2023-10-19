@@ -12,7 +12,7 @@
     <meta name="keywords"
         content="admin template, Enigma Admin Template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="LEFT4CODE">
-    <title>Recursos | Creacion</title>
+    <title>Recursos | Vista Previa</title>
     <!-- BEGIN: CSS Assets-->
     <link rel="stylesheet" href="/dist/css/app.css"/>
     <!-- END: CSS Assets-->
@@ -115,7 +115,7 @@
                 <ol class="breadcrumb breadcrumb-light">
                     <li class="breadcrumb-item"><a href="#">Administracion</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('recursos.index') }}">Recursos</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Creacion</li>
+                    <li class="breadcrumb-item active" aria-current="page">Vista Previa</li>
                 </ol>
             </nav>
             <!-- END: Breadcrumb -->
@@ -124,7 +124,7 @@
             <div class="intro-x dropdown w-8 h-8">
                 <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110"
                     role="button" aria-expanded="false" data-tw-toggle="dropdown">
-                    <img alt="Midone - HTML Admin Template" src="dist/images/profile-6.jpg">
+                    <img alt="Midone - HTML Admin Template" src="/dist/images/profile.png">
                 </div>
                 <div class="dropdown-menu w-56">
                     <ul
@@ -238,25 +238,57 @@
                 <div class="intro-y box p-3 mt-2 rounded-lg shadow-lg bg-white"> <!-- Fondo blanco ligeramente sombreado -->
                     <div class="flex items-center">
                         <div class="w-10 h-10 rounded-full overflow-hidden">
-                            <img src="https://scontent.fmex9-1.fna.fbcdn.net/v/t39.30808-1/382714984_1491385781684245_6773661663586584814_n.jpg?stp=dst-jpg_p160x160&_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGfqFO-ity2XKd8PHQdiu-ZshDG-emaRC2yEMb56ZpELXiTLR8FwgO2sqN4-zy4iN2fJ7eDINTsytQX2fDyFqFV&_nc_ohc=OTOlY7NJS9MAX-MdnMD&_nc_ht=scontent.fmex9-1.fna&oh=00_AfCwQQ0o-TCbeUd5rHgtyQ8faXX18WwaoJ8G31iiIF10iQ&oe=65326839" alt="Foto de Perfil">
+                            <img src="/dist/images/profile.png" alt="Foto de Perfil">
                         </div>
                         <div class="ml-2">
-                            <a href="#" class="font-medium text-blue-500">Luis Fernando Domingo Gómez</a> <!-- Color azul para el nombre de usuario -->
-                            <div class="text-gray-600">16 de octubre de 2023</div>
+                            <a href="#" class="font-medium text-blue-500">{{$recurso->user->name}}</a> <!-- Color azul para el nombre de usuario -->
+                            <div class="text-gray-600">{{$recurso->created_at->isoFormat('D [de] MMMM [de] Y')}}</div>
                         </div>
                     </div>
                     <br>
 
                     <!-- Título de la publicación -->
-                    <h2 class="text-lg font-semibold mb-1 text-black">Título de la Publicación</h2> <!-- Color de texto negro para el título -->
+                    <h2 class="text-lg font-semibold mb-1 text-black">{{$recurso->titulo}}</h2> <!-- Color de texto negro para el título -->
 
                     <!-- Descripción de la publicación -->
-                    <p class="text-gray-700">Descripción de la Publicación...</p>
+                    <p class="text-gray-700">Descripción de la Publicación...</p>                    
 
                     <!-- Contenido de la publicación (imagen/archivo/video) -->
                     <div class="my-4">
-                        <img src="https://www.danielprimo.io/files/2021-05/1621490872_laravel-bases-de-datos-y-modelo.png" alt="Imagen de la Publicación" class="w-full rounded-md"> <!-- Bordes ligeramente redondeados -->
-                        <!-- O bien, si tienes un archivo o video, puedes mostrarlo aquí -->
+                        @php
+                            $extension = pathinfo($recurso->archivo, PATHINFO_EXTENSION);
+                        @endphp
+                        @if (in_array($extension, ['pdf']))
+                            <!-- Mostrar vista previa de un archivo PDF -->
+                            <embed src="{{ asset($recurso->archivo) }}" type="application/pdf" width="100%" height="600px" />
+                        @elseif (in_array($extension, ['doc', 'docx']))
+                            <!-- Mostrar vista previa de un archivo Word -->
+                            <!-- Puedes usar una imagen de un ícono de Word como vista previa -->
+                            <img src="https://i.pinimg.com/originals/72/7e/90/727e900d82258767555539e2e81ec497.png" alt="Vista previa de Word" class="w-48 h-auto mx-auto rounded-md">
+                            <a href="{{ asset($recurso->archivo) }}" class="block text-right text-blue-500">Descargar Archivo</a>
+                        @elseif (in_array($extension, ['ppt', 'pptx']))
+                            <!-- Mostrar vista previa de un archivo PowerPoint -->
+                            <!-- Puedes usar una imagen de un ícono de PowerPoint como vista previa -->
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Microsoft_PowerPoint_Logo.png" alt="Vista previa de PowerPoint" class="w-48 h-auto mx-auto rounded-md">
+                            <a href="{{ asset($recurso->archivo) }}" class="block text-right text-blue-500">Descargar Archivo</a>
+                        @elseif (in_array($extension, ['xls', 'xlsx']))
+                            <!-- Mostrar vista previa de un archivo Excel -->
+                            <!-- Puedes usar una imagen de un ícono de Excel como vista previa -->
+                            <img src="{{ asset('ruta_a_la_imagen_de_excel.png') }}" alt="Vista previa de Excel" class="w-full h-64 rounded-md">
+                        @elseif (in_array($extension, ['jpg', 'jpeg', 'png', 'gif']))
+                            <!-- Mostrar vista previa de una imagen -->
+                            <img src="{{ asset($recurso->archivo) }}" alt="Imagen de la Publicación" class="w-full h-64 rounded-md">
+                        @elseif (in_array($extension, ['mp4', 'avi', 'mov']))
+                            <!-- Mostrar vista previa de un video -->
+                            <!-- Puedes usar un reproductor de video para la vista previa -->
+                            <video class="w-full h-64 rounded-md" controls>
+                                <source src="{{ asset($recurso->archivo) }}" type="video/{{$extension}}">
+                                Tu navegador no soporta el elemento de video.
+                            </video>
+                        @else
+                            <!-- Tipo de archivo no compatible: Mostrar un mensaje de error o un ícono genérico -->
+                            <img src="https://thumbs.dreamstime.com/b/error-con-la-plantilla-del-dise%C3%B1o-cuaderno-icono-para-el-sitio-web-gr%C3%A1fico-azul-fondo-109996932.jpg" alt="Tipo de archivo no compatible" class="w-full h-64 rounded-md">
+                        @endif
                     </div>
                 </div>
             </div>

@@ -89,7 +89,17 @@ class RecursoController extends Controller
 
     public function store(Request $request)
     {
-        request()->validate(Recurso::$rules);
+        // Validación de datos
+        $request->validate([
+            'titulo' => 'required',
+            'descripcion' => 'required',
+            'archivo' => 'required|file',
+        ]);
+
+        // Guardar el archivo en una carpeta (por ejemplo, "archivos_recursos")
+        $archivo = $request->file('archivo');
+        $archivoNombre = $archivo->getClientOriginalName();
+        $archivo->storeAs('archivos_recursos', $archivoNombre, 'public'); // Guardar en la carpeta "archivos_recursos" en el disco público
 
         // Obtener al usuario autenticado
         $user = auth()->user();
@@ -103,6 +113,10 @@ class RecursoController extends Controller
             $tipoArchivo = $this->detectarTipoArchivo($request->file('archivo'));
             $recurso->tipo = $tipoArchivo;
         }
+
+        // Guardar el archivo en la carpeta "archivos_recursos"
+        $archivo->move(public_path('archivos_recursos'), $archivoNombre);
+        $recurso->archivo = 'archivos_recursos/' . $archivoNombre;
 
         $recurso->estado = 'pendiente'; // Asignar el estado como "pendiente"
 
