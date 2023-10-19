@@ -260,8 +260,18 @@
                 <!-- BEGIN: HTML Table Data -->
                 <div class="intro-y box p-5 mt-5">
                     <div class="flex flex-col sm:flex-row sm:items-end xl:items-start flex-wrap">
+                        <form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto" action="{{ route('tematicas.index') }}" method="GET">
+                            <div class="input-group" style="max-width: 400px;">
+                                <input class="form-control me-2" type="text" name="busqueda" placeholder="Búsqueda" aria-label="Search" style="height: 35px;">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-outline-success" value="enviar" style="line-height: 1; display: flex; align-items: center; height: 35px;">
+                                        <i class="fa fa-search fa"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                         <div class="flex mt-5 sm:mt-0">
-                            <a href="{{ route('users.pdf') }}" class="btn btn-outline-secondary w-1/2 sm:w-auto mr-2">
+                            <a href="{{ route('tematica.pdf') }}" class="btn btn-outline-secondary w-1/2 sm:w-auto mr-2">
                                 <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Imprimir
                             </a>
                             <div class="dropdown w-1/2 sm:w-auto">
@@ -274,12 +284,12 @@
                                 <div class="dropdown-menu w-40">
                                     <ul class="dropdown-content">
                                         <li>
-                                            <a id="tabulator-export-pdf" href="{{ route('users.downloadPdf') }}"
-                                                class="dropdown-item"> <i class="fas fa-file-pdf w-4 h-4 mr-2"></i> Export PDF </a>
+                                            <a id="tabulator-export-pdf" href="{{ route('tematica.downloadPdf') }}"
+                                                class="dropdown-item"> <i class="fas fa-file-pdf w-4 h-4 mr-2"></i>Export PDF</a>
                                         </li>
                                         <li>
-                                            <a id="tabulator-export-xlsx" href="{{ route('users.export') }}"
-                                                class="dropdown-item"> <i class="fas fa-file-excel w-4 h-4 mr-2"></i> Export XLSX </a>
+                                            <a id="tabulator-export-xlsx" href="{{ route('tematica.export') }}"
+                                                class="dropdown-item"> <i class="fas fa-file-excel w-4 h-4 mr-2"></i>Export XLSX</a>
                                         </li>
                                     </ul>
                                 </div>

@@ -13,22 +13,57 @@ use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
+use PDF;
+use App\Exports\TematicasExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class TematicaController extends Controller
 {
     function __construct()
     {
-         $this->middleware('permission:ver-tematica|crear-tematica|editar-tematica|borrar-tematica')->only('index');
-         $this->middleware('permission:crear-tematica', ['only' => ['create','store']]);
-         $this->middleware('permission:editar-tematica', ['only' => ['edit','update']]);
-         $this->middleware('permission:borrar-tematica', ['only' => ['destroy']]);
+        $this->middleware('permission:ver-tematica|crear-tematica|editar-tematica|borrar-tematica')->only('index');
+        $this->middleware('permission:crear-tematica', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-tematica', ['only' => ['edit','update']]);
+        $this->middleware('permission:borrar-tematica', ['only' => ['destroy']]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $tematicas = Tematica::paginate(25);
+        $busqueda = $request->busqueda;
 
-        return view('tematica.index', compact('tematicas'))
-            ->with('i', (request()->input('page', 1) - 1) * $tematicas->perPage());
+        $tematicas = Tematica::where('name', 'LIKE', '%' . $busqueda . '%')
+                    ->orderBy('carrera_id', 'asc') // Cambia latest('id') a orderBy('id', 'desc')
+                    ->paginate(15);
+
+        $data = [
+            'tematicas' => $tematicas,
+            'busqueda' => $busqueda,
+        ];
+
+        return view('tematica.index', compact('tematicas'), $data)
+        ->with('i', (request()->input('page', 1) - 1) * $tematicas->perPage());
+    }
+
+    public function pdf()
+    {
+        $tematicas = Tematica::paginate(200);
+
+        $pdf = PDF::loadView('tematica.pdf',['tematicas'=>$tematicas]);
+        return $pdf->stream();
+    }
+
+    public function downloadPdf()
+    {
+        $tematicas = Tematica::paginate(200);
+        $pdf = PDF::loadView('tematica.pdf', ['tematicas' => $tematicas]);
+        
+        // Descargar automáticamente el PDF
+        return $pdf->setPaper('a4')->download('tematica.pdf');
+    }
+
+    public function export()
+    {
+        return Excel::download(new TematicasExport, 'tematica.xlsx');
     }
 
     public function create()
