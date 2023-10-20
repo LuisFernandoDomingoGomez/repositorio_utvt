@@ -130,8 +130,8 @@
                     <ul
                         class="dropdown-content bg-primary/80 before:block before:absolute before:bg-black before:inset-0 before:rounded-md before:z-[-1] text-white">
                         <li class="p-2">
-                            <div class="font-medium">Al Pacino</div>
-                            <div class="text-xs text-white/60 mt-0.5">DevOps Engineer</div>
+                            <div class="font-medium">{{ Auth::user()->name }}</div>
+                            <div class="text-xs text-white/60 mt-0.5">{{ Auth::user()->getRoleNames()->first() }}</div>
                         </li>
                         <li>
                             <hr class="dropdown-divider border-white/[0.08]">
@@ -235,58 +235,50 @@
         <!-- BEGIN: Content -->
             <div class="content">
                 <div class="mt-4"><br></div>
-                <div class="intro-y box p-3 mt-2 rounded-lg shadow-lg bg-white"> <!-- Fondo blanco ligeramente sombreado -->
+                <div class="intro-y box p-3 mt-2 rounded-lg shadow-lg bg-white">
                     <div class="flex items-center">
                         <div class="w-10 h-10 rounded-full overflow-hidden">
                             <img src="/dist/images/profile.png" alt="Foto de Perfil">
                         </div>
                         <div class="ml-2">
-                            <a href="#" class="font-medium text-blue-500">{{$recurso->user->name}}</a> <!-- Color azul para el nombre de usuario -->
+                            <a href="#" class="font-medium text-blue-500">{{$recurso->user->name}}</a>
                             <div class="text-gray-600">{{$recurso->created_at->isoFormat('D [de] MMMM [de] Y')}}</div>
                         </div>
                     </div>
                     <br>
 
-                    <!-- Título de la publicación -->
-                    <h2 class="text-lg font-semibold mb-1 text-black">{{$recurso->titulo}}</h2> <!-- Color de texto negro para el título -->
+                    <h2 class="text-lg font-semibold mb-1 text-black">{{$recurso->titulo}}</h2>
 
-                    <!-- Descripción de la publicación -->
                     <p class="text-gray-700">Descripción de la Publicación...</p>                    
 
-                    <!-- Contenido de la publicación (imagen/archivo/video) -->
                     <div class="my-4">
                         @php
                             $extension = pathinfo($recurso->archivo, PATHINFO_EXTENSION);
                         @endphp
                         @if (in_array($extension, ['pdf']))
-                            <!-- Mostrar vista previa de un archivo PDF -->
                             <embed src="{{ asset($recurso->archivo) }}" type="application/pdf" width="100%" height="600px" />
+
                         @elseif (in_array($extension, ['doc', 'docx']))
-                            <!-- Mostrar vista previa de un archivo Word -->
-                            <!-- Puedes usar una imagen de un ícono de Word como vista previa -->
                             <img src="https://i.pinimg.com/originals/72/7e/90/727e900d82258767555539e2e81ec497.png" alt="Vista previa de Word" class="w-48 h-auto mx-auto rounded-md">
                             <a href="{{ asset($recurso->archivo) }}" class="block text-right text-blue-500">Descargar Archivo</a>
+
                         @elseif (in_array($extension, ['ppt', 'pptx']))
-                            <!-- Mostrar vista previa de un archivo PowerPoint -->
-                            <!-- Puedes usar una imagen de un ícono de PowerPoint como vista previa -->
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Microsoft_PowerPoint_Logo.png" alt="Vista previa de PowerPoint" class="w-48 h-auto mx-auto rounded-md">
+                            <img src="https://us.123rf.com/450wm/eugenebsov/eugenebsov2101/eugenebsov210100125/162408146-dise%C3%B1o-plano-moderno-del-icono-del-archivo-de-presentaci%C3%B3n-logo-ppt-tipo-de-documento.jpg" alt="Vista previa de PowerPoint" class="w-48 h-auto mx-auto rounded-md">
                             <a href="{{ asset($recurso->archivo) }}" class="block text-right text-blue-500">Descargar Archivo</a>
+
                         @elseif (in_array($extension, ['xls', 'xlsx']))
-                            <!-- Mostrar vista previa de un archivo Excel -->
-                            <!-- Puedes usar una imagen de un ícono de Excel como vista previa -->
                             <img src="{{ asset('ruta_a_la_imagen_de_excel.png') }}" alt="Vista previa de Excel" class="w-full h-64 rounded-md">
+
                         @elseif (in_array($extension, ['jpg', 'jpeg', 'png', 'gif']))
-                            <!-- Mostrar vista previa de una imagen -->
                             <img src="{{ asset($recurso->archivo) }}" alt="Imagen de la Publicación" class="w-full h-64 rounded-md">
+
                         @elseif (in_array($extension, ['mp4', 'avi', 'mov']))
-                            <!-- Mostrar vista previa de un video -->
-                            <!-- Puedes usar un reproductor de video para la vista previa -->
                             <video class="w-full h-64 rounded-md" controls>
                                 <source src="{{ asset($recurso->archivo) }}" type="video/{{$extension}}">
                                 Tu navegador no soporta el elemento de video.
                             </video>
+
                         @else
-                            <!-- Tipo de archivo no compatible: Mostrar un mensaje de error o un ícono genérico -->
                             <img src="https://thumbs.dreamstime.com/b/error-con-la-plantilla-del-dise%C3%B1o-cuaderno-icono-para-el-sitio-web-gr%C3%A1fico-azul-fondo-109996932.jpg" alt="Tipo de archivo no compatible" class="w-full h-64 rounded-md">
                         @endif
                     </div>

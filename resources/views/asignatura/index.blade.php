@@ -93,6 +93,12 @@
                                 <div class="menu__title">Roles</div>
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('roles.index') }}" class="menu">
+                                <div class="menu__icon"><i class="fas fa-tasks"></i></div>
+                                <div class="menu__title">Recursos Pendientes</div>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -129,8 +135,8 @@
                     <ul
                         class="dropdown-content bg-primary/80 before:block before:absolute before:bg-black before:inset-0 before:rounded-md before:z-[-1] text-white">
                         <li class="p-2">
-                            <div class="font-medium">Al Pacino</div>
-                            <div class="text-xs text-white/60 mt-0.5">DevOps Engineer</div>
+                            <div class="font-medium">{{ Auth::user()->name }}</div>
+                            <div class="text-xs text-white/60 mt-0.5">{{ Auth::user()->getRoleNames()->first() }}</div>
                         </li>
                         <li>
                             <hr class="dropdown-divider border-white/[0.08]">
@@ -225,6 +231,12 @@
                             <a href="{{ route('roles.index') }}" class="side-menu">
                                 <div class="side-menu__icon"><i class="fas fa-user-lock"></i></div>
                                 <div class="side-menu__title">Roles</div>
+                            </a>
+                        </li>
+                        <li style="margin-left: 7px;">
+                            <a href="{{ route('roles.index') }}" class="side-menu">
+                                <div class="side-menu__icon"><i class="fas fa-tasks"></i></div>
+                                <div class="side-menu__title">Recursos Pendientes</div>
                             </a>
                         </li>
                     </ul>
