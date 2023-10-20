@@ -162,7 +162,7 @@
                                             {!! Form::text('name', null, ['class' => 'form-control']) !!}
                                         </div>
                                         <div class="intro-y col-span-12 sm:col-span-6">
-                                            <label for "email" class="form-label">Email</label>
+                                            <label for="email" class="form-label">Email</label>
                                             {!! Form::text('email', null, ['class' => 'form-control']) !!}
                                         </div>
                                         <div class="intro-y col-span-12 sm:col-span-6">
