@@ -36,7 +36,7 @@
 
             <div class="form-group col-span-2">
                 {{ Form::label('archivo', 'Subir archivo', ['class' => 'block text-gray-700 text-sm font-bold mb-2']) }}
-                {{ Form::file('archivo', ['class' => 'hidden', 'id' => 'file-input']) }}
+                {{ Form::file('archivo', ['class' => 'hidden', 'id' => 'file-input', 'accept' => '.jpg, .jpeg, .png, .gif, .bmp, .svg, .tiff, .ico, .mp4, .mov, .avi, .mkv, .wmv, .flv, .webm, .m4v, .mp3, .wav, .flac, .aac, .ogg, .pdf, .docx, .pptx, .xlsx, .csv, .doc, .ppt, .xls, .odt, .ods, .odp, .zip, .rar, .ai, .psd, .indd, .txt, .sql, .html, .xml, .css, .js, .php, .java, .ts, .c, .cpp, .cs, .py, .rb, .pl, .dwg, .dxf, .sldprt, .sldasm, .slddrw, .slddrw, .dwf, .dwt, .dws, .rvt, .dwf, .rfa, .3ds, .ova, .ovf, .vmdk, .vmx, .qcow2, .pkt, .pka, .ccna, .pks']) }}
                 <div id="file-drop" class="w-full h-60 border-dashed border-2 border-green-400 rounded-lg flex flex-col items-center justify-center cursor-pointer">
                     <svg class="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 8v12h-5v12h-4l11 10 11-10h-4V20h-5V8z"></path>
@@ -70,11 +70,20 @@
     </div>
 </div>
 
+@php
+    $validFileExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg', 'tiff', 'ico', 'mp4', 'mov', 'avi', 'mkv', 'wmv', 'flv', 'webm', 'm4v', 'mp3', 'wav', 'flac', 'aac', 'ogg', 'pdf', 'docx', 'pptx', 'xlsx', 'csv', 'doc', 'ppt', 'xls', 'odt', 'ods', 'odp', 'zip', 'rar', 'ai', 'psd', 'indd', 'txt', 'sql', 'html', 'xml', 'css', 'js', 'php', 'java', 'ts', 'c', 'cpp', 'cs', 'py', 'rb', 'pl', 'dwg', 'dxf', 'sldprt', 'sldasm', 'slddrw', 'slddrw', 'dwf', 'dwt', 'dws', 'rvt', 'dwf', 'rfa', '3ds', 'ova', 'ovf', 'vmdk', 'vmx', 'qcow2', 'pkt', 'pka', 'ccna', 'pks'];
+    $maxFileSizeMB = 50;
+@endphp
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     const fileDrop = document.getElementById('file-drop');
     const fileInput = document.getElementById('file-input');
     const fileNameDisplay = document.getElementById('file-name');
-    const tipoArchivoInput = document.getElementById('tipo-archivo');
+
+    const validFileExtensions = @json($validFileExtensions);
+    const maxFileSizeMB = @json($maxFileSizeMB);
 
     fileDrop.addEventListener('dragover', (e) => {
         e.preventDefault();
@@ -104,32 +113,76 @@
 
     function handleFiles(files) {
         for (const file of files) {
-            // Muestra el nombre del archivo seleccionado
-            fileNameDisplay.textContent = 'Archivo seleccionado: ' + file.name;
+            fileNameDisplay.textContent = 'Archivo seleccionado: ' + file.name;  // Muestra el nombre del archivo seleccionado
 
-            // Detecta la extensión del archivo
-            const extension = file.name.split('.').pop().toLowerCase();
+            const extension = getFileExtension(file.name); // Detecta la extensión del archivo
 
-            // Define un objeto con extensiones y tipos de archivo
-            const tiposArchivo = {
-                'imagen': ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg', 'tiff', 'ico'],
-                'video': ['mp4', 'mov', 'avi', 'mkv', 'wmv', 'flv', 'webm', 'm4v'],
-                'audio': ['mp3', 'wav', 'flac', 'aac', 'ogg'],
-                'documento': ['pdf', 'docx', 'pptx', 'xlsx', 'csv', 'doc', 'ppt', 'xls', 'odt', 'ods', 'odp'],
-                'comprimido': ['zip', 'rar', '7z', 'tar', 'gz'],
-                'adobe': ['ai', 'psd', 'indd'],
-                'texto': ['txt', 'sql', 'html', 'xml', 'css', 'js', 'php', 'java', 'ts', 'c', 'cpp', 'cs', 'py', 'rb', 'pl'],
-                'cad': ['dwg', 'dxf', 'sldprt', 'sldasm', 'slddrw', 'slddrw', 'dwf', 'dwt', 'dws', 'rvt', 'dwf', 'rfa', '3ds'],
-                'virtualizacion': ['ova', 'ovf', 'vmdk', 'vmx', 'qcow2'],
-                'redes': ['pkt', 'pka', 'ccna', 'pks'],
-            };
-
-            // Asigna el tipo de archivo al campo oculto
-            if (tiposArchivo.hasOwnProperty(extension)) {
-                tipoArchivoInput.value = tiposArchivo[extension];
+            if (validFileExtensions.includes(extension) && file.size / (1024 * 1024) <= maxFileSizeMB) {
+                // El archivo es válido, el envío del formulario continuará
             } else {
-                tipoArchivoInput.value = 'desconocido';
+                // El archivo no cumple con los requisitos
+                showFileTypeAlert();
+                fileInput.value = '';
+                fileNameDisplay.textContent = '';
             }
         }
     }
+
+    function getFileExtension(filename) {
+        return filename.split('.').pop().toLowerCase();
+    }
+
+    function showFileTypeAlert() {
+        Swal.fire({
+            title: 'Error',
+            text: 'El archivo no cumple con los requisitos. Verifica la extensión y el tamaño del archivo (máximo 50 MB).',
+            icon: 'error',
+            confirmButtonText: 'OK',
+            footer: '<a href="javascript:void(0);" onclick="showSupportedFormats()">Ver formatos compatibles</a>'
+        });
+    }
+
+    function showSupportedFormats() {
+    const supportedFormats = 
+    `<table>
+        <tr>
+            <td>jpg, jpeg, png, gif, bmp, svg, tiff, ico</td>
+        </tr>
+        <tr>
+            <td>mp4, mov, avi, mkv, wmv, flv, webm, m4v</td>
+        </tr>
+        <tr>
+            <td>mp3, wav, flac, aac, ogg</td>
+        </tr>
+        <tr>
+            <td>pdf, docx, pptx, xlsx, csv, doc, ppt, xls, odt, ods, odp</td>
+        </tr>
+        <tr>
+            <td>zip, rar</td>
+        </tr>
+        <tr>
+            <td>ai, psd, indd</td>
+        </tr>
+        <tr>
+            <td>txt, sql, html, xml, css, js, php, java, ts, c, cpp, cs, py, rb, pl</td>
+        </tr>
+        <tr>
+            <td>dwg, dxf, sldprt, sldasm, slddrw, slddrw, dwf, dwt, dws, rvt, dwf, rfa, 3ds</td>
+        </tr>
+        <tr>
+            <td>ova, ovf, vmdk, vmx, qcow2</td>
+        </tr>
+        <tr>
+            <td>pkt, pka, ccna, pks</td>
+        </tr>
+    </table>`;
+
+    Swal.fire({
+        title: 'Formatos Compatibles',
+        html: supportedFormats,
+        icon: 'info',
+        confirmButtonText: 'OK'
+    });
+}
+
 </script>

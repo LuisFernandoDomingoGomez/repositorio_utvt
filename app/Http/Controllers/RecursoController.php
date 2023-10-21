@@ -53,7 +53,7 @@ class RecursoController extends Controller
             'video' => ['mp4', 'mov', 'avi', 'mkv', 'wmv', 'flv', 'webm', 'm4v'],
             'audio' => ['mp3', 'wav', 'flac', 'aac', 'ogg'],
             'documento' => ['pdf', 'docx', 'pptx', 'xlsx', 'csv', 'doc', 'ppt', 'xls', 'odt', 'ods', 'odp'],
-            'comprimido' => ['zip', 'rar', '7z', 'tar', 'gz'],
+            'comprimido' => ['zip', 'rar'],
             'adobe' => ['ai', 'psd', 'indd'],
             'texto' => ['txt', 'sql', 'html', 'xml', 'css', 'js', 'php', 'java', 'ts', 'c', 'cpp', 'cs', 'py', 'rb', 'pl'],
             'cad' => ['dwg', 'dxf', 'sldprt', 'sldasm', 'slddrw', 'slddrw', 'dwf', 'dwt', 'dws', 'rvt', 'dwf', 'rfa', '3ds'],
@@ -93,10 +93,30 @@ class RecursoController extends Controller
         $request->validate([
             'titulo' => 'required',
             'descripcion' => 'required',
-            'archivo' => 'required|file',
+            'archivo' => [
+                'required',
+                'file',
+                'max:50000',
+                function ($attribute, $value, $fail) {
+                    $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg', 'tiff', 'ico', 
+                                        'mp4', 'mov', 'avi', 'mkv', 'wmv', 'flv', 'webm', 'm4v', 
+                                        'mp3', 'wav', 'flac', 'aac', 'ogg', 'pdf', 'docx', 'pptx', 
+                                        'xlsx', 'csv', 'doc', 'ppt', 'xls', 'odt', 'ods', 'odp', 
+                                        'zip', 'rar', 'ai', 'psd', 'indd', 'txt', 'sql', 'html', 'xml', 
+                                        'css', 'js', 'php', 'java', 'ts', 'c', 'cpp', 'cs', 'py', 'rb', 
+                                        'pl', 'dwg', 'dxf', 'sldprt', 'sldasm', 'slddrw', 'slddrw', 'dwf', 
+                                        'dwt', 'dws', 'rvt', 'dwf', 'rfa', '3ds', 'ova', 'ovf', 'vmdk', 'vmx', 
+                                        'qcow2', 'pkt', 'pka', 'ccna', 'pks'];
+        
+                    $extension = strtolower($value->getClientOriginalExtension());
+        
+                    if (!in_array($extension, $allowedExtensions)) {
+                        $fail('El archivo no es válido. Asegúrate de que el archivo sea de uno de los tipos permitidos.');
+                    }
+                },
+            ],
         ]);
 
-        // Guardar el archivo en una carpeta (por ejemplo, "archivos_recursos")
         $archivo = $request->file('archivo');
         $archivoNombre = $archivo->getClientOriginalName();
         $archivo->storeAs('archivos_recursos', $archivoNombre, 'public'); // Guardar en la carpeta "archivos_recursos" en el disco público
@@ -104,7 +124,6 @@ class RecursoController extends Controller
         // Obtener al usuario autenticado
         $user = auth()->user();
 
-        // Crear el recurso y asignar el user_id antes de guardarlo
         $recurso = new Recurso($request->all());
         $recurso->user_id = $user->id;
 
