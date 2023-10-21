@@ -42,7 +42,7 @@ class CarreraController extends Controller
         $carrera = Carrera::create($request->all());
 
         return redirect()->route('carreras.index')
-            ->with('success', 'Carrera creada con exito.');
+            ->with('success', 'Carrera creada.');
     }
 
     public function edit($id)
@@ -58,14 +58,13 @@ class CarreraController extends Controller
         $carrera->update($request->all());
 
         return redirect()->route('carreras.index')
-            ->with('success', 'Carrera editada con exito');
+            ->with('success', 'Carrera actualizada');
     }
 
     public function destroy($id)
     {
         $carrera = Carrera::find($id)->delete();
 
-        return redirect()->route('carreras.index')
-            ->with('success', 'Carrera eliminada con exito');
+        return redirect()->route('carreras.index');
     }
 }

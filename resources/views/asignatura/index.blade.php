@@ -309,9 +309,15 @@
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
-                        </div>
+                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                        <script>
+                            Swal.fire({
+                                title: 'Éxito',
+                                text: "{{ session('success') }}",
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            });
+                        </script>
                     @endif
                     <div class="overflow-x-auto scrollbar-hidden">
                         <div class="overflow-x-auto">

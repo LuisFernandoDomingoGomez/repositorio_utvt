@@ -81,7 +81,7 @@ class TematicaController extends Controller
         $tematica = Tematica::create($request->all());
 
         return redirect()->route('tematicas.index')
-            ->with('success', 'Tematica created successfully.');
+            ->with('success', 'Tematica creada.');
     }
 
     public function edit($id)
@@ -99,14 +99,13 @@ class TematicaController extends Controller
         $tematica->update($request->all());
 
         return redirect()->route('tematicas.index')
-            ->with('success', 'Tematica updated successfully');
+            ->with('success', 'Tematica actualizada.');
     }
 
     public function destroy($id)
     {
         $tematica = Tematica::find($id)->delete();
 
-        return redirect()->route('tematicas.index')
-            ->with('success', 'Tematica deleted successfully');
+        return redirect()->route('tematicas.index');
     }
 }

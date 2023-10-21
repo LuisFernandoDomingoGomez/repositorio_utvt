@@ -142,7 +142,7 @@ class RecursoController extends Controller
         $recurso->save();
 
         return redirect()->route('recursos.index')
-            ->with('success', 'Recurso creado con éxito.');
+            ->with('success', 'Recuerda que aún debes esperar a que tu publicación sea aceptada por el responsable de validación.');
     }
 
 
@@ -188,14 +188,13 @@ class RecursoController extends Controller
         $recurso->update($request->all());
 
         return redirect()->route('recursos.index')
-            ->with('success', 'Recurso editado con exito');
+            ->with('success', 'Recurso actualizado');
     }
 
     public function destroy($id)
     {
         $recurso = Recurso::find($id)->delete();
 
-        return redirect()->route('recursos.index')
-            ->with('success', 'Recurso eliminado con exito');
+        return redirect()->route('recursos.index');
     }
 }

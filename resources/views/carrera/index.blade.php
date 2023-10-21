@@ -271,37 +271,16 @@
                 </div>
                 <!-- BEGIN: HTML Table Data -->
                 <div class="intro-y box p-5 mt-5">
-                    <div class="flex flex-col sm:flex-row sm:items-end xl:items-start flex-wrap">
-                        <div class="flex mt-5 sm:mt-0">
-                            <a href="{{ route('users.pdf') }}" class="btn btn-outline-secondary w-1/2 sm:w-auto mr-2">
-                                <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Imprimir
-                            </a>
-                            <div class="dropdown w-1/2 sm:w-auto">
-                                <button
-                                    class="dropdown-toggle btn btn-outline-secondary w-full sm:w-auto"
-                                    aria-expanded="false" data-tw-toggle="dropdown"> <i
-                                        data-lucide="file-text" class="w-4 h-4 mr-2"></i> Exportar <i
-                                        data-lucide="chevron-down"
-                                        class="w-4 h-4 ml-auto sm:ml-2"></i> </button>
-                                <div class="dropdown-menu w-40">
-                                    <ul class="dropdown-content">
-                                        <li>
-                                            <a id="tabulator-export-pdf" href="{{ route('users.downloadPdf') }}"
-                                                class="dropdown-item"> <i class="fas fa-file-pdf w-4 h-4 mr-2"></i> Export PDF </a>
-                                        </li>
-                                        <li>
-                                            <a id="tabulator-export-xlsx" href="{{ route('users.export') }}"
-                                                class="dropdown-item"> <i class="fas fa-file-excel w-4 h-4 mr-2"></i> Export XLSX </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
-                        </div>
+                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                        <script>
+                            Swal.fire({
+                                title: 'Éxito',
+                                text: "{{ session('success') }}",
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            });
+                        </script>
                     @endif
                     <div class="overflow-x-auto scrollbar-hidden">
                         <div class="overflow-x-auto">
