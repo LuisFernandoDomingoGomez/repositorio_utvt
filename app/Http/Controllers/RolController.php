@@ -61,13 +61,12 @@ class RolController extends Controller
         $role->syncPermissions($request->input('permission')); 
  
         return redirect()->route('roles.index') 
-            ->with('success', 'Rol editado con éxito'); 
+            ->with('success', 'Rol actualizado con éxito'); 
     } 
 
     public function destroy($id) 
     { 
         DB::table("roles")->where('id',$id)->delete(); 
-        return redirect()->route('roles.index') 
-            ->with('success', 'Rol eliminado con éxito'); 
+        return redirect()->route('roles.index'); 
     } 
 }

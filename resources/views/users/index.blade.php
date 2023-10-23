@@ -129,7 +129,7 @@
             <div class="intro-x dropdown w-8 h-8">
                 <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110"
                     role="button" aria-expanded="false" data-tw-toggle="dropdown">
-                    <img alt="Midone - HTML Admin Template" src="dist/images/profile-6.jpg">
+                    <img alt="{{ Auth::user()->name }} Avatar" src="{{ asset('avatars/' . Auth::user()->avatar) }}">
                 </div>
                 <div class="dropdown-menu w-56">
                     <ul
@@ -310,6 +310,17 @@
                             </div>
                         </div>
                     </div>
+                    @if ($message = Session::get('success'))
+                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                        <script>
+                            Swal.fire({
+                                title: 'Éxito',
+                                text: "{{ session('success') }}",
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            });
+                        </script>
+                    @endif
                     <div class="overflow-x-auto scrollbar-hidden">
                         <div class="overflow-x-auto">
 

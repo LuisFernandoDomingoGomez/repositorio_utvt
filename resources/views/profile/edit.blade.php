@@ -74,7 +74,7 @@
             <div class="intro-x dropdown w-8 h-8">
                 <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110"
                     role="button" aria-expanded="false" data-tw-toggle="dropdown">
-                    <img alt="Midone - HTML Admin Template" src="/dist/images/profile.png">
+                    <img alt="{{ Auth::user()->name }} Avatar" src="{{ asset('avatars/' . Auth::user()->avatar) }}">
                 </div>
                 <div class="dropdown-menu w-56">
                     <ul
@@ -144,7 +144,7 @@
                                     <!-- Avatar -->
                                     <div class="intro-y col-span-12 flex items-center justify-center">
                                         <div class="relative w-32 h-32">
-                                            <img class="object-cover w-32 h-32 rounded-full" src="/dist/images/profile.png" alt="Avatar">
+                                            <img class="object-cover w-32 h-32 rounded-full" src="{{ asset('avatars/' . Auth::user()->avatar) }}" alt="Avatar">
                                             <label for="avatar" class="absolute bottom-0 right-0 p-1 bg-white rounded-full cursor-pointer">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>

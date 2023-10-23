@@ -86,15 +86,30 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+            'roles' => 'required',
+            'genero' => 'required|in:masculino,femenino', // Validación para el campo 'genero'
         ]);
+
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
+
+        // Determina el avatar predeterminado según el género
+        $avatar = ($input['genero'] === 'masculino') ? 'avatar_masculino.jpg' : 'avatar_femenino.jpg';
+
+        // Si se proporciona un archivo de avatar, guárdalo y actualiza el campo 'avatar'
+        if ($request->hasFile('avatar')) {
+            $avatarPath = $request->file('avatar')->store('avatars', 'public');
+            $input['avatar'] = $avatarPath;
+        } else {
+            // Si no se proporciona un archivo, usa el avatar predeterminado
+            $input['avatar'] = $avatar;
+        }
+
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
 
         return redirect()->route('users.index')
-        ->with('success', 'Usuario creado con éxito.');
+            ->with('success', 'Usuario creado con éxito.');
     }
 
     public function show($id)
@@ -134,14 +149,13 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
 
         return redirect()->route('users.index')
-        ->with('success', 'Usuario modificado con éxito');
+        ->with('success', 'Usuario actualizado con éxito');
     }
 
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('users.index')
-            ->with('success', 'Usuario eliminado con éxito');
+        return redirect()->route('users.index');
     }
 
 }

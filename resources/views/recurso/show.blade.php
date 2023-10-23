@@ -124,7 +124,7 @@
             <div class="intro-x dropdown w-8 h-8">
                 <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110"
                     role="button" aria-expanded="false" data-tw-toggle="dropdown">
-                    <img alt="Midone - HTML Admin Template" src="/dist/images/profile.png">
+                    <img alt="{{ Auth::user()->name }} Avatar" src="{{ asset('avatars/' . Auth::user()->avatar) }}">
                 </div>
                 <div class="dropdown-menu w-56">
                     <ul
@@ -238,7 +238,7 @@
                 <div class="intro-y box p-3 mt-2 rounded-lg shadow-lg bg-white">
                     <div class="flex items-center">
                         <div class="w-10 h-10 rounded-full overflow-hidden">
-                            <img src="/dist/images/profile.png" alt="Foto de Perfil">
+                            <img src="{{ asset('avatars/' . Auth::user()->avatar) }}" alt="Foto de Perfil">
                         </div>
                         <div class="ml-2">
                             <a href="#" class="font-medium text-blue-500">{{$recurso->user->name}}</a>

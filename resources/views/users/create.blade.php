@@ -130,7 +130,7 @@
             <div class="intro-x dropdown w-8 h-8">
                 <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110"
                     role="button" aria-expanded="false" data-tw-toggle="dropdown">
-                    <img alt="Midone - HTML Admin Template" src="dist/images/profile-6.jpg">
+                    <img alt="{{ Auth::user()->name }} Avatar" src="{{ asset('avatars/' . Auth::user()->avatar) }}">
                 </div>
                 <div class="dropdown-menu w-56">
                     <ul
@@ -249,7 +249,7 @@
             <div class="content">
                 <div class="intro-y flex flex-col sm:flex-row items-center mt-1">
                     <h2 class="text-lg font-medium mr-auto">
-                        Creacion de Usuario
+                        Creación de Usuario
                     </h2>
                 </div>
                 <!-- BEGIN: HTML Table Data -->
@@ -259,8 +259,8 @@
                             <div class="intro-y box py-5 sm:py-5 mt-5">
                                 @if ($errors->any())
                                 <div class="alert alert-outline-danger alert-dismissible show flex items-center mb-2" role="alert">
-                                        <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i>
-                                        <strong>¡Revise los campos! </strong>
+                                    <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i>
+                                    <strong>¡Revise los campos! </strong>
                                     @foreach ($errors->all() as $error)
                                         <span class="badge badge-danger">{{ $error }}</span>
                                     @endforeach
@@ -269,34 +269,38 @@
                                     </button>
                                 </div>
                                 @endif
-                                {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
-                                    <div class="font-medium text-base">Configuracion de Perfil</div>
-                                    <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
-                                        <div class="intro-y col-span-12 sm:col-span-6">
-                                            <label for="input-wizard-1" class="form-label">Nombre</label>
-                                            {!! Form::text('name', null, array('class' => 'form-control')) !!}
-                                        </div>
-                                        <div class="intro-y col-span-12 sm:col-span-6">
-                                            <label for="input-wizard-4" class="form-label">Correo Electronico</label>
-                                            {!! Form::text('email', null, array('class' => 'form-control')) !!}
-                                        </div>
-                                        <div class="intro-y col-span-12 sm:col-span-6">
-                                            <label for="input-wizard-4" class="form-label">Password</label>
-                                            {!! Form::password('password', array('class' => 'form-control')) !!}
-                                        </div>
-                                        <div class="intro-y col-span-12 sm:col-span-6">
-                                            <label for="input-wizard-4" class="form-label">Confirmar Password</label>
-                                            {!! Form::password('confirm-password', array('class' => 'form-control')) !!}
-                                        </div>
-                                        <div class="intro-y col-span-12 sm:col-span-6">
-                                            <label for="input-wizard-6" class="form-label" >Tipo de Rol </label>
-                                            {!! Form::select('roles[]', $roles,[], array('class' => 'form-control')) !!}
-                                        </div>
-                                        <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
-                                            <a class="btn btn-secondary w-24" href="{{ route('users.index') }}">Regresar</a>
-                                            <button type="submit" class="btn btn-primary ml-2">Guardar</button>
-                                        </div>
+                                {!! Form::open(array('route' => 'users.store','method'=>'POST', 'enctype' => 'multipart/form-data')) !!}
+                                <div class="font-medium text-base">Configuración de Perfil</div>
+                                <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
+                                    <div class="intro-y col-span-12 sm:col-span-6">
+                                        <label for="input-wizard-1" class="form-label">Nombre</label>
+                                        {!! Form::text('name', null, array('class' => 'form-control')) !!}
                                     </div>
+                                    <div class="intro-y col-span-12 sm:col-span-6">
+                                        <label for="input-wizard-4" class="form-label">Correo Electrónico</label>
+                                        {!! Form::text('email', null, array('class' => 'form-control')) !!}
+                                    </div>
+                                    <div class="intro-y col-span-12 sm:col-span-6">
+                                        <label for="input-wizard-4" class="form-label">Password</label>
+                                        {!! Form::password('password', array('class' => 'form-control')) !!}
+                                    </div>
+                                    <div class="intro-y col-span-12 sm:col-span-6">
+                                        <label for="input-wizard-4" class="form-label">Confirmar Password</label>
+                                        {!! Form::password('confirm-password', array('class' => 'form-control')) !!}
+                                    </div>
+                                    <div class="intro-y col-span-12 sm:col-span-6">
+                                        <label for="input-wizard-4" class="form-label">Género</label>
+                                        {!! Form::select('genero', ['masculino' => 'Masculino', 'femenino' => 'Femenino'], null, array('class' => 'form-control')) !!}
+                                    </div>
+                                    <div class="intro-y col-span-12 sm:col-span-6">
+                                        <label for="input-wizard-6" class="form-label">Tipo de Rol</label>
+                                        {!! Form::select('roles[]', $roles, [], array('class' => 'form-control')) !!}
+                                    </div>
+                                    <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
+                                        <a class="btn btn-secondary w-24" href="{{ route('users.index') }}">Regresar</a>
+                                        <button type="submit" class="btn btn-primary ml-2">Guardar</button>
+                                    </div>
+                                </div>
                                 {!! Form::close() !!}
                             </div>
                         </div>
