@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Models\Carrera;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
@@ -43,20 +42,20 @@ class CarreraController extends Controller
             'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        // Crear una nueva instancia de Carrera
         $carrera = new Carrera();
-        $carrera->name = $request->input('name');
+        $carrera->name = $request->input('name'); // Asignar el nombre
 
-        if ($request->hasFile('imagen')) {
-            $imagen = $request->file('imagen');
-            $imagenNombre = $imagen->getClientOriginalName();
+        $imagen = $request->file('imagen');
+        $imagenNombre = $imagen->getClientOriginalName();
+        $imagen->storeAs('img_carreras', $imagenNombre, 'public'); // Guardar en la carpeta "img_carreras" en el disco público
 
-            $imagen->storeAs('img_carreras', $imagenNombre, 'public');
-
-            $carrera->imagen = 'img_carreras/' . $imagenNombre;
-        }
+        // Guardar la imagen en la carpeta "img_carreras"
+        $imagen->move(public_path('img_carreras'), $imagenNombre);
+        $carrera->imagen = 'img_carreras/' . $imagenNombre;
 
         $carrera->save();
-
+    
         return redirect()->route('carreras.index')
             ->with('success', 'Carrera creada.');
     }
@@ -67,34 +66,35 @@ class CarreraController extends Controller
         return view('carrera.edit', compact('carrera'));
     }
 
-    // Funcion pendiente por temas de correcta actualizacion de datos almacenados en el disco publico
     public function update(Request $request, Carrera $carrera)
     {
+        // Validación de datos
         $request->validate([
             'name' => 'required',
             'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-    
-        $carrera->name = $request->input('name');
-    
-        if ($request->hasFile('imagen')) {
-            $imagen = $request->file('imagen');
-            $imagenNombre = $imagen->getClientOriginalName();
-    
-            $imagen->storeAs('img_carreras', $imagenNombre, 'public');
-            $carrera->imagen = 'img_carreras/' . $imagenNombre;
 
+        // Obtén los datos de la carrera excluyendo la imagen
+        $carreraData = $request->except('imagen');
+
+        // Verifica si se proporcionó una nueva imagen y, en ese caso, guárdala en la carpeta deseada
+        if ($request->hasFile('imagen')) {
+            // Elimina la imagen anterior si existe
             if ($carrera->imagen) {
-                $imagenAnterior = basename($carrera->imagen);
-                Storage::disk('public')->delete('img_carreras/' . $imagenAnterior);
+                Storage::disk('public')->delete($carrera->imagen);
             }
+            
+            $imagen = $request->file('imagen');
+            $imagenPath = $imagen->store('img_carreras', 'public');
+            $carreraData['imagen'] = $imagenPath;
         }
 
-        $carrera->save();
+        // Actualiza los datos de la carrera
+        $carrera->update($carreraData);
 
         return redirect()->route('carreras.index')
             ->with('success', 'Carrera actualizada');
-    }
+    }    
 
     public function destroy($id)
     {
