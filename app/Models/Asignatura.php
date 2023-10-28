@@ -8,6 +8,8 @@ class Asignatura extends Model
 {
     static $rules = [
         'name' => 'required',
+        'imagen' => 'required',
+        'carrera_id' => 'required',
     ];
 
     protected $perPage = 20;

@@ -8,11 +8,12 @@ class Carrera extends Model
 {
     static $rules = [
 		'name' => 'required',
+        'imagen' => 'required',
     ];
 
     protected $perPage = 20;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name','imagen'];
 
     // Obtener el numero total de asignaturas relacionadas con una carrera.
     public function getTotalAsignaturas()

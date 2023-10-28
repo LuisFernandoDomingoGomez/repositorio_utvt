@@ -60,7 +60,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('asignatura.index') }}" class="menu">
+                            <a href="{{ route('asignaturas.index') }}" class="menu">
                                 <div class="menu__icon"><i class="fas fa-book-open"></i></div>
                                 <div class="menu__title">Asignaturas</div>
                             </a>
@@ -200,7 +200,7 @@
                             </a>
                         </li>
                         <li style="margin-left: 5px;">
-                            <a href="{{ route('asignatura.index') }}" class="side-menu">
+                            <a href="{{ route('asignaturas.index') }}" class="side-menu">
                                 <div class="side-menu__icon"><i class="fas fa-book-open"></i></div>
                                 <div class="side-menu__title">Asignaturas</div>
                             </a>
@@ -269,7 +269,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- BEGIN: HTML Table Data -->
                 <div class="intro-y box p-5 mt-5">
                     @if ($message = Session::get('success'))
                         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -288,6 +287,7 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th class="whitespace-nowrap">No.</th>
+                                        <th class="whitespace-nowrap">Imagen</th>
                                         <th class="whitespace-nowrap">Nombre</th>
                                         <th class="whitespace-nowrap " align="center">Acciones </th>
                                     </tr>
@@ -299,6 +299,7 @@
                                     @foreach ($carreras as $carrera )
                                     <tr>
                                         <td>{{ $i++ }}</td>
+                                        <td><img src="{{asset($carrera->imagen)}}" width="50px"></td>
                                         <td>{{ $carrera->name }}</td>
                                         <td class="table-report__action w-56">
                                             <div class="flex justify-center items-center">
@@ -332,7 +333,6 @@
                     </div>
 
                 </div>
-                <!-- END: HTML Table Data -->
             </div>
         </div>
         <!-- END: Content -->
@@ -349,8 +349,6 @@
 <script>
     (function() {
         'use strict'
-        //crear la clase formEliminar dentro del form del boton borrar
-        //recordar que cada registro a eliminar esta contenido en un form
         var forms = document.querySelectorAll('.formEliminar')
         Array.prototype.slice.call(forms)
             .forEach(function(form) {

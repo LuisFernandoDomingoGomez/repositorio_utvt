@@ -80,7 +80,7 @@ class AsignaturaController extends Controller
 
         $asignatura = Asignatura::create($request->all());
 
-        return redirect()->route('asignatura.index')
+        return redirect()->route('asignaturas.index')
             ->with('success', 'Asignatura creada.');
     }
 
@@ -98,7 +98,7 @@ class AsignaturaController extends Controller
 
         $asignatura->update($request->all());
 
-        return redirect()->route('asignatura.index')
+        return redirect()->route('asignaturas.index')
             ->with('success', 'Asignatura actualizada');
     }
 
@@ -106,6 +106,6 @@ class AsignaturaController extends Controller
     {
         $asignatura = Asignatura::find($id)->delete();
 
-        return redirect()->route('asignatura.index');
+        return redirect()->route('asignaturas.index');
     }
 }

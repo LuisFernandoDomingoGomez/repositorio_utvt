@@ -60,7 +60,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('asignatura.index') }}" class="menu">
+                            <a href="{{ route('asignaturas.index') }}" class="menu">
                                 <div class="menu__icon"><i class="fas fa-book-open"></i></div>
                                 <div class="menu__title">Asignaturas</div>
                             </a>
@@ -120,7 +120,7 @@
             <nav aria-label="breadcrumb" class="-intro-x h-[45px] mr-auto">
                 <ol class="breadcrumb breadcrumb-light">
                     <li class="breadcrumb-item"><a href="#">Administracion</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('asignatura.index') }}">Asignaturas</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('asignaturas.index') }}">Asignaturas</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Edicion</li>
                 </ol>
             </nav>
@@ -201,7 +201,7 @@
                             </a>
                         </li>
                         <li style="margin-left: 5px;">
-                            <a href="{{ route('asignatura.index') }}" class="side-menu">
+                            <a href="{{ route('asignaturas.index') }}" class="side-menu">
                                 <div class="side-menu__icon"><i class="fas fa-book-open"></i></div>
                                 <div class="side-menu__title">Asignaturas</div>
                             </a>
@@ -263,7 +263,7 @@
                                         <span class="badge badge-danger"></span>
                                 </div>
                                 @endif
-                                <form method="POST" action="{{ route('asignatura.update', $asignatura->id) }}"  role="form" enctype="multipart/form-data">
+                                <form method="POST" action="{{ route('asignaturas.update', $asignatura->id) }}"  role="form" enctype="multipart/form-data">
                                     {{ method_field('PATCH') }}
                                     @csrf
                                     @include('asignatura.form')

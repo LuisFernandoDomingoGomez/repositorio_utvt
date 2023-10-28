@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('asignaturas', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('carrera_id')->nullable();
+            $table->text('imagen');
+            $table->unsignedBigInteger('carrera_id');
             $table->foreign('carrera_id')->references('id')->on('carreras');
             $table->timestamps();
         });

@@ -60,7 +60,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('asignatura.index') }}" class="menu">
+                            <a href="{{ route('asignaturas.index') }}" class="menu">
                                 <div class="menu__icon"><i class="fas fa-book-open"></i></div>
                                 <div class="menu__title">Asignaturas</div>
                             </a>
@@ -200,7 +200,7 @@
                             </a>
                         </li>
                         <li style="margin-left: 5px;">
-                            <a href="{{ route('asignatura.index') }}" class="side-menu">
+                            <a href="{{ route('asignaturas.index') }}" class="side-menu">
                                 <div class="side-menu__icon"><i class="fas fa-book-open"></i></div>
                                 <div class="side-menu__title">Asignaturas</div>
                             </a>
@@ -252,7 +252,7 @@
                     </h2>
 
                     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-                        <a class="btn btn-primary shadow-md mr-2" href="{{ route('asignatura.create') }}">Agregar</a>
+                        <a class="btn btn-primary shadow-md mr-2" href="{{ route('asignaturas.create') }}">Agregar</a>
                         <div class="dropdown ml-auto sm:ml-0">
                             <button class="dropdown-toggle btn px-2 box" aria-expanded="false"
                                 data-tw-toggle="dropdown">
@@ -262,7 +262,7 @@
                             <div class="dropdown-menu w-40">
                                 <ul class="dropdown-content">
                                     <li>
-                                        <a href="{{ route('asignatura.create') }}" class="dropdown-item"> <i data-lucide="asignaturas" class="w-14 h-14 mr-2"></i>Agregar Asignatura</a>
+                                        <a href="{{ route('asignaturas.create') }}" class="dropdown-item"> <i data-lucide="asignaturas" class="w-14 h-14 mr-2"></i>Agregar Asignatura</a>
                                     </li>
                                 </ul>
                             </div>
@@ -272,7 +272,7 @@
                 <!-- BEGIN: HTML Table Data -->
                 <div class="intro-y box p-5 mt-5">
                     <div class="flex flex-col sm:flex-row sm:items-end xl:items-start flex-wrap">
-                        <form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto" action="{{ route('asignatura.index') }}" method="GET">
+                        <form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto" action="{{ route('asignaturas.index') }}" method="GET">
                             <div class="input-group" style="max-width: 400px;">
                                 <input class="form-control me-2" type="text" name="busqueda" placeholder="Búsqueda" aria-label="Search" style="height: 35px;">
                                 <div class="input-group-append">
@@ -341,13 +341,13 @@
                                         <td>{{ $asignatura->carrera->name }}</td>
                                         <td class="table-report__action w-56">
                                             <div class="flex justify-center items-center">
-                                                <!-- <a class="flex items-center mr-3" href="{{ route('asignatura.show', $asignatura->id) }}">
+                                                <!-- <a class="flex items-center mr-3" href="{{ route('asignaturas.show', $asignatura->id) }}">
                                                     <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
                                                 </a> -->
-                                                <a class="flex items-center mr-3" href="{{ route('asignatura.edit', $asignatura->id) }}">
+                                                <a class="flex items-center mr-3" href="{{ route('asignaturas.edit', $asignatura->id) }}">
                                                     <i data-lucide="check-square" class="w-4 h-4 mr-1"></i>
                                                 </a>
-                                                <form action="{{ route('asignatura.destroy', $asignatura->id) }}" method="POST" class="formEliminar">
+                                                <form action="{{ route('asignaturas.destroy', $asignatura->id) }}" method="POST" class="formEliminar">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="flex items-center text-danger">
