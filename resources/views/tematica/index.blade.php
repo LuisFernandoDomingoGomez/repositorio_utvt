@@ -60,7 +60,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('asignaturas.index') }}" class="menu">
+                            <a href="{{ route('asignatura.index') }}" class="menu">
                                 <div class="menu__icon"><i class="fas fa-book-open"></i></div>
                                 <div class="menu__title">Asignaturas</div>
                             </a>
@@ -194,7 +194,7 @@
                             </a>
                         </li>
                         <li style="margin-left: 5px;">
-                            <a href="{{ route('asignaturas.index') }}" class="side-menu">
+                            <a href="{{ route('asignatura.index') }}" class="side-menu">
                                 <div class="side-menu__icon"><i class="fas fa-book-open"></i></div>
                                 <div class="side-menu__title">Asignaturas</div>
                             </a>

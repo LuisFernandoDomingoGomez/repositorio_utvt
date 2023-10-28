@@ -23,7 +23,7 @@ Route::resource('roles', App\Http\Controllers\RolController::class);
 Route::resource('users', App\Http\Controllers\UserController::class);
 
 Route::resource('carreras', App\Http\Controllers\CarreraController::class);
-Route::resource('asignaturas', App\Http\Controllers\AsignaturaController::class);
+Route::resource('asignatura', App\Http\Controllers\AsignaturaController::class);
 Route::resource('tematicas', App\Http\Controllers\TematicaController::class);
 Route::resource('recursos', App\Http\Controllers\RecursoController::class);
 

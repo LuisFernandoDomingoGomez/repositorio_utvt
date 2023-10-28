@@ -15,7 +15,7 @@
     <br>
     <div class="box-footer mt20">
         <div class="float-right">
-            <a href="{{ route('asignaturas.index') }}" class="btn btn-danger mr-2">{{ __('Regresar') }}</a>
+            <a href="{{ route('asignatura.index') }}" class="btn btn-danger mr-2">{{ __('Regresar') }}</a>
             <button type="submit" class="btn btn-primary">{{ __('Guardar') }}</button>
         </div>
     </div>

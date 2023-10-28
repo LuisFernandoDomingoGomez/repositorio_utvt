@@ -252,7 +252,6 @@
                         Creacion de Carrera
                     </h2>
                 </div>
-                <!-- BEGIN: HTML Table Data -->
                 <div class="intro-y box p-5 mt-5">
                     <div class="overflow-x-auto scrollbar-hidden">
                         <div class="overflow-x-auto">
@@ -272,7 +271,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- END: HTML Table Data -->
             </div>
         </div>
         <!-- END: Content -->
