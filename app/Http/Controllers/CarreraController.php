@@ -74,23 +74,17 @@ class CarreraController extends Controller
             'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Obtén los datos de la carrera excluyendo la imagen
-        $carreraData = $request->except('imagen');
+        $carrera->update($request->all());
 
-        // Verifica si se proporcionó una nueva imagen y, en ese caso, guárdala en la carpeta deseada
-        if ($request->hasFile('imagen')) {
-            // Elimina la imagen anterior si existe
-            if ($carrera->imagen) {
-                Storage::disk('public')->delete($carrera->imagen);
-            }
-            
-            $imagen = $request->file('imagen');
-            $imagenPath = $imagen->store('img_carreras', 'public');
-            $carreraData['imagen'] = $imagenPath;
-        }
+        $imagen = $request->file('imagen');
+        $imagenNombre = $imagen->getClientOriginalName();
+        $imagen->storeAs('img_carreras', $imagenNombre, 'public'); // Guardar en la carpeta "img_carreras" en el disco público
 
-        // Actualiza los datos de la carrera
-        $carrera->update($carreraData);
+        // Guardar la imagen en la carpeta "img_carreras"
+        $imagen->move(public_path('img_carreras'), $imagenNombre);
+        $carrera->imagen = 'img_carreras/' . $imagenNombre;
+
+        $carrera->save();
 
         return redirect()->route('carreras.index')
             ->with('success', 'Carrera actualizada');
