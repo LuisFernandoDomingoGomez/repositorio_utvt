@@ -325,6 +325,7 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th class="whitespace-nowrap">No.</th>
+                                        <th class="whitespace-nowrap">Imagen</th>
                                         <th class="whitespace-nowrap">Nombre</th>
                                         <th class="whitespace-nowrap">Carrera afiliada</th>
                                         <th class="whitespace-nowrap " align="center">Acciones</th>
@@ -337,6 +338,7 @@
                                     @foreach ($asignaturas as $asignatura )
                                     <tr>
                                         <td>{{ $i++ }}</td>
+                                        <td><img src="{{asset($asignatura->imagen)}}" width="50px"></td>
                                         <td>{{ $asignatura->name }}</td>
                                         <td>{{ $asignatura->carrera->name }}</td>
                                         <td class="table-report__action w-56">

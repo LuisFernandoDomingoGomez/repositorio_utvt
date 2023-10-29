@@ -78,7 +78,20 @@ class AsignaturaController extends Controller
     {
         request()->validate(Asignatura::$rules);
 
-        $asignatura = Asignatura::create($request->all());
+        $asignatura = new Asignatura();
+        $asignatura->name = $request->input('name');
+        $asignatura->carrera_id = $request->input('carrera_id');
+
+        if ($request->hasFile('imagen')) {
+            $imagen = $request->file('imagen');
+            $imagenNombre = $imagen->getClientOriginalName();
+            $imagen->storeAs('img_asignaturas', $imagenNombre, 'public');
+
+            $imagen->move(public_path('img_asignaturas'), $imagenNombre);
+            $asignatura->imagen = 'img_asignaturas/' . $imagenNombre;
+        }
+
+        $asignatura->save();
 
         return redirect()->route('asignaturas.index')
             ->with('success', 'Asignatura creada.');
@@ -97,6 +110,17 @@ class AsignaturaController extends Controller
         request()->validate(Asignatura::$rules);
 
         $asignatura->update($request->all());
+
+        if ($request->hasFile('imagen')) {
+            $imagen = $request->file('imagen');
+            $imagenNombre = $imagen->getClientOriginalName();
+            $imagen->storeAs('img_asignaturas', $imagenNombre, 'public');
+
+            $imagen->move(public_path('img_asignaturas'), $imagenNombre);
+            $asignatura->imagen = 'img_asignaturas/' . $imagenNombre;
+        }
+
+        $asignatura->save();
 
         return redirect()->route('asignaturas.index')
             ->with('success', 'Asignatura actualizada');

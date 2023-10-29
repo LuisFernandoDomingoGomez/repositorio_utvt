@@ -8,7 +8,7 @@ class Asignatura extends Model
 {
     static $rules = [
         'name' => 'required',
-        'imagen' => 'required',
+        'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         'carrera_id' => 'required',
     ];
 
