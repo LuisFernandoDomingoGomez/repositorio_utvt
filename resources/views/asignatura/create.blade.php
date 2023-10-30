@@ -12,7 +12,7 @@
     <meta name="keywords"
         content="admin template, Enigma Admin Template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="LEFT4CODE">
-    <title>Asignaturas | Creacion</title>
+    <title>Asignaturas | Creación</title>
     <!-- BEGIN: CSS Assets-->
     <link rel="stylesheet" href="/dist/css/app.css"/>
     <!-- END: CSS Assets-->
@@ -121,7 +121,7 @@
                 <ol class="breadcrumb breadcrumb-light">
                     <li class="breadcrumb-item"><a href="#">Administracion</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('asignaturas.index') }}">Asignaturas</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Creacion</li>
+                    <li class="breadcrumb-item active" aria-current="page">Creación</li>
                 </ol>
             </nav>
             <!-- END: Breadcrumb -->
@@ -249,7 +249,7 @@
             <div class="content">
                 <div class="intro-y flex flex-col sm:flex-row items-center mt-1">
                     <h2 class="text-lg font-medium mr-auto">
-                        Creacion de Asignatura
+                        Creación de Asignatura
                     </h2>
                 </div>
                 <div class="intro-y box p-5 mt-5">

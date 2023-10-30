@@ -12,7 +12,7 @@
     <meta name="keywords"
         content="admin template, Enigma Admin Template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="LEFT4CODE">
-    <title>Recursos | Creacion</title>
+    <title>Recursos | Creación</title>
     <!-- BEGIN: CSS Assets-->
     <link rel="stylesheet" href="/dist/css/app.css"/>
     <!-- END: CSS Assets-->
@@ -115,7 +115,7 @@
                 <ol class="breadcrumb breadcrumb-light">
                     <li class="breadcrumb-item"><a href="#">Administracion</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('recursos.index') }}">Recursos</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Creacion</li>
+                    <li class="breadcrumb-item active" aria-current="page">CreaciÓn</li>
                 </ol>
             </nav>
             <!-- END: Breadcrumb -->
@@ -237,7 +237,7 @@
             <div class="content">
                 <div class="intro-y flex flex-col sm:flex-row items-center mt-1">
                     <h2 class="text-lg font-medium mr-auto">
-                        Creacion de Recurso
+                        Creación de Recurso
                     </h2>
                 </div>
                 <!-- BEGIN: HTML Table Data -->

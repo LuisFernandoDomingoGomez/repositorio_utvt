@@ -12,7 +12,7 @@
     <meta name="keywords"
         content="admin template, Enigma Admin Template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="LEFT4CODE">
-    <title>Carreras | Edicion</title>
+    <title>Carreras | Edición</title>
     <!-- BEGIN: CSS Assets-->
     <link rel="stylesheet" href="/dist/css/app.css"/>
     <!-- END: CSS Assets-->
@@ -121,7 +121,7 @@
                 <ol class="breadcrumb breadcrumb-light">
                     <li class="breadcrumb-item"><a href="#">Administracion</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('carreras.index') }}">Carreras</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Edicion</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edición</li>
                 </ol>
             </nav>
             <!-- END: Breadcrumb -->
@@ -249,7 +249,7 @@
             <div class="content">
                 <div class="intro-y flex flex-col sm:flex-row items-center mt-1">
                     <h2 class="text-lg font-medium mr-auto">
-                        Edicion de Carrera
+                        Edición de Carrera
                     </h2>
                 </div>
                 <div class="intro-y box p-5 mt-5">

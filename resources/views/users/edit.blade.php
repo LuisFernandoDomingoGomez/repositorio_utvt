@@ -12,7 +12,7 @@
     <meta name="keywords"
         content="admin template, Enigma Admin Template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="LEFT4CODE">
-    <title>Usuarios | Edicion</title>
+    <title>Usuarios | Edición</title>
     <!-- BEGIN: CSS Assets-->
     <link rel="stylesheet" href="/dist/css/app.css"/>
     <!-- END: CSS Assets-->
@@ -121,7 +121,7 @@
                 <ol class="breadcrumb breadcrumb-light">
                     <li class="breadcrumb-item"><a href="#">Administracion</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Usuarios</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Edicion</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edición</li>
                 </ol>
             </nav>
             <!-- END: Breadcrumb -->
@@ -249,7 +249,7 @@
             <div class="content">
                 <div class="intro-y flex flex-col sm:flex-row items-center mt-1">
                     <h2 class="text-lg font-medium mr-auto">
-                        Edicion de Usuario
+                        Edición de Usuario
                     </h2>
                 </div>
                 <!-- BEGIN: HTML Table Data -->

@@ -12,7 +12,7 @@
     <meta name="keywords"
         content="admin template, Enigma Admin Template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="LEFT4CODE">
-    <title>Roles | Edicion</title>
+    <title>Roles | Edición</title>
     <!-- BEGIN: CSS Assets-->
     <link rel="stylesheet" href="/dist/css/app.css" />
     <!-- END: CSS Assets-->
@@ -121,7 +121,7 @@
                 <ol class="breadcrumb breadcrumb-light">
                     <li class="breadcrumb-item"><a href="#">Administracion</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">Roles</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Edicion</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edición</li>
                 </ol>
             </nav>
             <!-- END: Breadcrumb -->
@@ -249,11 +249,10 @@
             <div class="content">
                 <div class="intro-y flex flex-col sm:flex-row items-center mt-100">
                     <h2 class="text-lg font-medium mr-auto">
-                        vista de roles
+                        Edición de Rol
                     </h2>
-                </div>
+                </div><br>
                 <!-- BEGIN: HTML Table Data -->
-<!-- /// cambio en el meotodo PATCH O METODO PUT -->
                 {!! Form::model($role, ['method' => 'PUT','route' => ['roles.update', $role->id]]) !!}
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -261,7 +260,7 @@
                             <label for="">Nombre del Rol:</label>
                             {!! Form::text('name', null, array('class' => 'form-control')) !!}
                         </div>
-                    </div>
+                    </div><br>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <label for="">Permisos para este Rol:</label>
@@ -273,9 +272,7 @@
                             @endforeach
                         </div>
                     </div>
-
                     <button type="submit" class="btn btn-primary">Guardar</button>
-
                 </div>
                 {!! Form::close() !!}
             </div>
@@ -301,8 +298,6 @@
 <script>
     (function() {
         'use strict'
-        //crear la clase formEliminar dentro del form del boton borrar
-        //recordar que cada registro a eliminar esta contenido en un form
         var forms = document.querySelectorAll('.formEliminar')
         Array.prototype.slice.call(forms)
             .forEach(function(form) {
