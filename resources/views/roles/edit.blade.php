@@ -253,7 +253,7 @@
                     </h2>
                 </div><br>
                 <!-- BEGIN: HTML Table Data -->
-                {!! Form::model($role, ['method' => 'PUT','route' => ['roles.update', $role->id]]) !!}
+                {!! Form::model($role, ['method' => 'PUT', 'route' => ['roles.update', $role->id]]) !!}
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
@@ -265,14 +265,18 @@
                         <div class="form-group">
                             <label for="">Permisos para este Rol:</label>
                             <br/>
-                            @foreach($permission as $value)
-                                <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-                                {{ $value->name }}</label>
-                            <br/>
-                            <br>
-                            @endforeach
+                            <div class="flex flex-wrap -mx-2">
+                                @foreach($permission as $value)
+                                <div class="w-1/2 px-2">
+                                    <label class="flex items-center">
+                                        {{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
+                                        <span class="ml-2">{{ $value->name }}</span>
+                                    </label>
+                                </div>
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
+                    </div><br>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
                 {!! Form::close() !!}
@@ -289,30 +293,3 @@
 </body>
 
 </html>
-<script>
-    (function() {
-        'use strict'
-        var forms = document.querySelectorAll('.formEliminar')
-        Array.prototype.slice.call(forms)
-            .forEach(function(form) {
-                form.addEventListener('submit', function(event) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                    Swal.fire({
-                        title: '¿Confirma la eliminación del registro?',
-                        icon: 'info',
-                        showCancelButton: true,
-                        confirmButtonColor: '#20c997',
-                        cancelButtonColor: '#6c757d',
-                        confirmButtonText: 'Confirmar'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            this.submit();
-                            Swal.fire('¡Eliminado!',
-                                'El registro ha sido eliminado exitosamente.', 'success');
-                        }
-                    })
-                }, false)
-            })
-    })()
-</script>
