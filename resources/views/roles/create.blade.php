@@ -265,7 +265,6 @@
                         <div class="form-group">
                             <label for="">Permisos para este Rol:</label>
                             <br/>
-
                             @foreach($permission as $value)
                             <label class="form-check-label" for="checkbox-switch-1">
                                 {{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
@@ -274,19 +273,14 @@
                             <br>
                             @endforeach
                         </div>
-
-
                     </div>
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary">Guardar</button>
                 {!! Form::close() !!}
+                <!-- END: HTML Table Data -->
             </div>
         </div>
-        </form>
-
-    </div>
-    <!-- END: HTML Table Data -->
     </div>
 
     </div>
