@@ -14,6 +14,143 @@
     <title>Recursos | Vista Previa</title>
     <!-- BEGIN: CSS Assets-->
     <link rel="stylesheet" href="/dist/css/app.css"/>
+
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .content {
+            background-image: url('dist/images/font.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+
+        .profile-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2); /* Fondo semi transparente */
+            backdrop-filter: blur(10px); /* Efecto de vidrio */
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+            margin-right: 20px;
+            transition: all 300ms;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .avatar {
+            position: relative;
+            margin-right: 5px;
+        }
+
+        .avatar img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+        }
+
+        .change-avatar-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: #007863;
+            color: #fff;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .profile-details {
+            flex: 1;
+        }
+
+        .profile-details h3 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .profile-details p {
+            color: #fff;
+        }
+
+        .user-info {
+            text-align: center;
+            margin-top: 20px;
+            color: #000;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        .user-name {
+            font-size: 15px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-family: "Arial Black", sans-serif;
+        }
+
+        .user-role {
+            font-size: 16px;
+            font-style: italic;
+            font-family: "Lucida Sans", sans-serif;
+        }
+
+        .settings-card {
+            background: rgba(255, 255, 255, 0.2); /* Fondo semi transparente */
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px); /* Efecto de vidrio borroso */
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 300ms;
+        }
+
+        .settings-card:hover {
+            transform: translateY(-10px);
+        }
+
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        .divider {
+            border: 1px solid #e0e0e0;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Cambiar la dirección de la carta profile en vista responsiva */
+                align-items: center; /* Centrar contenido en vista responsiva */
+            }
+            .profile-card {
+                margin-right: 0; /* Elimina la carta profile en la vista responsiva */
+            }
+        }
+    </style>
     <!-- END: CSS Assets-->
 </head>
 <!-- END: Head -->
@@ -131,69 +268,63 @@
         <!-- BEGIN: Content -->
             <div class="content">
                 <div class="content">
-                    <div class="intro-y flex flex-col sm:flex-row items-center mt-1">
-                        <h2 class="text-lg font-medium mr-auto">
-                            Perfil de Usuario
-                        </h2>
-                    </div>
-                    <!-- BEGIN: HTML CARD FORM -->
-                    <div class="intro-y box p-5 mt-5">
-                        <div class="overflow-x-auto scrollbar-hidden">
-                            <div class="overflow-x-auto">
-                                <div class="intro-y box py-5 sm:py-5 mt-5">
-                                    <!-- Avatar -->
-                                    <div class="intro-y col-span-12 flex items-center justify-center">
-                                        <div class="relative w-32 h-32">
-                                            <img class="object-cover w-32 h-32 rounded-full" src="{{ asset('avatars/' . Auth::user()->avatar) }}" alt="Avatar">
-                                            <label for="avatar" class="absolute bottom-0 right-0 p-1 bg-white rounded-full cursor-pointer">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                                                </svg>
-                                                <input type="file" id="avatar" class="hidden">
-                                            </label>
-                                        </div>
+                    <div class="container">
+                        <div class="profile-card">
+                            <div class="avatar">
+                                <img id="avatar-preview" src="{{ asset('avatars/' . Auth::user()->avatar) }}" alt="Avatar">
+                                <input type="file" id="avatar-input" class="hidden" accept="image/*">
+                                <label for="avatar-input" class="change-avatar-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </label>
+                            </div><br>
+                            <div class="user-info">
+                                <h3 class="user-name">{{ Auth::user()->name }}</h3>
+                                <p class="user-role">{{ Auth::user()->getRoleNames()->first() }}</p>
+                            </div>
+                        </div>
+
+                        <div class="settings-card">
+                            <h3>{{ __('Editar Perfil') }}</h3>
+                            <!-- Form for user profile settings -->
+                            {!! Form::model($user, ['route' => ['profile.updateProfile', $user->id], 'method' => 'patch']) !!}
+                            <div class="font-medium text-base">Configuracion</div>
+                                <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
+                                    <div class="intro-y col-span-12 sm:col-span-6">
+                                        <label for="name" class="form-label">Name</label>
+                                        {!! Form::text('name', null, ['class' => 'form-control']) !!}
                                     </div>
-                                    <!-- End Avatar -->
-                                    {!! Form::model($user, ['route' => ['profile.updateProfile', $user->id], 'method' => 'patch']) !!}
-                                    <div class="font-medium text-base">Configuracion</div>
-                                    <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
-                                        <div class="intro-y col-span-12 sm:col-span-6">
-                                            <label for="name" class="form-label">Name</label>
-                                            {!! Form::text('name', null, ['class' => 'form-control']) !!}
-                                        </div>
-                                        <div class="intro-y col-span-12 sm:col-span-6">
-                                            <label for="email" class="form-label">Email</label>
-                                            {!! Form::text('email', null, ['class' => 'form-control']) !!}
-                                        </div>
-                                        <div class="intro-y col-span-12 sm:col-span-6">
-                                            <label for="password" class="form-label">Password</label>
-                                            {!! Form::password('password', ['class' => 'form-control']) !!}
-                                        </div>
-                                        <div class="intro-y col-span-12 sm:col-span-6">
-                                            <label for="password_confirmation" class="form-label">Confirm Password</label>
-                                            {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
-                                        </div>
+                                    <div class="intro-y col-span-12 sm:col-span-6">
+                                        <label for="email" class="form-label">Email</label>
+                                        {!! Form::text('email', null, ['class' => 'form-control']) !!}
                                     </div>
-                                    <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
-                                        <button type="submit" class="btn btn-primary ml-2">Guardar</button>
-                                    </div><br>
-                                    {!! Form::close() !!}
-                                    <h2 class="text-lg font-medium mb-4">Eliminar Cuenta</h2>
-                                    {!! Form::open(['route' => ['profile.delete', $user->id], 'method' => 'delete', 'class' => 'space-y-4 formEliminar']) !!}
-                                    <div class="flex flex-col">
-                                        <label for="password" class="text-gray-700 dark:text-gray-300 font-medium">Password</label>
-                                        {!! Form::password('password', ['class' => 'form-input mt-1']) !!}
+                                    <div class="intro-y col-span-12 sm:col-span-6">
+                                        <label for="password" class="form-label">Password</label>
+                                        {!! Form::password('password', ['class' => 'form-control']) !!}
                                     </div>
-                                    <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
-                                        <button type="submit" class="btn btn-danger ml-2">Eliminar</button>
-                                    </div>
-                                    {!! Form::close() !!}
+                                    <div class="intro-y col-span-12 sm:col-span-6">
+                                        <label for="password_confirmation" class="form-label">Confirm Password</label>
+                                        {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
+                                <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
+                                    <button type="submit" class="btn btn-primary ml-2">Guardar</button>
+                                </div><br>
+                                {!! Form::close() !!}
+                                <h2 class="text-lg font-medium mb-4">Eliminar Cuenta</h2>
+                                {!! Form::open(['route' => ['profile.delete', $user->id], 'method' => 'delete', 'class' => 'space-y-4 formEliminar']) !!}
+                                <div class="flex flex-col">
+                                    <label for="password" class="text-gray-700 dark:text-gray-300 font-medium">Password</label>
+                                    {!! Form::password('password', ['class' => 'form-input mt-1']) !!}
+                                </div>
+                                <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
+                                    <button type="submit" class="btn btn-danger ml-2">Eliminar</button>
+                                </div>
+                            {!! Form::close() !!}
                             </div>
                         </div>
                     </div>
-                    <!-- END: HTML CARD FORM -->
                 </div>
             </div>
         <!-- END: Content -->
@@ -216,4 +347,18 @@
         confirmButtonText: 'OK'
     });
     @endif
+
+    document.getElementById("change-avatar-button").addEventListener("click", function () {
+        document.getElementById("avatar-input").addEventListener("change", function () {
+            const avatarPreview = document.getElementById("avatar-preview");
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    avatarPreview.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    });
 </script>
