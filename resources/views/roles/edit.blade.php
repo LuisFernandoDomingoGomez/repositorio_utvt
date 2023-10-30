@@ -269,22 +269,16 @@
                                 <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
                                 {{ $value->name }}</label>
                             <br/>
+                            <br>
                             @endforeach
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
                 {!! Form::close() !!}
+                <!-- END: HTML Table Data -->
             </div>
         </div>
-        </form>
-
-    </div>
-    <!-- END: HTML Table Data -->
-    </div>
-
-    </div>
-    <!-- END: Content -->
     </div>
 
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
