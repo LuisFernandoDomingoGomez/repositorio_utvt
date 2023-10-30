@@ -78,7 +78,20 @@ class TematicaController extends Controller
     {
         request()->validate(Tematica::$rules);
 
-        $tematica = Tematica::create($request->all());
+        $tematica = new Tematica();
+        $tematica->name = $request->input('name');
+        $tematica->carrera_id = $request->input('carrera_id');
+
+        if ($request->hasFile('imagen')) {
+            $imagen = $request->file('imagen');
+            $imagenNombre = $imagen->getClientOriginalName();
+            $imagen->storeAs('img_tematicas', $imagenNombre, 'public');
+
+            $imagen->move(public_path('img_tematicas'), $imagenNombre);
+            $tematica->imagen = 'img_tematicas/' . $imagenNombre;
+        }
+
+        $tematica->save();
 
         return redirect()->route('tematicas.index')
             ->with('success', 'Tematica creada.');
@@ -97,6 +110,17 @@ class TematicaController extends Controller
         request()->validate(Tematica::$rules);
 
         $tematica->update($request->all());
+
+        if ($request->hasFile('imagen')) {
+            $imagen = $request->file('imagen');
+            $imagenNombre = $imagen->getClientOriginalName();
+            $imagen->storeAs('img_tematicas', $imagenNombre, 'public');
+
+            $imagen->move(public_path('img_tematicas'), $imagenNombre);
+            $tematica->imagen = 'img_tematicas/' . $imagenNombre;
+        }
+
+        $tematica->save();
 
         return redirect()->route('tematicas.index')
             ->with('success', 'Tematica actualizada.');

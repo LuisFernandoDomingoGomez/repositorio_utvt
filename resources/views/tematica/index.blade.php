@@ -313,6 +313,7 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th class="whitespace-nowrap">No.</th>
+                                        <th class="whitespace-nowrap">Imagen</th>
                                         <th class="whitespace-nowrap">Nombre</th>
                                         <th class="whitespace-nowrap">Carrera Vinculada</th>
                                         <th class="whitespace-nowrap " align="center">Acciones</th>
@@ -325,6 +326,7 @@
                                     @foreach ($tematicas as $tematica )
                                     <tr>
                                         <td>{{ $i++ }}</td>
+                                        <td><img src="{{asset($tematica->imagen)}}" width="50px"></td>
                                         <td>{{ $tematica->name }}</td>
                                         <td>{{ $tematica->carrera->name }}</td>
                                         <td class="table-report__action w-56">

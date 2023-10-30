@@ -8,6 +8,8 @@ class Tematica extends Model
 {
     static $rules = [
 		'name' => 'required',
+        'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'carrera_id' => 'required',
     ];
 
     protected $perPage = 20;
