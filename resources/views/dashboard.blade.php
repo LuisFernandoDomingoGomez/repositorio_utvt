@@ -12,6 +12,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link href="dist/css/responsive.css" rel="stylesheet">
+    <style>
+        /* Estilo del icono de búsqueda */
+        .search-input {
+            padding-left: 40px;
+            background-color: #eaedef;
+            background-image: url('dist/images/search.png');
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            background-size: 20px 20px;
+        }
+    </style>
 </head>
 <body class="home-two">
     <div class="page-wrapper">
@@ -24,33 +35,26 @@
                     <div class="main-box clearfix">
                         <!--Logo-->
                         <div class="logo-box clearfix">
-                            <div class="logo" align="right"><a title="Logo UTVT"><img src="dist/images/utvt_logo.png" alt="no existe"
-                                width="85"></a>
+                            <div class="logo" align="right" style="margin-right: 170px;">
+                                <a title="Logo UTVT"><img src="dist/images/utvt_logo.png" alt="no existe" width="85"></a>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <form class="d-flex flex-fill">
+                                    <input class="form-control me-2 rounded-pill search-input" type="search" placeholder="Search CuervITo" aria-label="Search" style="width: 690px;">
+                                </form>
                             </div>
                         </div>
                         <div class="nav-box clearfix">
-                            <!--Nav Outer-->
-                            <div class="nav-outer clearfix">
-                                <nav class="main-menu">
-                                    <ul class="navigation clearfix" id="scroll-nav">
-                                        <li><a href="#intro-section">Que somos</a></li>
-                                        <li><a href="#why-token">Cursos</a></li>
-                                        <li><a href="#roadmap">Inscripciones</a></li>
-                                        <li><a href="#partners">Partners</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <!--Nav Outer End-->
                             <div class="links-box clearfix">
                                 <div class="link">
-                                    <a href="{{url('/dashboard')}}" class="theme-btn btn-style-four">Get app</a>
+                                    <a href="{{url('/dashboard')}}" class="theme-btn btn-style-four rounded-pill">Get app</a>
                                 </div>
                                 @if (Route::has('login'))
                                     <div class="link">
                                         @auth
-                                        <a href="{{url('/dashboard')}}" class="theme-btn btn-style-four">Publicar</a>
+                                        <a href="{{url('/dashboard')}}" class="theme-btn btn-style-four rounded-pill">Publicar</a>
                                         @else
-                                        <a href="{{ route('login') }}" class="theme-btn btn-style-four">
+                                        <a href="{{ route('login') }}" class="theme-btn btn-style-four rounded-pill">
                                             <span class="txt">Ingresar</span>
                                         </a>
                                         @endauth
