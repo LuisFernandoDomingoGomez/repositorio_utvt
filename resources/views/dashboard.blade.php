@@ -141,24 +141,30 @@
             max-width: 100%;
             max-height: 100%;
         }
+
+        /* Estilos personalizados para las tarjetas del carrusel */
         .carousel-card {
-            margin: 0 0.5em;
-            box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
-            border: none;
-            border-radius: 0;
+            background-color: #f0f0f0;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+            transition: transform 0.3s ease-in-out;
         }
-        .carousel-card:hover .card-img-top {
+
+        .carousel-card:hover {
             transform: scale(1.05);
-            transition: transform 0.2s;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            background: var(--color);
+            color: white;
         }
-        .carousel-inner {
-            padding: 1em;
-        }
+
         .carousel-control-prev,
         .carousel-control-next {
-            background-color: #e1e1e1;
-            width: 5vh;
-            height: 5vh;
+            background-color: #808080;
+            width: 7vh;
+            height: 7vh;
             border-radius: 50%;
             top: 50%;
             transform: translateY(-50%);
@@ -329,21 +335,21 @@
                                                 <img src="https://www.danielprimo.io/files/2021-05/1621490872_laravel-bases-de-datos-y-modelo.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Card title 1</h5>
-                                                    <a href="#" class="btn btn-style-three">Ver</a>
+                                                    <a href="#" class="btn btn-dark">Ver más</a>
                                                 </div>
                                             </div>
                                             <div class="carousel-card d-none d-md-block">
                                                 <img src="https://img-b.udemycdn.com/course/240x135/1608944_1b18_5.jpg" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Card title 2</h5>
-                                                    <a href="#" class="theme-btn btn-style-four">ver</a>
+                                                    <a href="#" class="btn btn-dark">Ver más</a>
                                                 </div>
                                             </div>
                                             <div class="carousel-card d-none d-md-block">
                                                 <img src="https://www.danielprimo.io/files/2021-05/laravel-migraciones-y-seeders.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Card title 3</h5>
-                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                    <a href="#" class="btn btn-dark">Ver más</a>
                                                 </div>
                                             </div>
                                         </div>
