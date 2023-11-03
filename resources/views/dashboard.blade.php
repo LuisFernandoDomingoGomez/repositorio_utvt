@@ -119,6 +119,76 @@
             margin: 10px 0;
         }
 
+        /* Estilos para la barra de búsqueda en la vista móvil */
+        @media (max-width: 768px) {
+            .left-sidebar, .right-sidebar {
+                display: none;
+            }
+            .search-input {
+                display: none;
+            }
+        }
+
+        /* Estilos para el encabezado en la vista móvil */
+        @media (max-width: 768px) {
+            .logo-box {
+                text-align: center; 
+                margin-right: 0;
+            }
+            .nav-box {
+                text-align: center;
+            }
+        }
+
+        /* Estilos adicionales para la sección principal en la vista móvil */
+        @media (max-width: 767px) {
+            section {
+                margin-left: 0;
+                margin-right: 0;
+                padding: 0;
+            }
+        }
+
+        /* Estilos para tablets (768px o más) */
+        @media (min-width: 767px) {
+            .left-sidebar {
+                display: block;
+            }
+
+            .right-sidebar {
+                display: none;
+            }
+
+            section {
+                display: block;
+                margin-right: 0;
+                padding: 0;
+            }
+
+            .nav-box {
+                display: none;
+            }
+        }
+
+        /* Estilos para pantallas más grandes que 1024px (laptops o computadoras de escritorio) */
+        @media (min-width: 1280px) {
+            .left-sidebar {
+                display: block;
+            }
+
+            .right-sidebar {
+                display: block;
+            }
+
+            section {
+                display: block;
+                margin-right: 280px;
+            }
+
+            .nav-box {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body class="home-two">
@@ -134,8 +204,11 @@
                         </div>
                         <div class="d-flex align-items-center justify-content-center">
                             <form class="d-flex flex-fill">
-                                <input class="form-control me-2 rounded-pill search-input" type="search" placeholder="Buscar en CuervITos" aria-label="Search" style="width: 655px;">
+                                <input class="form-control me-2 rounded-pill search-input" type="search" placeholder="Buscar en CuervITos" aria-label="Search" style="width: 450px;">
                             </form>
+                            <div class="link">
+                            <a id="openModalButton" class="btn btn-light rounded-pill">...</a>
+                        </div>
                         </div>
                     </div>
                     <div class="nav-box clearfix">
@@ -249,17 +322,6 @@
             </div>
         </aside>
     </div>
-
-    <!--Main Footer-->
-    <footer class="footer-two" style="position: relative; z-index: 2;">
-        <div class="lower">
-            <div class="auto-container">
-                <div class="inner">
-                    <div class="copyright"> Copyright &copy; 2023. All rights reserved by Your Company.</div>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <!--End pagewrapper-->
 
