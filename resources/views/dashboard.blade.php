@@ -167,8 +167,8 @@
             }
         }
 
-        /* Estilos para pantallas más grandes que 1024px (laptops o computadoras de escritorio) */
-        @media (min-width: 1280px) {
+        /* Estilos para pantallas más grandes que 1200px (laptops o computadoras de escritorio) */
+        @media (min-width: 1200px) {
             .left-sidebar {
                 display: block;
             }
@@ -198,7 +198,7 @@
                         </div>
                         <div class="d-flex align-items-center justify-content-center">
                             <form class="d-flex flex-fill">
-                                <input class="form-control me-2 rounded-pill search-input" type="search" placeholder="Buscar en CuervITos" aria-label="Search" style="width: 600px;">
+                                <input class="form-control me-2 rounded-pill search-input" type="search" placeholder="Buscar en CuervITos" aria-label="Search" style="width: 500px;">
                             </form>
                             <div class="link">
                             <a id="openModalButton" class="btn btn-light rounded-pill">...</a>
