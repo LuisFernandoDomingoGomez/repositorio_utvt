@@ -3,17 +3,14 @@
 <head>
     <meta charset="utf-8">
     <title>Inicio | UTVT</title>
-    <!-- Stylesheets -->
     <link href="dist/css/bootstrap.css" rel="stylesheet">
     <link href="dist/css/style.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
-    <!-- Responsive -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link href="dist/css/responsive.css" rel="stylesheet">
     <style>
-        /* Estilo del icono de búsqueda */
         .search-input {
             padding-left: 40px;
             background-color: #eaedef;
@@ -24,66 +21,119 @@
         }
 
         .icon {
-            width: 20px; /* Ancho deseado */
-            height: 20px; /* Alto deseado */
-            margin-right: 5px; /* Margen derecho para separar el icono del texto */
+            width: 20px;
+            height: 20px;
+            margin-right: 3px;
         }
 
+        .left-sidebar {
+            background-color: #eaedef;
+            width: 280px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1;
+            display: block;
+            transition: 0.3s;
+            overflow-y: auto;
+        }
+
+        .right-sidebar {
+            background-color: #eaedef;
+            width: 330px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1;
+            display: block;
+            transition: 0.3s;
+            overflow-y: auto;
+        }
+
+        .left-sidebar {
+            left: 0;
+        }
+
+        .right-sidebar {
+            right: 0;
+        }
+
+        .sidebar-content {
+            padding: 20px;
+        }
+
+        section {
+            margin-left: 280px;
+            margin-right: 280px;
+            padding: 20px;
+        }
     </style>
 </head>
 <body class="home-two">
-    <div class="page-wrapper">
-        <!-- Preloader -->
-        <!-- Main Header-->
-        <header class="main-header header-two">
-            <!-- Header Upper -->
-            <div class="header-upper">
-                <div class="auto-container">
-                    <div class="main-box clearfix">
-                        <!--Logo-->
-                        <div class="logo-box clearfix">
-                            <div class="logo" align="right" style="margin-right: 170px;">
-                                <a title="Logo UTVT"><img src="dist/images/utvt_logo.png" alt="no existe" width="85"></a>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <form class="d-flex flex-fill">
-                                    <input class="form-control me-2 rounded-pill search-input" type="search" placeholder="Search CuervITo" aria-label="Search" style="width: 670px;">
-                                </form>
-                            </div>
+    <header class="main-header header-two" style="position: relative; z-index: 2; background-color: white;">
+        <!-- Header Upper -->
+        <div class="header-upper">
+            <div class="auto-container">
+                <div class="main-box clearfix">
+                    <!--Logo-->
+                    <div class="logo-box clearfix">
+                        <div class="logo" align="right" style="margin-right: 190px;">
+                            <a title="Logo UTVT"><img src="dist/images/utvt_logo.png" alt="no existe" width="85"></a>
                         </div>
-                        <div class="nav-box clearfix">
-                            <div class="links-box clearfix">
-                                <div class="link">
-                                    <a href="{{ url('/dashboard') }}" class="theme-btn btn-style-four rounded-pill">
-                                        <img src="dist/images/icons/scann_qr.png" alt="QR Icon" class="icon"> Get app
-                                    </a>
-                                </div>
-
-                                <!-- QR V2
-                                <div class="link">
-                                    <a href="{{ url('/dashboard') }}" class="theme-btn btn-style-four rounded-pill">
-                                        <i class="fas fa-qrcode icon" style="margin-right: 7px;"></i> Get app
-                                    </a>
-                                </div>
-                                -->
-
-                                @if (Route::has('login'))
-                                    <div class="link">
-                                        @auth
-                                        <a href="{{url('/recursos')}}" class="theme-btn btn-style-four rounded-pill">Publicar</a>
-                                        @else
-                                        <a href="{{ route('login') }}" class="theme-btn btn-style-four rounded-pill">
-                                            <span class="txt">Ingresar</span>
-                                        </a>
-                                        @endauth
-                                    </div>
-                                @endif
+                        <div class="d-flex align-items-center justify-content-center">
+                            <form class="d-flex flex-fill">
+                                <input class="form-control me-2 rounded-pill search-input" type="search" placeholder="Search CuervITo" aria-label="Search" style="width: 655px;">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="nav-box clearfix">
+                        <div class="links-box clearfix">
+                            <div class="link">
+                                <a href="{{ url('/dashboard') }}" class="theme-btn btn-style-four rounded-pill">
+                                    <img src="dist/images/icons/scann_qr.png" alt="QR Icon" class="icon"> Get app
+                                </a>
                             </div>
+
+                            <!-- QR V2
+                            <div class="link">
+                                <a href="{{ url('/dashboard') }}" class="theme-btn btn-style-four rounded-pill">
+                                    <i class="fas fa-qrcode icon" style="margin-right: 7px;"></i> Get app
+                                </a>
+                            </div>
+                            -->
+
+                            @if (Route::has('login'))
+                                <div class="link">
+                                    @auth
+                                    <a href="{{url('/recursos')}}" class="theme-btn btn-style-four rounded-pill">Publicar</a>
+                                    @else
+                                    <a href="{{ route('login') }}" class="theme-btn btn-style-four rounded-pill">
+                                        <span class="txt">Ingresar</span>
+                                    </a>
+                                    @endauth
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
+
+    <!-- Barra lateral izquierda (left sidebar) -->
+    <aside class="left-sidebar">
+        <!-- Contenido del left sidebar -->
+        <div class="sidebar-content">
+            <!-- Elementos del left sidebar -->
+            <br><br><br><br><br>
+            <p>Categoria 1</p>
+            <p>Categoria 2</p>
+            <p>Categoria 3</p>
+        </div>
+    </aside>
+
+    <div class="page-wrapper">
+        <!-- Contenido - Posts -->
         <section class="team-two" id="team-members">
             <div class="auto-container">
                 <div class="title-box-two centered">
@@ -97,7 +147,7 @@
                             <div class="row clearfix">
                                 <!--Team Block-->    {{-- Inicio de la tarjetas en laravel --}}
                                 
-                                <div class="team-block-two col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                                <div class="team-block-two col-xl-6 col-lg-4 col-md-6 col-sm-12">
                                     <div class="inner-box">
                                         <div class="image-box"><a href="#"><img src="https://img.freepik.com/vector-premium/desarrollo-juegos-linea-proceso-creativo-diseno-videojuegos-computadora-programacion-tecnologia-digital-programadores-que-codifican-juegos-digitales-ui-desarrolladores-ux-que-trabajan-proyectos-entretenimiento_458444-1919.jpg?w=2000" alt=""></a></div>
                                         <div class="lower-box">
@@ -121,10 +171,23 @@
                 </div>
             </div>
         </section>
+
+        <!-- Barra lateral derecha (right sidebar) -->
+        <aside class="right-sidebar">
+            <!-- Contenido del right sidebar -->
+            <div class="sidebar-content">
+                <!-- Elementos del right sidebar -->
+                <br><br><br><br><br>
+                <p>Aca puede ir una galeria con las tematicas principales</p>
+                <p>SQL</p>
+                <p>laravel</p>
+                <p>Normatividad</p>
+            </div>
+        </aside>
     </div>
 
     <!--Main Footer-->
-    <footer class="footer-two">
+    <footer class="footer-two" style="position: relative; z-index: 2;">
         <div class="lower">
             <div class="auto-container">
                 <div class="inner">
