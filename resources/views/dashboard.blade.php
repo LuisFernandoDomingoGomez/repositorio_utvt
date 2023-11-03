@@ -132,6 +132,40 @@
             font-size: 0.75rem;
         }
 
+        /* Estilos para Carrusel */
+        .image-carousel {
+            display: flex;
+            overflow-x: auto; /* Permite desplazarse horizontalmente en caso de que haya muchas imágenes */
+        }
+
+        .image-card {
+            width: 280px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-card-caption {
+            padding: 10px;
+        }
+
+        .image-card-caption h3 {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .image-card-caption p {
+            font-size: 14px;
+            margin: 0;
+        }
+
         /* Estilos para la barra de búsqueda en la vista móvil */
         @media (max-width: 768px) {
             .left-sidebar, .right-sidebar {
@@ -278,10 +312,36 @@
 
     <div class="page-wrapper">
         <!-- Contenido - Posts -->
-        <section class="team-two" id="team-members">
+        <section class="banner-section banner-two">
             <div class="container">
                 <div class="row">
                     <div class="col-md-11 offset">
+                        <div class="masthead"><br>
+                            <!-- Carrusel -->
+                            <div class="image-carousel">
+                                <div class="image-card">
+                                    <img src="https://www.danielprimo.io/files/2021-05/1621490872_laravel-bases-de-datos-y-modelo.png" alt="Imagen 1">
+                                    <div class="image-card-caption">
+                                        <h3>Imagen 1</h3>
+                                        <p>Descripción de la imagen 1.</p>
+                                    </div>
+                                </div>
+                                <div class="image-card">
+                                    <img src="https://www.danielprimo.io/files/2021-06/laravel-vistas-blade.png" alt="Imagen 2">
+                                    <div class="image-card-caption">
+                                        <h3>Imagen 2</h3>
+                                        <p>Descripción de la imagen 2.</p>
+                                    </div>
+                                </div>
+                                <div class="image-card">
+                                    <img src="https://www.danielprimo.io/files/2021-05/laravel-instalacion-artisan-tinker.png" alt="Imagen 2">
+                                    <div class="image-card-caption">
+                                        <h3>Imagen 3</h3>
+                                        <p>Descripción de la imagen 3.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><hr><br>
                         <div class="card rounded bg-white shadow">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
