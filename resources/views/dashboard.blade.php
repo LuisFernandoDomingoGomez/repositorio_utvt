@@ -266,36 +266,52 @@
     <div class="page-wrapper">
         <!-- Contenido - Posts -->
         <section class="team-two" id="team-members">
-            <div class="auto-container">
-                <div class="title-box-two centered">
-                    <h2>catalogo de cursos</h2>
-                    <div class="text-content">Inscripciones de cursos disponibles </div>
-                </div>
-                <div class="tabs-box">
-                    <div class="tabs-content">
-                        <!--Tab-->
-                        <div class="tab active-tab" id="team-tab-1">
-                            <div class="row clearfix">
-                                <!--Team Block-->    {{-- Inicio de la tarjetas en laravel --}}
-                                
-                                <div class="team-block-two col-xl-6 col-lg-4 col-md-6 col-sm-12">
-                                    <div class="inner-box">
-                                        <div class="image-box"><a href="#"><img src="https://img.freepik.com/vector-premium/desarrollo-juegos-linea-proceso-creativo-diseno-videojuegos-computadora-programacion-tecnologia-digital-programadores-que-codifican-juegos-digitales-ui-desarrolladores-ux-que-trabajan-proyectos-entretenimiento_458444-1919.jpg?w=2000" alt=""></a></div>
-                                        <div class="lower-box">
-                                            <h5>Creacion de Videojuegos</h5>
-                                            <div class="designation">Ruben Dario Hernandez Mendo</div>
-                                            <br>
-                                            <div class="tab-buttons">
-                                                <ul class="clearfix">
-                                                    <div class="link"><a href="#" class="theme-btn btn-style-three"><span
-                                                        class="txt">Inscribirse</span></a>
-                                                    </div>
-                                                </ul>
-                                            </div>
-                                        </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-11 offset-md-0">
+                        <div class="card rounded bg-white my-3 shadow">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="w-10 h-10 rounded-circle overflow-hidden">
+                                        <img src="https://via.placeholder.com/50" alt="Foto de Perfil">
+                                    </div>
+                                    <div class="ml-3">
+                                        <a href="#" class="font-weight-bold text-primary fs-5">Nombre de Usuario</a>
+                                        <div class="text-secondary fs-6">12 de Octubre de 2023</div>
                                     </div>
                                 </div>
-                                {{-- fin de la tarjeta --}}
+
+                                <br>
+
+                                <h3 class="card-title font-weight-bold mb-3 fs-4">Título de la Publicación</h3>
+
+                                <p class="card-text fs-5">Descripción de la Publicación...</p>
+
+                                <div class="my-4">
+                                    <!-- Cambiar el enlace simulado a un PDF real -->
+                                    <!--<embed src="https://example.com/sample.pdf" type="application/pdf" width="100%" height="600px" /> -->
+
+                                    <!-- Si el archivo es un documento de Word (doc o docx) -->
+                                    <!-- <img src="ruta_de_la_imagen_de_word" alt="Vista previa de Word" class="img-fluid mx-auto d-block"> -->
+
+                                    <!-- Si el archivo es una presentación de PowerPoint (ppt o pptx) -->
+                                    <!-- <img src="ruta_de_la_imagen_de_powerpoint" alt="Vista previa de PowerPoint" class="img-fluid mx-auto d-block"> -->
+
+                                    <!-- Si el archivo es una hoja de cálculo de Excel (xls o xlsx) -->
+                                    <!-- <img src="ruta_de_la_imagen_de_excel" alt="Vista previa de Excel" class="img-fluid mx-auto d-block"> -->
+
+                                    <!-- Si el archivo es una imagen (jpg, jpeg, png, gif) -->
+                                    <img src="https://via.placeholder.com/800x400" alt="Imagen de la Publicación" class="img-fluid mx-auto d-block">
+
+                                    <!-- Si el archivo es un video (mp4, avi, mov) -->
+                                    <!-- <video class="img-fluid mx-auto d-block" controls>
+                                        <source src="ruta_del_video.mp4" type="video/mp4">
+                                        Tu navegador no soporta el elemento de video.
+                                    </video> -->
+
+                                    <!-- Si el archivo no es compatible con ningún formato conocido -->
+                                    <!-- <img src="ruta_de_la_imagen_predeterminada" alt="Tipo de archivo no compatible" class="img-fluid mx-auto d-block"> -->
+                                </div>
                             </div>
                         </div>
                     </div>
