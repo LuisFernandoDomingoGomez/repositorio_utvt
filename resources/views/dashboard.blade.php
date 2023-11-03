@@ -154,17 +154,14 @@
             .left-sidebar {
                 display: block;
             }
-
             .right-sidebar {
                 display: none;
             }
-
             section {
                 display: block;
                 margin-right: 0;
                 padding: 0;
             }
-
             .nav-box {
                 display: none;
             }
@@ -175,16 +172,13 @@
             .left-sidebar {
                 display: block;
             }
-
             .right-sidebar {
                 display: block;
             }
-
             section {
                 display: block;
                 margin-right: 280px;
             }
-
             .nav-box {
                 display: block;
             }
@@ -204,7 +198,7 @@
                         </div>
                         <div class="d-flex align-items-center justify-content-center">
                             <form class="d-flex flex-fill">
-                                <input class="form-control me-2 rounded-pill search-input" type="search" placeholder="Buscar en CuervITos" aria-label="Search" style="width: 450px;">
+                                <input class="form-control me-2 rounded-pill search-input" type="search" placeholder="Buscar en CuervITos" aria-label="Search" style="width: 600px;">
                             </form>
                             <div class="link">
                             <a id="openModalButton" class="btn btn-light rounded-pill">...</a>
