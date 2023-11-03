@@ -119,6 +119,19 @@
             margin: 10px 0;
         }
 
+        /* Tamaños de fuente para sección Posts */ 
+        .fs-4 {
+            font-size: 1.25rem;
+        }
+
+        .fs-5 {
+            font-size: 1rem;
+        }
+
+        .fs-6 {
+            font-size: 0.75rem;
+        }
+
         /* Estilos para la barra de búsqueda en la vista móvil */
         @media (max-width: 768px) {
             .left-sidebar, .right-sidebar {
@@ -201,7 +214,7 @@
                                 <input class="form-control me-2 rounded-pill search-input" type="search" placeholder="Buscar en CuervITos" aria-label="Search" style="width: 500px;">
                             </form>
                             <div class="link">
-                            <a id="openModalButton" class="btn btn-light rounded-pill">...</a>
+                            <a id="" class="btn btn-light rounded-pill">...</a>
                         </div>
                         </div>
                     </div>
@@ -268,25 +281,21 @@
         <section class="team-two" id="team-members">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-11 offset-md-0">
-                        <div class="card rounded bg-white my-3 shadow">
+                    <div class="col-md-11 offset">
+                        <div class="card rounded bg-white shadow">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
                                     <div class="w-10 h-10 rounded-circle overflow-hidden">
                                         <img src="https://via.placeholder.com/50" alt="Foto de Perfil">
                                     </div>
-                                    <div class="ml-3">
-                                        <a href="#" class="font-weight-bold text-primary fs-5">Nombre de Usuario</a>
+                                    <div class="ml-2">
+                                        <a href="#" class="font-weight-bold text-dark fs-5">Nombre de Usuario</a>
                                         <div class="text-secondary fs-6">12 de Octubre de 2023</div>
                                     </div>
                                 </div>
-
                                 <br>
-
                                 <h3 class="card-title font-weight-bold mb-3 fs-4">Título de la Publicación</h3>
-
                                 <p class="card-text fs-5">Descripción de la Publicación...</p>
-
                                 <div class="my-4">
                                     <!-- Cambiar el enlace simulado a un PDF real -->
                                     <!--<embed src="https://example.com/sample.pdf" type="application/pdf" width="100%" height="600px" /> -->
