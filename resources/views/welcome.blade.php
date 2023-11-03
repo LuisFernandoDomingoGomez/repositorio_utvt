@@ -698,8 +698,9 @@
     <!--End pagewrapper-->
 
     <!--Scroll to top-->
-    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon"><img
-                src="images/icons/arrow-up.svg" alt="" title="Go To Top"></span></div>
+    <div class="scroll-to-top scroll-to-target" data-target="html">
+        <span class="icon"><img src="dist/images/icons/arrow-up.svg" alt="" title="Go To Top"></span>
+    </div>
 
     <script src="dist/js/popper.min.js"></script>
     <script src="dist/js/bootstrap.min.js"></script>

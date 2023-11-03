@@ -132,38 +132,41 @@
             font-size: 0.75rem;
         }
 
-        /* Estilos para Carrusel */
-        .image-carousel {
+        /* Estilos de carrusel */
+        .carousel-cards-wrapper {
             display: flex;
-            overflow-x: auto; /* Permite desplazarse horizontalmente en caso de que haya muchas imágenes */
+            justify-content: center;
         }
-
-        .image-card {
-            width: 280px;
-            margin-right: 10px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        .carousel-card img {
+            max-width: 100%;
+            max-height: 100%;
         }
-
-        .image-card img {
-            width: 100%;
-            height: auto;
+        .carousel-card {
+            margin: 0 0.5em;
+            box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+            border: none;
+            border-radius: 0;
         }
-
-        .image-card-caption {
-            padding: 10px;
+        .carousel-card:hover .card-img-top {
+            transform: scale(1.05);
+            transition: transform 0.2s;
         }
-
-        .image-card-caption h3 {
-            font-size: 18px;
-            margin: 0;
+        .carousel-inner {
+            padding: 1em;
         }
-
-        .image-card-caption p {
-            font-size: 14px;
-            margin: 0;
+        .carousel-control-prev,
+        .carousel-control-next {
+            background-color: #e1e1e1;
+            width: 5vh;
+            height: 5vh;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        @media (min-width: 768px) {
+            .carousel-card img {
+                height: 11em;
+            }
         }
 
         /* Estilos para la barra de búsqueda en la vista móvil */
@@ -318,29 +321,69 @@
                     <div class="col-md-11 offset">
                         <div class="masthead"><br>
                             <!-- Carrusel -->
-                            <div class="image-carousel">
-                                <div class="image-card">
-                                    <img src="https://www.danielprimo.io/files/2021-05/1621490872_laravel-bases-de-datos-y-modelo.png" alt="Imagen 1">
-                                    <div class="image-card-caption">
-                                        <h3>Imagen 1</h3>
-                                        <p>Descripción de la imagen 1.</p>
+                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="carousel-cards-wrapper">
+                                            <div class="carousel-card">
+                                                <img src="https://www.danielprimo.io/files/2021-05/1621490872_laravel-bases-de-datos-y-modelo.png" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title 1</h5>
+                                                    <a href="#" class="btn btn-style-three">Ver</a>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-card d-none d-md-block">
+                                                <img src="https://img-b.udemycdn.com/course/240x135/1608944_1b18_5.jpg" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title 2</h5>
+                                                    <a href="#" class="theme-btn btn-style-four">ver</a>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-card d-none d-md-block">
+                                                <img src="https://www.danielprimo.io/files/2021-05/laravel-migraciones-y-seeders.png" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title 3</h5>
+                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="cards-wrapper">
+                                            <div class="card">
+                                                <img src="..." class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title 4</h5>
+                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-card d-none d-md-block">
+                                                <img src="..." class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title 5</h5>
+                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-card d-none d-md-block">
+                                                <img src="..." class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title 6</h5>
+                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="image-card">
-                                    <img src="https://www.danielprimo.io/files/2021-06/laravel-vistas-blade.png" alt="Imagen 2">
-                                    <div class="image-card-caption">
-                                        <h3>Imagen 2</h3>
-                                        <p>Descripción de la imagen 2.</p>
-                                    </div>
-                                </div>
-                                <div class="image-card">
-                                    <img src="https://www.danielprimo.io/files/2021-05/laravel-instalacion-artisan-tinker.png" alt="Imagen 2">
-                                    <div class="image-card-caption">
-                                        <h3>Imagen 3</h3>
-                                        <p>Descripción de la imagen 3.</p>
-                                    </div>
-                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" ariahidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
                             </div>
+
                         </div><hr><br>
                         <div class="card rounded bg-white shadow">
                             <div class="card-body">
