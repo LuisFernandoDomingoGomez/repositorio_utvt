@@ -22,6 +22,13 @@
             background-position: 10px center;
             background-size: 20px 20px;
         }
+
+        .icon {
+            width: 20px; /* Ancho deseado */
+            height: 20px; /* Alto deseado */
+            margin-right: 5px; /* Margen derecho para separar el icono del texto */
+        }
+
     </style>
 </head>
 <body class="home-two">
@@ -40,19 +47,30 @@
                             </div>
                             <div class="d-flex align-items-center justify-content-center">
                                 <form class="d-flex flex-fill">
-                                    <input class="form-control me-2 rounded-pill search-input" type="search" placeholder="Search CuervITo" aria-label="Search" style="width: 690px;">
+                                    <input class="form-control me-2 rounded-pill search-input" type="search" placeholder="Search CuervITo" aria-label="Search" style="width: 670px;">
                                 </form>
                             </div>
                         </div>
                         <div class="nav-box clearfix">
                             <div class="links-box clearfix">
                                 <div class="link">
-                                    <a href="{{url('/dashboard')}}" class="theme-btn btn-style-four rounded-pill">Get app</a>
+                                    <a href="{{ url('/dashboard') }}" class="theme-btn btn-style-four rounded-pill">
+                                        <img src="dist/images/icons/scann_qr.png" alt="QR Icon" class="icon"> Get app
+                                    </a>
                                 </div>
+
+                                <!-- QR V2
+                                <div class="link">
+                                    <a href="{{ url('/dashboard') }}" class="theme-btn btn-style-four rounded-pill">
+                                        <i class="fas fa-qrcode icon" style="margin-right: 7px;"></i> Get app
+                                    </a>
+                                </div>
+                                -->
+
                                 @if (Route::has('login'))
                                     <div class="link">
                                         @auth
-                                        <a href="{{url('/dashboard')}}" class="theme-btn btn-style-four rounded-pill">Publicar</a>
+                                        <a href="{{url('/recursos')}}" class="theme-btn btn-style-four rounded-pill">Publicar</a>
                                         @else
                                         <a href="{{ route('login') }}" class="theme-btn btn-style-four rounded-pill">
                                             <span class="txt">Ingresar</span>
@@ -120,7 +138,7 @@
 
     <!--Scroll to top-->
     <div class="scroll-to-top scroll-to-target" data-target="html">
-        <span class="icon"><img src="images/icons/arrow-up.svg" alt="" title="Go To Top"></span>
+        <span class="icon"><img src="dist/images/icons/arrow-up.svg" alt="" title="Go To Top"></span>
     </div>
     <script src="dist/js/popper.min.js"></script>
     <script src="dist/js/bootstrap.min.js"></script>
