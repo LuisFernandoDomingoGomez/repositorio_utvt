@@ -28,7 +28,7 @@
 
         .left-sidebar {
             background-color: #eaedef;
-            width: 280px;
+            width: 260px;
             height: 100%;
             position: fixed;
             top: 0;
@@ -82,7 +82,7 @@
                         </div>
                         <div class="d-flex align-items-center justify-content-center">
                             <form class="d-flex flex-fill">
-                                <input class="form-control me-2 rounded-pill search-input" type="search" placeholder="Search CuervITo" aria-label="Search" style="width: 655px;">
+                                <input class="form-control me-2 rounded-pill search-input" type="search" placeholder="Buscar en CuervITos" aria-label="Search" style="width: 655px;">
                             </form>
                         </div>
                     </div>
