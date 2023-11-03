@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Inicio | UTVT</title>
+    <title>CuervITo - Sumérgete en cualquier tema</title>
     <link href="dist/css/bootstrap.css" rel="stylesheet">
     <link href="dist/css/style.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
@@ -67,6 +67,58 @@
             margin-right: 280px;
             padding: 20px;
         }
+
+        /* Estilos para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            text-align: center;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .close {
+            color: red;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+
+        .modal-content img {
+            display: block;
+            margin: 0 auto;
+            max-width: 50%;
+            height: auto;
+        }
+
+        .modal-content h3 {
+            margin: 10px 0;
+        }
+
+        .modal-content p {
+            margin: 10px 0;
+        }
+
     </style>
 </head>
 <body class="home-two">
@@ -88,10 +140,22 @@
                     </div>
                     <div class="nav-box clearfix">
                         <div class="links-box clearfix">
+                            <!-- Botón para abrir el modal -->
                             <div class="link">
-                                <a href="{{ url('/dashboard') }}" class="theme-btn btn-style-four rounded-pill">
+                                <a id="openModalButton" class="theme-btn btn-style-four rounded-pill">
                                     <img src="dist/images/icons/scann_qr.png" alt="QR Icon" class="icon"> Get app
                                 </a>
+                            </div>
+
+                            <!-- Modal -->
+                            <div id="appModal" class="modal">
+                                <div class="modal-content">
+                                    <span class="close" id="closeModalButton">&times;</span>
+                                    <h3>Obtén la aplicación CuervITo</h3>
+                                    <p>Escanea este código QR<br>para descargar la aplicación ahora</p>
+                                    <img src="https://es.mailpro.com/blog/image.axd?picture=/QRCODES.png" alt="Shreddit QR Code">
+                                    <p>O búscalo en las tiendas de aplicaciones.</p>
+                                </div>
                             </div>
 
                             <!-- QR V2
@@ -218,3 +282,25 @@
 </body>
 
 </html>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    var openModalButton = document.getElementById("openModalButton");
+    var appModal = document.getElementById("appModal");
+
+    openModalButton.addEventListener("click", function() {
+        appModal.style.display = "block";
+    });
+
+    var closeModalButton = document.getElementById("closeModalButton");
+
+    closeModalButton.addEventListener("click", function() {
+        appModal.style.display = "none";
+    });
+
+    window.addEventListener("click", function(event) {
+        if (event.target == appModal) {
+            appModal.style.display = "none";
+        }
+    });
+</script>
