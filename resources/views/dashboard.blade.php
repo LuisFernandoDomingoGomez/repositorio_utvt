@@ -180,6 +180,82 @@
             }
         }
 
+        /* Estilos para la galería de imágenes en la barra lateral derecha */
+        .right-sidebar {
+            background-color: #eaedef;
+            width: 330px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1;
+            display: block;
+            transition: 0.3s;
+            overflow-y: auto;
+        }
+
+        .right-sidebar .sidebar-content {
+            padding: 20px;
+        }
+
+        .right-sidebar .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 95%; /* Cantidad de contracción (Es basicamente un container personalizado xd) */
+        }
+
+        .right-sidebar .gallery h6 {
+            text-align: center;
+            margin: 20px 0 15px 0;
+            /*font-weight: 300;*/
+        }
+
+        .right-sidebar .gallery-image {
+            width: calc(33.33% - 10px);
+            margin-bottom: 10px; /* Espacio entre las filas */
+            position: relative;
+            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
+            width: 90px; /* Ancho fijo para los contenedores de imágenes */
+            height: 80px; /* Altura fija para los contenedores de imágenes */
+        }
+
+        .right-sidebar .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .right-sidebar .gallery-image:nth-child(3n) {
+            margin-right: 0;
+        }
+
+        .right-sidebar .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 118, 99, 0.781);
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            transition: 0.5s ease;
+        }
+
+        .right-sidebar .overlay h6 {
+            color: #fff;
+            font-weight: 300;
+            font-size: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            text-align: center;
+            transform: translate(-50%, -50%);
+        }
+
+        .right-sidebar .gallery-image:hover .overlay {
+            height: 100%;
+            cursor: pointer;
+        }
+
         /* Estilos para la barra de búsqueda en la vista móvil */
         @media (max-width: 768px) {
             .left-sidebar, .right-sidebar {
@@ -447,11 +523,101 @@
             <!-- Contenido del right sidebar -->
             <div class="sidebar-content">
                 <!-- Elementos del right sidebar -->
-                <br><br><br><br><br>
-                <p>Aca puede ir una galeria con las tematicas principales</p>
-                <p>SQL</p>
-                <p>laravel</p>
-                <p>Normatividad</p>
+                <br><br><br><br>
+
+                <!-- Menu tentativo de elementos -->
+                <h6>Temas Populares</h6>
+                <h7></h7><hr>
+                <h6>Carreras</h6>
+                <h7>* Ing. en Desarrollo y Gestión de Software <br> - TSU. en Desarrollo de Software Multiplataforma <br><br> * Ing. en Redes y Ciberseguridad <br> - TSU. Infraestructura de Redes Digitales</h7><hr>
+                
+                <div class="gallery">
+                    <h6>Áreas de Estudio</h6>
+                    <div class="row">
+                        <!-- Primera fila de imágenes -->
+                        <div class="col-4">
+                            <div class="gallery-image">
+                                <img src="https://universidadeuropea.com/resources/media/images/lenguaje-programacion-sql-800x450.2e16d0ba.fill-767x384.jpg" alt="Imagen 1">
+                                <div class="overlay">
+                                    <h6>Imagen 1</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="gallery-image">
+                                <img src="https://www.aprender21.com/images/colaboradores/sql.jpeg" alt="Imagen 2">
+                                <div class="overlay">
+                                    <h6>Imagen 2</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="gallery-image">
+                                <img src="https://img-b.udemycdn.com/course/750x422/4110826_7f58_3.jpg" alt="Imagen 3">
+                                <div class="overlay">
+                                    <h6>Imagen 3</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Agrega más imágenes aquí si es necesario -->
+                    </div>
+
+                    <!-- Segunda fila de imágenes -->
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="gallery-image">
+                                <img src="https://fc.aulavirtualpucv.cl/pluginfile.php/108811/mod_resource/content/1/img1.2.png" alt="Imagen 1">
+                                <div class= "overlay">
+                                    <h6>Imagen 1</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="gallery-image">
+                                <img src="https://icrea.xyz/blog/wp-content/uploads/2017/05/OM6UV00-1024x1024.jpg" alt="Imagen 2">
+                                <div class="overlay">
+                                    <h6>Imagen 2</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="gallery-image">
+                                <img src="https://img-b.udemycdn.com/course/750x422/4110826_7f58_3.jpg" alt="Imagen 3">
+                                <div class="overlay">
+                                    <h6>Imagen 3</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tercer fila de imágenes -->
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="gallery-image">
+                                <img src="https://1.bp.blogspot.com/-alSgMPp-mPk/Ti9Bx_Zp4NI/AAAAAAAAABA/Ft-cg0ikizc/s1600/iso.png" alt="Imagen 1">
+                                <div class= "overlay">
+                                    <h6>Normatividad ISO</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="gallery-image">
+                                <img src="https://icrea.xyz/blog/wp-content/uploads/2017/05/OM6UV00-1024x1024.jpg" alt="Imagen 2">
+                                <div class="overlay">
+                                    <h6>Imagen 2</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="gallery-image">
+                                <img src="https://img-b.udemycdn.com/course/750x422/4110826_7f58_3.jpg" alt="Imagen 3">
+                                <div class="overlay">
+                                    <h6>Imagen 3</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </aside>
     </div>
