@@ -6,6 +6,7 @@
     <script src="dist/js/jquery.js"></script>
     <link href="dist/css/bootstrap.css" rel="stylesheet">
     <link href="dist/css/style.css" rel="stylesheet">
+    <link href="utvt/css/template.css" rel="stylesheet">
     <link href="utvt/css/responsive.css" rel="stylesheet">
     <link href="utvt/css/carrusel.css" rel="stylesheet">
     <link href="utvt/css/gallery.css" rel="stylesheet">
@@ -16,63 +17,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link href="dist/css/responsive.css" rel="stylesheet">
     <style>
-        .search-input {
-            padding-left: 40px;
-            background-color: #eaedef;
-            background-image: url('dist/images/search.png');
-            background-repeat: no-repeat;
-            background-position: 10px center;
-            background-size: 20px 20px;
-        }
-
-        .icon {
-            width: 20px;
-            height: 20px;
-            margin-right: 3px;
-        }
-
-        .left-sidebar {
-            background-color: #eaedef;
-            width: 260px;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            z-index: 1;
-            display: block;
-            transition: 0.3s;
-            overflow-y: auto;
-        }
-
-        .right-sidebar {
-            background-color: #eaedef;
-            width: 330px;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            z-index: 1;
-            display: block;
-            transition: 0.3s;
-            overflow-y: auto;
-        }
-
-        .left-sidebar {
-            left: 0;
-        }
-
-        .right-sidebar {
-            right: 0;
-        }
-
-        .sidebar-content {
-            padding: 20px;
-        }
-
-        section {
-            margin-left: 280px;
-            margin-right: 280px;
-            padding: 20px;
-        }
-
         /* Estilos para el modal */
         .modal {
             display: none;
@@ -107,7 +51,6 @@
             font-weight: bold;
             cursor: pointer;
         }
-
 
         .modal-content img {
             display: block;
