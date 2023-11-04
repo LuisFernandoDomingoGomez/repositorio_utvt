@@ -1,16 +1,3 @@
-/* Estilos para la galería de imágenes en la barra lateral derecha */
-.right-sidebar {
-    background-color: #eaedef;
-    width: 330px;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 1;
-    display: block;
-    transition: 0.3s;
-    overflow-y: auto;
-}
-
 .right-sidebar .sidebar-content {
     padding: 20px;
 }
