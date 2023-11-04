@@ -1,0 +1,133 @@
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .content {
+        background-image: url('/dist/images/font.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    .profile-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.2); /* Fondo semi transparente */
+        backdrop-filter: blur(10px); /* Efecto de vidrio */
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 8px;
+        padding: 50px;
+        position: relative;
+        overflow: hidden;
+        margin-right: 20px;
+        transition: all 300ms;
+    }
+
+    .profile-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .avatar {
+        position: relative;
+        margin-right: 5px;
+    }
+
+    .avatar img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+    }
+
+    .change-avatar-button {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: #007863;
+        color: #fff;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .profile-details {
+        flex: 1;
+    }
+
+    .profile-details h3 {
+        font-size: 24px;
+        margin: 0;
+    }
+
+    .profile-details p {
+        color: #fff;
+    }
+
+    .user-info {
+        text-align: center;
+        margin-top: 20px;
+        color: #000;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .user-name {
+        font-size: 15px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-family: "Arial Black", sans-serif;
+    }
+
+    .user-role {
+        font-size: 16px;
+        font-style: italic;
+        font-family: "Lucida Sans", sans-serif;
+    }
+
+    .settings-card {
+        background: rgba(255, 255, 255, 0.2); /* Fondo semi transparente */
+        padding: 20px;
+        border-radius: 10px;
+        backdrop-filter: blur(10px); /* Efecto de vidrio borroso */
+        -webkit-backdrop-filter: blur(10px);
+        transition: all 300ms;
+    }
+
+    .settings-card:hover {
+        transform: translateY(-10px);
+    }
+
+
+    form {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+    }
+
+    .divider {
+        border: 1px solid #e0e0e0;
+        margin: 20px 0;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column; /* Cambiar la dirección de la carta profile en vista responsiva */
+            align-items: center; /* Centrar contenido en vista responsiva */
+        }
+        .profile-card {
+            margin-right: 0; /* Elimina la carta profile en la vista responsiva */
+        }
+    }
