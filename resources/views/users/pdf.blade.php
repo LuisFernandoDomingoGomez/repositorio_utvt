@@ -7,61 +7,8 @@
     <title>Lista de Usuarios</title>
     <link href="dist/images/logo.svg" rel="shortcut icon">
     <link rel="stylesheet" href="dist/css/app.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .header img {
-            max-width: 180px;
-        }
-        .logos {
-            display: flex;
-            align-items: center;
-        }
-        .logos img {
-            margin-right: 10px; /* Espacio entre los logos */
-        }
-        .logo-1 {
-            width: 120px; /* Ancho del primer logotipo */
-            height: auto; /* Altura ajustada automáticamente */
-        }
-        .logo-2 {
-            width: 65px; /* Ancho del segundo logotipo */
-            height: auto; /* Altura ajustada automáticamente */
-        }
-        .logo-3 {
-            width: 180px; /* Ancho del tercer logotipo */
-            height: auto; /* Altura ajustada automáticamente */
-        }
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .badge {
-            padding: 4px 8px;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="utvt/css/pdf.css">
 </head>
-
 <body>
     <div class="header">
         <!-- Logos de las instituciones -->
