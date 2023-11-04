@@ -8,24 +8,6 @@
     max-height: 100%;
 }
 
-/* Estilos personalizados para las tarjetas del carrusel */
-.carousel-card {
-    background-color: #fff;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0);
-    margin: 8px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.carousel-card:hover {
-    transform: scale(1.05);
-    background-color: #fff;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    background: var(--color);
-    color: white;
-}
-
 .carousel-inner {
     padding: 1em;
 }
