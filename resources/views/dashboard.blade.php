@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>CuervITo - Sumérgete en cualquier tema</title>
+    <script src="dist/js/jquery.js"></script>
     <link href="dist/css/bootstrap.css" rel="stylesheet">
     <link href="dist/css/style.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
@@ -144,11 +145,11 @@
 
         /* Estilos personalizados para las tarjetas del carrusel */
         .carousel-card {
-            background-color: #f0f0f0;
+            background-color: #fff;
             border: 2px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            margin: 10px;
+            border-radius: 15px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            margin: 8px;
             transition: transform 0.3s ease-in-out;
         }
 
@@ -158,6 +159,10 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
             background: var(--color);
             color: white;
+        }
+
+        .carousel-inner {
+            padding: 1em;
         }
 
         .carousel-control-prev,
@@ -171,7 +176,7 @@
         }
         @media (min-width: 768px) {
             .carousel-card img {
-                height: 11em;
+                height: 9em;
             }
         }
 
@@ -325,7 +330,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-11 offset">
-                        <div class="masthead"><br>
+                        <div class="masthead">
                             <!-- Carrusel -->
                             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
@@ -334,47 +339,47 @@
                                             <div class="carousel-card">
                                                 <img src="https://www.danielprimo.io/files/2021-05/1621490872_laravel-bases-de-datos-y-modelo.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">Card title 1</h5>
-                                                    <a href="#" class="btn btn-dark">Ver más</a>
+                                                    <h6 class="card-title">Card title 1</h6>
+                                                    <a href="#" class="btn btn-dark btn-sm">Ver más</a>
                                                 </div>
                                             </div>
                                             <div class="carousel-card d-none d-md-block">
                                                 <img src="https://img-b.udemycdn.com/course/240x135/1608944_1b18_5.jpg" class="card-img-top" alt="...">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">Card title 2</h5>
-                                                    <a href="#" class="btn btn-dark">Ver más</a>
+                                                    <h6 class="card-title">Card title 2</h6>
+                                                    <a href="#" class="btn btn-dark btn-sm">Ver más</a>
                                                 </div>
                                             </div>
                                             <div class="carousel-card d-none d-md-block">
                                                 <img src="https://www.danielprimo.io/files/2021-05/laravel-migraciones-y-seeders.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">Card title 3</h5>
-                                                    <a href="#" class="btn btn-dark">Ver más</a>
+                                                    <h6 class="card-title">Card title 3</h6>
+                                                    <a href="#" class="btn btn-dark btn-sm">Ver más</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="carousel-item">
-                                        <div class="cards-wrapper">
-                                            <div class="card">
-                                                <img src="..." class="card-img-top" alt="...">
+                                        <div class="carousel-cards-wrapper">
+                                            <div class="carousel-card">
+                                                <img src="https://www.danielprimo.io/files/2021-05/1621490872_laravel-bases-de-datos-y-modelo.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">Card title 4</h5>
-                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                    <h6 class="card-title">Card title 4</h6>
+                                                    <a href="#" class="btn btn-dark btn-sm">Ver más</a>
                                                 </div>
                                             </div>
                                             <div class="carousel-card d-none d-md-block">
-                                                <img src="..." class="card-img-top" alt="...">
+                                                <img src="https://img-b.udemycdn.com/course/240x135/1608944_1b18_5.jpg" class="card-img-top" alt="...">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">Card title 5</h5>
-                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                    <h6 class="card-title">Card title 5</h6>
+                                                    <a href="#" class="btn btn-dark btn-sm">Ver más</a>
                                                 </div>
                                             </div>
                                             <div class="carousel-card d-none d-md-block">
-                                                <img src="..." class="card-img-top" alt="...">
+                                                <img src="https://www.danielprimo.io/files/2021-05/laravel-migraciones-y-seeders.png" class="card-img-top" alt="...">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">Card title 6</h5>
-                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                    <h6 class="card-title">Card title 6</h6>
+                                                    <a href="#" class="btn btn-dark btn-sm">Ver más</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -390,7 +395,7 @@
                                 </a>
                             </div>
 
-                        </div><hr><br>
+                        </div><br>
                         <div class="card rounded bg-white shadow">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
@@ -458,9 +463,9 @@
         <span class="icon"><img src="dist/images/icons/arrow-up.svg" alt="" title="Go To Top"></span>
     </div>
     <script src="dist/js/popper.min.js"></script>
-    <script src="dist/js/bootstrap.min.js"></script>
     <script src="dist/js/PageScroll.js"></script>
     <script src="dist/js/jquery.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
     <script src="dist/js/owl.js"></script>
     <script src="dist/js/bxslider.js"></script>
     <script src="dist/js/countdown.js"></script>
