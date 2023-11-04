@@ -1,18 +1,20 @@
-(function () {
-    "use strict";
+// Obtén una referencia al elemento del interruptor de modo oscuro
+const darkModeSwitcher = document.querySelector(".dark-mode-switcher");
 
-    // Dark mode switcher
-    $(".dark-mode-switcher").on("click", function () {
-        let switcher = $(this).find(".dark-mode-switcher__toggle");
-        if ($(switcher).hasClass("dark-mode-switcher__toggle--active")) {
-            $(switcher).removeClass("dark-mode-switcher__toggle--active");
-        } else {
-            $(switcher).addClass("dark-mode-switcher__toggle--active");
-        }
+// Obtén una referencia al elemento que representa el modo oscuro
+const body = document.body;
 
-        setTimeout(() => {
-            let link = $(".dark-mode-switcher").data("url");
-            window.location.href = link;
-        }, 500);
-    });
-})();
+// Agrega un evento de clic al elemento del interruptor
+darkModeSwitcher.addEventListener("click", function () {
+    // Cambia el color de fondo y el texto del interruptor
+    let switcher = this.querySelector(".dark-mode-switcher__toggle");
+    if (switcher.classList.contains("dark-mode-switcher__toggle--active")) {
+        switcher.classList.remove("dark-mode-switcher__toggle--active");
+        // Cambia a modo claro
+        body.classList.remove("dark-mode");
+    } else {
+        switcher.classList.add("dark-mode-switcher__toggle--active");
+        // Cambia a modo oscuro
+        body.classList.add("dark-mode");
+    }
+});

@@ -1,0 +1,135 @@
+    /* Estilos generales de la página */
+    body {
+        font-family: Arial, sans-serif;
+        transition: background-color 0.3s ease;
+        background-color: #333333; /* Cambia el color de fondo en modo oscuro */
+    }
+
+    /* Estilos para el modo claro */
+    body:not(.dark-mode) {
+        background-color: #fff; /* Color de fondo en modo claro */
+        color: #333; /* Color de texto en modo claro */
+    }
+
+    /* Estilos para el modo oscuro */
+    body.dark-mode {
+        background-color: #333; /* Color de fondo en modo oscuro */
+        color: #fff; /* Color de texto en modo oscuro */
+    }
+
+    body.dark-mode header.main-header {
+        background-color: #333333; /* Cambia el color de fondo en modo oscuro */
+        color: #fff; /* Cambia el color de texto en modo oscuro */
+    }
+
+    body.dark-mode .body.home-two {
+        background-color: #333333; /* Color de fondo en modo oscuro */
+    }
+
+    /* Cambiar el color de fondo al modo oscuro (#333333) */
+    body.dark-mode .main-header.header-two {
+        background-color: #333333; /* Color de fondo en modo oscuro */
+    }
+
+    /* Cambiar el color de fondo al modo oscuro (#333333) */
+    body.dark-mode .home-two {
+        background-color: #333333; /* Color de fondo en modo oscuro */
+    }
+
+    /* Cambiar el color de fondo al modo oscuro (#333333) */
+    body.dark-mode .main-header.header-two {
+        background-color: #333333; /* Color de fondo en modo oscuro */
+    }
+
+    /* Cambiar el color de fondo al modo oscuro (#333333) para elementos dentro de .header-upper */
+    body.dark-mode .header-upper {
+        background-color: #333333; /* Color de fondo en modo oscuro */
+    }
+
+
+    body.dark-mode .left-sidebar {
+        background-color: #111; /* Color de fondo en modo oscuro para el sidebar izquierdo */
+        color: #fff; /* Color de texto en modo oscuro para el sidebar izquierdo */
+    }
+
+    body.dark-mode .right-sidebar {
+        background-color: #111; /* Color de fondo en modo oscuro para el sidebar derecho */
+        color: #fff; /* Color de texto en modo oscuro para el sidebar derecho */
+    }
+
+    body.dark-mode .logo-box {
+        background-color: #333333; /* Cambia el color de fondo en modo oscuro */
+        color: #fff; /* Cambia el color de texto en modo oscuro */
+    }
+
+    /* Oscurecer el fondo de la barra de navegación */
+    body.dark-mode .nav-box {
+        background-color: #333333; /* Cambia el color de fondo en modo oscuro */
+    }
+
+    /* Oscurecer el fondo y el texto de auto-container y main-box en modo oscuro */
+    body.dark-mode .auto-container,
+    body.dark-mode .main-box {
+        background-color: #333333; /* Cambia el color de fondo en modo oscuro */
+        color: #fff; /* Cambia el color de texto en modo oscuro */
+    }
+
+
+    body.dark-mode .search-input {
+        background-color: #111; /* Color de fondo en modo oscuro para la barra de búsqueda */
+        color: #fff; /* Color de texto en modo oscuro para la barra de búsqueda */
+        background-image: url('dist/images/search-dark.png'); /* Cambia la imagen de búsqueda a una versión oscura */
+    }
+
+    /* Estilos para los botones en las cards en modo oscuro */
+    body.dark-mode .carousel-card a.btn.btn-dark {
+        background-color: #283445; /* Color de fondo en modo oscuro para los botones en las cards */
+        color: #fff; /* Color de texto en modo oscuro para los botones en las cards */
+    }
+
+    body.dark-mode .btn.btn-light {
+        background-color: #333333; /* Color de fondo en modo oscuro para los botones claros */
+        color: #f8faf8; /* Color de texto en modo oscuro para los botones claros */
+    }
+
+    body.dark-mode .card-body {
+        background-color: #4B4B4B; /* Color de fondo en modo oscuro para el sidebar derecho */
+        color: #fff; /* Color de texto en modo oscuro para el sidebar derecho */
+    }
+
+    body.dark-mode .carousel-card:hover {
+        background-color: #283445;
+    }
+
+    /* Estilos para el botón de conmutador de modo oscuro */
+    .dark-mode-switcher {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        width: 50px; /* Ancho del botón */
+        height: 30px; /* Alto del botón */
+        background-color: #333; /* Color de fondo en modo oscuro */
+        border-radius: 15px; /* Borde redondeado */
+        transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+    }
+
+    .dark-mode-switcher__toggle {
+        position: absolute;
+        width: 24px; /* Ancho del interruptor */
+        height: 24px; /* Alto del interruptor */
+        background-color: #fff; /* Color del interruptor en modo oscuro */
+        border-radius: 50%; /* Hace que el interruptor sea un círculo */
+        left: 3px; /* Posición inicial del interruptor (encendido) */
+        top: 3px; /* Posición inicial del interruptor (encendido) */
+        transition: left 0.3s ease, background-color 0.3s ease; /* Transición suave de la posición y el color */
+    }
+
+    /* Estilos para el botón cuando está activado (modo claro) */
+    .dark-mode-switcher.dark-mode-switcher--active {
+        background-color: #fff; /* Color de fondo en modo claro */
+    }
+
+    .dark-mode-switcher.dark-mode-switcher--active .dark-mode-switcher__toggle {
+        left: 23px; /* Nueva posición del interruptor (apagado) */
+        background-color: #333; /* Nuevo color del interruptor en modo claro */
+    }

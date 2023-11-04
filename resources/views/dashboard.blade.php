@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>CuervITo - Sumérgete en cualquier tema</title>
+    <title>CuervITo - Sumérgete en cualquier área</title>
     <script src="dist/js/jquery.js"></script>
     <link href="dist/css/bootstrap.css" rel="stylesheet">
     <link href="dist/css/style.css" rel="stylesheet">
@@ -147,8 +147,8 @@
         .carousel-card {
             background-color: #fff;
             border: 2px solid #ddd;
-            border-radius: 15px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0);
             margin: 8px;
             transition: transform 0.3s ease-in-out;
         }
@@ -530,7 +530,11 @@
                 <h7></h7><hr>
                 <h6>Carreras</h6>
                 <h7>* Ing. en Desarrollo y Gestión de Software <br> - TSU. en Desarrollo de Software Multiplataforma <br><br> * Ing. en Redes y Ciberseguridad <br> - TSU. Infraestructura de Redes Digitales</h7><hr>
-                
+                <!-- Dark Mode
+                <button class="dark-mode-switcher" data-url="/cambiar-modo-oscuro">
+                    <span class="dark-mode-switcher__toggle"></span>
+                </button>
+                -->
                 <div class="gallery">
                     <h6>Áreas de Estudio</h6>
                     <div class="row">
@@ -631,6 +635,7 @@
     <script src="dist/js/popper.min.js"></script>
     <script src="dist/js/PageScroll.js"></script>
     <script src="dist/js/jquery.js"></script>
+    <script src="dist/js/dark-mode-switcher.js"></script>
     <script src="dist/js/bootstrap.min.js"></script>
     <script src="dist/js/owl.js"></script>
     <script src="dist/js/bxslider.js"></script>
