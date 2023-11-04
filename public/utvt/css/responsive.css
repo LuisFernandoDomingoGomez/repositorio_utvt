@@ -1,0 +1,64 @@
+/* Estilos para la barra de búsqueda en la vista móvil */
+@media (max-width: 768px) {
+    .left-sidebar, .right-sidebar {
+        display: none;
+    }
+    .search-input {
+        display: none;
+    }
+}
+
+/* Estilos para el encabezado en la vista móvil */
+@media (max-width: 768px) {
+    .logo-box {
+        text-align: center; 
+        margin-right: 0;
+    }
+    .nav-box {
+        text-align: center;
+    }
+}
+
+/* Estilos adicionales para la sección principal en la vista móvil */
+@media (max-width: 767px) {
+    section {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+    }
+}
+
+/* Estilos para tablets (768px o más) */
+@media (min-width: 767px) {
+    .left-sidebar {
+        display: block;
+    }
+    .right-sidebar {
+        display: none;
+    }
+    section {
+        display: block;
+        margin-right: 0;
+        padding: 0;
+    }
+    .nav-box {
+        display: none;
+    }
+}
+
+/* Estilos para pantallas más grandes que 1200px (laptops o computadoras de escritorio) */
+@media (min-width: 1200px) {
+    .left-sidebar {
+        display: block;
+    }
+    .right-sidebar {
+        display: block;
+    }
+    section {
+        display: block;
+        margin-right: 280px;
+    }
+    .nav-box {
+        display: block;
+    }
+}
