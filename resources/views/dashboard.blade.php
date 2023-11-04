@@ -6,6 +6,7 @@
     <script src="dist/js/jquery.js"></script>
     <link href="dist/css/bootstrap.css" rel="stylesheet">
     <link href="dist/css/style.css" rel="stylesheet">
+    <!--<link href="utvt/css/dark.css" rel="stylesheet"> Styles para Dark Mode -->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
