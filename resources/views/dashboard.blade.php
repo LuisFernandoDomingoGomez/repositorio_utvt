@@ -8,6 +8,7 @@
     <link href="dist/css/style.css" rel="stylesheet">
     <link href="utvt/css/template.css" rel="stylesheet">
     <link href="utvt/css/responsive.css" rel="stylesheet">
+    <link href="utvt/css/cards.css" rel="stylesheet">
     <link href="utvt/css/carrusel.css" rel="stylesheet">
     <link href="utvt/css/gallery.css" rel="stylesheet">
     <!--<link href="utvt/css/dark.css" rel="stylesheet"> Styles para Dark Mode -->
@@ -166,55 +167,80 @@
                 <div class="row">
                     <div class="col-md-11 offset">
                         <div class="masthead">
-                            <!-- Carrusel -->
                             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <div class="carousel-cards-wrapper">
-                                            <div class="carousel-card">
-                                                <img src="https://www.danielprimo.io/files/2021-05/1621490872_laravel-bases-de-datos-y-modelo.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h6 class="card-title">Card title 1</h6>
-                                                    <a href="#" class="btn btn-dark btn-sm">Ver más</a>
+                                            <!-- Carrusel -->
+                                            <div class="carta" href="#"
+                                                style="--carta-bg-img: url(https://ayudawp.com/wp-content/uploads/2016/05/sintaxis-codigo-html.jpg)">
+                                                <div>
+                                                    <h1>HTML Sintaxis</h1>
+                                                    <p>The syntax of a language is how it works. How to actually write it. Learn HTML syntax…</p>
+                                                    <div class="date">6 Oct 2021</div>
+                                                    <div class="tags">
+                                                        <div class="tag">HTML</div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="carousel-card d-none d-md-block">
-                                                <img src="https://img-b.udemycdn.com/course/240x135/1608944_1b18_5.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h6 class="card-title">Card title 2</h6>
-                                                    <a href="#" class="btn btn-dark btn-sm">Ver más</a>
+                                            <div class="carta" href="#"
+                                                style="--carta-bg-img: url('https://www.danielprimo.io/files/2021-05/1621490872_laravel-bases-de-datos-y-modelo.png')">
+                                                <div>
+                                                    <h1>Laravel - Modelo MVC</h1>
+                                                    <p>Learn about some of the most common Model tags…</p>
+                                                    <div class="date">9 Oct 2021</div>
+                                                    <div class="tags">
+                                                        <div class="tag">Laravel</div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="carousel-card d-none d-md-block">
-                                                <img src="https://www.danielprimo.io/files/2021-05/laravel-migraciones-y-seeders.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h6 class="card-title">Card title 3</h6>
-                                                    <a href="#" class="btn btn-dark btn-sm">Ver más</a>
+                                            <div class="carta" href="#"
+                                                style="--carta-bg-img: url('https://www.certus.edu.pe/blog/wp-content/uploads/2021/06/que-es-sql-todo-debes-saber-lenguaje-1160x630.jpg')">
+                                                <div>
+                                                    <h1>Todo sobre SQL</h1>
+                                                    <p>Learn how to use links and images along with file paths…</p>
+                                                    <div class="date">14 Oct 2021</div>
+                                                    <div class="tags">
+                                                        <div class="tag">SQL</div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="carousel-item">
                                         <div class="carousel-cards-wrapper">
-                                            <div class="carousel-card">
-                                                <img src="https://www.danielprimo.io/files/2021-05/1621490872_laravel-bases-de-datos-y-modelo.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h6 class="card-title">Card title 4</h6>
-                                                    <a href="#" class="btn btn-dark btn-sm">Ver más</a>
+                                            <!-- Carrusel -->
+                                            <div class="carta" href="#"
+                                                style="--carta-bg-img: url(https://www.openlogic.com/sites/default/files/styles/social_preview_image/public/image/2021-06/image-blog-openlogic-what-is-mongodb.png?itok=hByLkKJk)">
+                                                <div>
+                                                    <h1>Mongo Sintaxis</h1>
+                                                    <p>The syntax of a language is how it works. How to actually write it. Learn Mongo syntax…</p>
+                                                    <div class="date">6 Oct 2021</div>
+                                                    <div class="tags">
+                                                        <div class="tag">Mongo</div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="carousel-card d-none d-md-block">
-                                                <img src="https://img-b.udemycdn.com/course/240x135/1608944_1b18_5.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h6 class="card-title">Card title 5</h6>
-                                                    <a href="#" class="btn btn-dark btn-sm">Ver más</a>
+                                            <div class="carta" href="#"
+                                                style="--carta-bg-img: url('https://community-cdn-digitalocean-com.global.ssl.fastly.net/snN3rbgKF7McfuiQAKcoLWMn')">
+                                                <div>
+                                                    <h1>Vue Js</h1>
+                                                    <p>Learn about some of the most common Vue tags…</p>
+                                                    <div class="date">9 Oct 2021</div>
+                                                    <div class="tags">
+                                                        <div class="tag">Vue Js</div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="carousel-card d-none d-md-block">
-                                                <img src="https://www.danielprimo.io/files/2021-05/laravel-migraciones-y-seeders.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h6 class="card-title">Card title 6</h6>
-                                                    <a href="#" class="btn btn-dark btn-sm">Ver más</a>
+                                            <div class="carta" href="#"
+                                                style="--carta-bg-img: url('https://assets.rbl.ms/33364099/origin.jpg')">
+                                                <div>
+                                                    <h1>Python</h1>
+                                                    <p>Learn how to use links and images along with file paths…</p>
+                                                    <div class="date">14 Oct 2021</div>
+                                                    <div class="tags">
+                                                        <div class="tag">Python</div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -229,7 +255,6 @@
                                     <span class="sr-only">Next</span>
                                 </a>
                             </div>
-
                         </div><br>
                         <div class="card rounded bg-white shadow">
                             <div class="card-body">
