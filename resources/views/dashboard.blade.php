@@ -288,23 +288,27 @@
                                 </a>
                             </div>
                         </div><br>
+                        @foreach ($recursos as $recurso)
                         <div class="card rounded bg-white shadow">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
-                                    <div class="w-10 h-10 rounded-circle overflow-hidden">
-                                        <img src="https://via.placeholder.com/50" alt="Foto de Perfil">
+                                    <div class="w-10 h-10 rounded-circle overflow-hidden" style="width: 50px; height: 50px;">
+                                        <img src="{{ asset('avatars/' . $recurso->user->avatar) }}" alt="Foto de Perfil" style="width: 100%; height: 100%; object-fit: cover; object-position: center center; border-radius: 50%;">
                                     </div>
                                     <div class="ml-2">
-                                        <a href="#" class="font-weight-bold text-dark fs-5">Nombre de Usuario</a>
-                                        <div class="text-secondary fs-6">12 de Octubre de 2023</div>
+                                        <a href="#" class="font-weight-bold text-dark fs-5">{{$recurso->user->name}}</a>
+                                        <div class="text-secondary fs-6">{{$recurso->created_at->isoFormat('D [de] MMMM [de] Y')}}</div>
                                     </div>
                                 </div>
                                 <br>
-                                <h3 class="card-title font-weight-bold mb-3 fs-4">Título de la Publicación</h3>
+                                <div class="card-title font-weight-bold mb-3 fs-4">{{$recurso->titulo}}</div>
                                 <p class="card-text fs-5">Descripción de la Publicación...</p>
                                 <div class="my-4">
-                                    <!-- Cambiar el enlace simulado a un PDF real -->
-                                    <!--<embed src="https://example.com/sample.pdf" type="application/pdf" width="100%" height="600px" /> -->
+                                    @php
+                                        $extension = pathinfo($recurso->archivo, PATHINFO_EXTENSION);
+                                    @endphp
+                                    @if (in_array($extension, ['pdf']))
+                                        <embed src="{{ asset($recurso->archivo) }}" type="application/pdf" width="100%" height="400px" />
 
                                     <!-- Si el archivo es un documento de Word (doc o docx) -->
                                     <!-- <img src="ruta_de_la_imagen_de_word" alt="Vista previa de Word" class="img-fluid mx-auto d-block"> -->
@@ -315,20 +319,22 @@
                                     <!-- Si el archivo es una hoja de cálculo de Excel (xls o xlsx) -->
                                     <!-- <img src="ruta_de_la_imagen_de_excel" alt="Vista previa de Excel" class="img-fluid mx-auto d-block"> -->
 
-                                    <!-- Si el archivo es una imagen (jpg, jpeg, png, gif) -->
-                                    <img src="https://via.placeholder.com/800x400" alt="Imagen de la Publicación" class="img-fluid mx-auto d-block">
+                                    @elseif (in_array($extension, ['jpg', 'jpeg', 'png', 'gif']))
+                                        <img src="{{ asset($recurso->archivo) }}" alt="Imagen de la Publicación" class="img-fluid mx-auto d-block">
 
-                                    <!-- Si el archivo es un video (mp4, avi, mov) -->
-                                    <!-- <video class="img-fluid mx-auto d-block" controls>
-                                        <source src="ruta_del_video.mp4" type="video/mp4">
-                                        Tu navegador no soporta el elemento de video.
-                                    </video> -->
+                                    @elseif (in_array($extension, ['mp4', 'avi', 'mov']))
+                                        <video class="img-fluid mx-auto d-block" controls>
+                                            <source src="{{ asset($recurso->archivo) }}" type="video/{{$extension}}">
+                                            Tu navegador no soporta el elemento de video.
+                                        </video>
 
-                                    <!-- Si el archivo no es compatible con ningún formato conocido -->
-                                    <!-- <img src="ruta_de_la_imagen_predeterminada" alt="Tipo de archivo no compatible" class="img-fluid mx-auto d-block"> -->
+                                    @else
+                                        <img src="https://thumbs.dreamstime.com/b/error-con-la-plantilla-del-dise%C3%B1o-cuaderno-icono-para-el-sitio-web-gr%C3%A1fico-azul-fondo-109996932.jpg" alt="Tipo de archivo no compatible" class="img-fluid mx-auto d-block">
+                                    @endif
                                 </div>
                             </div>
-                        </div>
+                        </div><br>
+                        @endforeach
                     </div>
                 </div>
             </div>

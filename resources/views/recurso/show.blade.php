@@ -238,7 +238,7 @@
                 <div class="intro-y box p-3 mt-2 rounded-lg shadow-lg bg-white">
                     <div class="flex items-center">
                         <div class="w-10 h-10 rounded-full overflow-hidden">
-                            <img src="{{ asset('avatars/' . Auth::user()->avatar) }}" alt="Foto de Perfil">
+                            <img src="{{ asset('avatars/' . $recurso->user->avatar) }}" alt="Foto de Perfil">
                         </div>
                         <div class="ml-2">
                             <a href="#" class="font-medium text-blue-500">{{$recurso->user->name}}</a>

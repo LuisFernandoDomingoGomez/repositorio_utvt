@@ -22,7 +22,9 @@ class DashboardController extends Controller
         $tematicas = Tematica::withCount('recursos')
             ->orderBy('recursos_count', 'desc')
             ->get();
+        
+        $recursos = Recurso::where('estado', 'aprobado')->get(); //Solo traer los recursos con el estado "aprobado"
 
-        return view('dashboard', compact('tematicas'));
+        return view('dashboard', compact('tematicas', 'recursos'));
     }
 }
