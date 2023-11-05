@@ -194,7 +194,7 @@
     </aside>
 
     <div class="page-wrapper">
-        <!-- Contenido - Posts -->
+        <!-- Contenedor -->
         <section class="banner-section banner-two">
             <div class="container">
                 <div class="row">
@@ -205,7 +205,7 @@
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <div class="carousel-cards-wrapper">
-                                            <div class="carta" href="#"
+                                            <a class="carta" href="#"
                                                 style="--carta-bg-img: url(https://ayudawp.com/wp-content/uploads/2016/05/sintaxis-codigo-html.jpg)">
                                                 <div>
                                                     <h1>HTML Sintaxis</h1>
@@ -215,8 +215,8 @@
                                                         <div class="tag">HTML</div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="carta" href="#"
+                                            </a>
+                                            <a class="carta" href="#"
                                                 style="--carta-bg-img: url('https://www.danielprimo.io/files/2021-05/1621490872_laravel-bases-de-datos-y-modelo.png')">
                                                 <div>
                                                     <h1>Laravel - Modelo MVC</h1>
@@ -226,8 +226,8 @@
                                                         <div class="tag">Laravel</div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="carta" href="#"
+                                            </a>
+                                            <a class="carta" href="#"
                                                 style="--carta-bg-img: url('https://www.certus.edu.pe/blog/wp-content/uploads/2021/06/que-es-sql-todo-debes-saber-lenguaje-1160x630.jpg')">
                                                 <div>
                                                     <h1>Todo sobre SQL</h1>
@@ -237,12 +237,12 @@
                                                         <div class="tag">SQL</div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="carousel-item">
                                         <div class="carousel-cards-wrapper">
-                                            <div class="carta" href="#"
+                                            <a class="carta" href="#"
                                                 style="--carta-bg-img: url(https://www.openlogic.com/sites/default/files/styles/social_preview_image/public/image/2021-06/image-blog-openlogic-what-is-mongodb.png?itok=hByLkKJk)">
                                                 <div>
                                                     <h1>Mongo Sintaxis</h1>
@@ -252,8 +252,8 @@
                                                         <div class="tag">Mongo</div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="carta" href="#"
+                                            </a>
+                                            <a class="carta" href="#"
                                                 style="--carta-bg-img: url('https://community-cdn-digitalocean-com.global.ssl.fastly.net/snN3rbgKF7McfuiQAKcoLWMn')">
                                                 <div>
                                                     <h1>Vue Js</h1>
@@ -263,8 +263,8 @@
                                                         <div class="tag">Vue Js</div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="carta" href="#"
+                                            </a>
+                                            <a class="carta" href="#"
                                                 style="--carta-bg-img: url('https://assets.rbl.ms/33364099/origin.jpg')">
                                                 <div>
                                                     <h1>Python</h1>
@@ -274,7 +274,7 @@
                                                         <div class="tag">Python</div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -288,6 +288,7 @@
                                 </a>
                             </div>
                         </div><br>
+                        <!-- Posts -->
                         @foreach ($recursos as $recurso)
                         <div class="card rounded bg-white shadow">
                             <div class="card-body">
@@ -310,14 +311,17 @@
                                     @if (in_array($extension, ['pdf']))
                                         <embed src="{{ asset($recurso->archivo) }}" type="application/pdf" width="100%" height="400px" />
 
-                                    <!-- Si el archivo es un documento de Word (doc o docx) -->
-                                    <!-- <img src="ruta_de_la_imagen_de_word" alt="Vista previa de Word" class="img-fluid mx-auto d-block"> -->
+                                    @elseif (in_array($extension, ['doc', 'docx']))
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Microsoft_Word_2013-2019_Icon.png" alt="Vista previa de Word" class="img-fluid mx-auto d-block" style="width: 250px; height: 250px;">
+                                        <a href="{{ asset($recurso->archivo) }}" class="block text-right text-blue-500">Descargar Archivo</a>
 
-                                    <!-- Si el archivo es una presentación de PowerPoint (ppt o pptx) -->
-                                    <!-- <img src="ruta_de_la_imagen_de_powerpoint" alt="Vista previa de PowerPoint" class="img-fluid mx-auto d-block"> -->
+                                    @elseif (in_array($extension, ['ppt', 'pptx']))
+                                        <img src="https://us.123rf.com/450wm/eugenebsov/eugenebsov2101/eugenebsov210100125/162408146-dise%C3%B1o-plano-moderno-del-icono-del-archivo-de-presentaci%C3%B3n-logo-ppt-tipo-de-documento.jpg" alt="Vista previa de PowerPoint" class="img-fluid mx-auto d-block" style="width: 250px; height: 250px;">
+                                        <a href="{{ asset($recurso->archivo) }}" class="block text-right text-blue-500">Descargar Archivo</a>
 
-                                    <!-- Si el archivo es una hoja de cálculo de Excel (xls o xlsx) -->
-                                    <!-- <img src="ruta_de_la_imagen_de_excel" alt="Vista previa de Excel" class="img-fluid mx-auto d-block"> -->
+                                    @elseif (in_array($extension, ['xls', 'xlsx']))
+                                        <img src="https://previews.123rf.com/images/eugenebsov/eugenebsov2101/eugenebsov210100072/162408093-dise%C3%B1o-plano-moderno-del-icono-del-archivo-logo-xls-tipo-de-documento.jpg" alt="Vista previa de Excel" class="img-fluid mx-auto d-block" style="width: 250px; height: 250px;">
+                                        <a href="{{ asset($recurso->archivo) }}" class="block text-right text-blue-500">Descargar Archivo</a>
 
                                     @elseif (in_array($extension, ['jpg', 'jpeg', 'png', 'gif']))
                                         <img src="{{ asset($recurso->archivo) }}" alt="Imagen de la Publicación" class="img-fluid mx-auto d-block">
