@@ -19,7 +19,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $tematicas = Tematica::withCount('recursos')->get();
+        $tematicas = Tematica::withCount('recursos')
+            ->orderBy('recursos_count', 'desc')
+            ->get();
 
         return view('dashboard', compact('tematicas'));
     }
