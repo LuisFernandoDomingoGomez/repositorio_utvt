@@ -64,33 +64,33 @@
     .custom-list li {
         margin-bottom: 10px;
         position: relative;
-        transition: background-color 0.3s; /* Transición de color de fondo */
-        border-radius: 5px; /* Agregar un redondeado a los bordes */
+        transition: background-color 0.3s;
+        border-radius: 5px;
     }
 
     .custom-list li:hover {
-        background-color: #f5f5f5; /* Color de fondo al pasar el cursor (más intenso) */
+        background-color: #f5f5f5;
     }
 
 
     .custom-list li a {
         display: block;
-        padding: 5px 20px; /* Añadir un espacio alrededor del texto e icono */
-        color: #333; /* Color de texto predeterminado */
-        text-decoration: none; /* Elimina el subrayado del enlace */
+        padding: 5px 20px;
+        color: #333;
+        text-decoration: none;
     }
 
     .custom-list li a i {
-        margin-right: 10px; /* Espacio a la izquierda del icono */
-        color: #007763; /* Color del icono (puedes personalizarlo) */
+        margin-right: 10px;
+        color: #007763;
     }
 
     .custom-list li a:hover {
-        background-color: #007763; /* Cambia el color de fondo en hover */
-        color: #fff; /* Cambia el color del texto en hover */
+        background-color: #007763;
+        color: #fff;
         border-radius: 8px;
     }
 
     .custom-list li a:hover i {
-        color: #fff; /* Cambia el color del icono en hover */
+        color: #fff;
     }
