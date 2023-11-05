@@ -1,7 +1,7 @@
     .search-input {
         padding-left: 40px;
         background-color: #eaedef;
-        background-image: url('dist/images/search.png');
+        background-image: url('/dist/images/search.png');
         background-repeat: no-repeat;
         background-position: 10px center;
         background-size: 20px 20px;
@@ -53,4 +53,44 @@
         margin-left: 280px;
         margin-right: 280px;
         padding: 20px;
+    }
+
+    /* Estilos para la lista personalizada */
+    .custom-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .custom-list li {
+        margin-bottom: 10px;
+        position: relative;
+        transition: background-color 0.3s; /* Transición de color de fondo */
+        border-radius: 5px; /* Agregar un redondeado a los bordes */
+    }
+
+    .custom-list li:hover {
+        background-color: #f5f5f5; /* Color de fondo al pasar el cursor (más intenso) */
+    }
+
+
+    .custom-list li a {
+        display: block;
+        padding: 5px 20px; /* Añadir un espacio alrededor del texto e icono */
+        color: #333; /* Color de texto predeterminado */
+        text-decoration: none; /* Elimina el subrayado del enlace */
+    }
+
+    .custom-list li a i {
+        margin-right: 10px; /* Espacio a la izquierda del icono */
+        color: #007763; /* Color del icono (puedes personalizarlo) */
+    }
+
+    .custom-list li a:hover {
+        background-color: #007763; /* Cambia el color de fondo en hover */
+        color: #fff; /* Cambia el color del texto en hover */
+        border-radius: 8px;
+    }
+
+    .custom-list li a:hover i {
+        color: #fff; /* Cambia el color del icono en hover */
     }

@@ -95,11 +95,8 @@
                         </div>
                         <div class="d-flex align-items-center justify-content-center">
                             <form class="d-flex flex-fill">
-                                <input class="form-control me-2 rounded-pill search-input" type="search" placeholder="Buscar en CuervITos" aria-label="Search" style="width: 500px;">
+                                <input class="form-control me-2 rounded-pill search-input" type="search" placeholder="Buscar en CuervITos" aria-label="Search" style="width: 600px;">
                             </form>
-                            <div class="link">
-                            <a id="" class="btn btn-light rounded-pill">...</a>
-                        </div>
                         </div>
                     </div>
                     <div class="nav-box clearfix">
@@ -148,15 +145,51 @@
         </div>
     </header>
 
-    <!-- Barra lateral izquierda (left sidebar) -->
     <aside class="left-sidebar">
+        <br><br><br><br>
         <!-- Contenido del left sidebar -->
         <div class="sidebar-content">
-            <!-- Elementos del left sidebar -->
-            <br><br><br><br><br>
-            <p>Categoria 1</p>
-            <p>Categoria 2</p>
-            <p>Categoria 3</p>
+            <!-- Menú de navegación -->
+            <h6>Menú Principal</h6>
+            <ul class="nav flex-column custom-list">
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard">
+                        <i class="fas fa-home"></i> Inicio
+                    </a>
+                </li>
+                <li class= "nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-folder"></i> Indice
+                    </a>
+                </li>
+                <li class= "nav-item">
+                    <a class="nav-link" href="#">
+                    <i class="fas fa-paper-plane"></i> Publicar
+                    </a>
+                </li>
+            </ul>
+            
+            <!-- Recursos con carreras (Acordeón) -->
+            <hr><h6>Recursos</h6>
+            <ul class="nav flex-column custom-list">
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#carrera1" aria-expanded="false">
+                        <i class="fas fa-desktop"></i>Tecnologias de la Información
+                    </a>
+                    <ul class="subcategories collapse" id="carrera1">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-code"></i>Desarrollo de Software
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-network-wired"></i>Infraestructura de Redes Digitales
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </aside>
 
@@ -167,11 +200,11 @@
                 <div class="row">
                     <div class="col-md-11 offset">
                         <div class="masthead">
+                            <!-- Carrusel -->
                             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <div class="carousel-cards-wrapper">
-                                            <!-- Carrusel -->
                                             <div class="carta" href="#"
                                                 style="--carta-bg-img: url(https://ayudawp.com/wp-content/uploads/2016/05/sintaxis-codigo-html.jpg)">
                                                 <div>
@@ -209,7 +242,6 @@
                                     </div>
                                     <div class="carousel-item">
                                         <div class="carousel-cards-wrapper">
-                                            <!-- Carrusel -->
                                             <div class="carta" href="#"
                                                 style="--carta-bg-img: url(https://www.openlogic.com/sites/default/files/styles/social_preview_image/public/image/2021-06/image-blog-openlogic-what-is-mongodb.png?itok=hByLkKJk)">
                                                 <div>
@@ -308,12 +340,37 @@
             <div class="sidebar-content">
                 <!-- Elementos del right sidebar -->
                 <br><br><br><br>
-
                 <!-- Menu tentativo de elementos -->
                 <h6>Temas Populares</h6>
-                <h7></h7><hr>
-                <h6>Carreras</h6>
-                <h7>* Ing. en Desarrollo y Gestión de Software <br> - TSU. en Desarrollo de Software Multiplataforma <br><br> * Ing. en Redes y Ciberseguridad <br> - TSU. Infraestructura de Redes Digitales</h7><hr>
+                <div class="d-flex align-items-center">
+                    <div class="w-10 h-10 rounded-circle overflow-hidden">
+                        <img src="https://via.placeholder.com/40" alt="Foto de Perfil">
+                    </div>
+                    <div class="ml-2">
+                        <div class="text-secondary fs-6">Normatividad</div>
+                        <div class="text-secondary fs-6">50 Recursos Disponibles</div>
+                    </div>
+                </div><br>
+                <div class="d-flex align-items-center">
+                    <div class="w-10 h-10 rounded-circle overflow-hidden">
+                        <img src="https://via.placeholder.com/40" alt="Foto de Perfil">
+                    </div>
+                    <div class="ml-2">
+                        <div class="text-secondary fs-6">Bases de Datos Relacionales</div>
+                        <div class="text-secondary fs-6">37 Recursos Disponibles</div>
+                    </div>
+                </div><br>
+                <div class="d-flex align-items-center">
+                    <div class="w-10 h-10 rounded-circle overflow-hidden">
+                        <img src="https://via.placeholder.com/40" alt="Foto de Perfil">
+                    </div>
+                    <div class="ml-2">
+                        <div class="text-secondary fs-6">Packet Tracer</div>
+                        <div class="text-secondary fs-6">37 Recursos Disponibles</div>
+                    </div>
+                </div>                
+                <hr>
+
                 <!-- Dark Mode
                 <button class="dark-mode-switcher" data-url="/cambiar-modo-oscuro">
                     <span class="dark-mode-switcher__toggle"></span>
