@@ -342,33 +342,17 @@
                 <br><br><br><br>
                 <!-- Menu tentativo de elementos -->
                 <h6>Temas Populares</h6>
+                @foreach ($tematicas as $tematica )
                 <div class="d-flex align-items-center">
-                    <div class="w-10 h-10 rounded-circle overflow-hidden">
-                        <img src="https://via.placeholder.com/40" alt="Foto de Perfil">
+                    <div class="w-10 h-10 rounded-circle overflow-hidden" style="width: 50px; height: 50px;">
+                        <img src="{{ $tematica->imagen }}" alt="Imagen - Tematica" style="width: 100%; height: 100%; object-fit: cover; object-position: center center; border-radius: 50%;">
                     </div>
                     <div class="ml-2">
-                        <div class="text-secondary fs-6">Normatividad</div>
-                        <div class="text-secondary fs-6">50 Recursos Disponibles</div>
+                        <div class="text-secondary fs-5">{{ $tematica->name }}</div>
+                        <div class="text-secondary fs-6">{{ $tematica->recursos_count }} recursos registrados</div>
                     </div>
                 </div><br>
-                <div class="d-flex align-items-center">
-                    <div class="w-10 h-10 rounded-circle overflow-hidden">
-                        <img src="https://via.placeholder.com/40" alt="Foto de Perfil">
-                    </div>
-                    <div class="ml-2">
-                        <div class="text-secondary fs-6">Bases de Datos Relacionales</div>
-                        <div class="text-secondary fs-6">37 Recursos Disponibles</div>
-                    </div>
-                </div><br>
-                <div class="d-flex align-items-center">
-                    <div class="w-10 h-10 rounded-circle overflow-hidden">
-                        <img src="https://via.placeholder.com/40" alt="Foto de Perfil">
-                    </div>
-                    <div class="ml-2">
-                        <div class="text-secondary fs-6">Packet Tracer</div>
-                        <div class="text-secondary fs-6">37 Recursos Disponibles</div>
-                    </div>
-                </div>                
+                @endforeach
                 <hr>
 
                 <!-- Dark Mode
