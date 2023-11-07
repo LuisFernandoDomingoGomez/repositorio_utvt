@@ -259,15 +259,15 @@
                             <embed src="{{ asset($recurso->archivo) }}" type="application/pdf" width="100%" height="600px" />
 
                         @elseif (in_array($extension, ['doc', 'docx']))
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Microsoft_Word_2013-2019_Icon.png" alt="Vista previa de Word" class="w-48 h-auto mx-auto rounded-md" style="width: 250px; height: 250px;">
+                            <img src="/dist/images/logos/formatos/logo_word.jpg" alt="Vista previa de Word" class="w-48 h-auto mx-auto rounded-md" style="width: 250px; height: 250px;">
                             <a href="{{ asset($recurso->archivo) }}" class="block text-right text-blue-500">Descargar Archivo</a>
 
                         @elseif (in_array($extension, ['ppt', 'pptx']))
-                            <img src="https://us.123rf.com/450wm/eugenebsov/eugenebsov2101/eugenebsov210100125/162408146-dise%C3%B1o-plano-moderno-del-icono-del-archivo-de-presentaci%C3%B3n-logo-ppt-tipo-de-documento.jpg" alt="Vista previa de PowerPoint" class="w-48 h-auto mx-auto rounded-md" style="width: 250px; height: 250px;">
+                            <img src="/dist/images/logos/formatos/logo_powerpoint.jpg" alt="Vista previa de PowerPoint" class="w-48 h-auto mx-auto rounded-md" style="width: 250px; height: 250px;">
                             <a href="{{ asset($recurso->archivo) }}" class="block text-right text-blue-500">Descargar Archivo</a>
 
                         @elseif (in_array($extension, ['xls', 'xlsx']))
-                            <img src="https://previews.123rf.com/images/eugenebsov/eugenebsov2101/eugenebsov210100072/162408093-dise%C3%B1o-plano-moderno-del-icono-del-archivo-logo-xls-tipo-de-documento.jpg" alt="Vista previa de Excel" class="w-48 h-auto mx-auto rounded-md" style="width: 250px; height: 250px;">
+                            <img src="/dist/images/logos/formatos/logo_excel.jpg" alt="Vista previa de Excel" class="w-48 h-auto mx-auto rounded-md" style="width: 250px; height: 250px;">
                             <a href="{{ asset($recurso->archivo) }}" class="block text-right text-blue-500">Descargar Archivo</a>
 
                         @elseif (in_array($extension, ['jpg', 'jpeg', 'png', 'gif']))
