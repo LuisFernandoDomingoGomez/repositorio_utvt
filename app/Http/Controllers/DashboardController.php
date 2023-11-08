@@ -25,7 +25,7 @@ class DashboardController extends Controller
         
         $recursos = Recurso::where('estado', 'aprobado')->get(); //Solo traer los recursos con el estado "aprobado"
 
-        $asignaturas = Asignatura::all();
+        $asignaturas = Asignatura::inRandomOrder()->limit(9)->get();
 
         return view('dashboard', compact('tematicas', 'recursos', 'asignaturas'));
     }
