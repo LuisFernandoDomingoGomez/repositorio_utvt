@@ -158,8 +158,18 @@
                     </a>
                 </li>
                 <li class= "nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/indice">
                         <i class="fas fa-folder"></i> Indice
+                    </a>
+                </li>
+                <li class= "nav-item">
+                    <a class="nav-link" href="/galeria">
+                    <i class="fas fa-image"></i> Galeria
+                    </a>
+                </li>
+                <li class= "nav-item">
+                    <a class="nav-link" href="/video">
+                    <i class="fas fa-play-circle"></i> Videos
                     </a>
                 </li>
                 <li class= "nav-item">
@@ -303,7 +313,7 @@
                                 </div>
                                 <br>
                                 <div class="card-title font-weight-bold mb-3 fs-4">{{$recurso->titulo}}</div>
-                                <p class="card-text fs-5">Descripción de la Publicación...</p>
+                                <p class="card-text fs-5">{{$recurso->descripcion}}</p>
                                 <div class="my-4">
                                     @php
                                         $extension = pathinfo($recurso->archivo, PATHINFO_EXTENSION);

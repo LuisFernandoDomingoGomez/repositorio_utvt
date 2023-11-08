@@ -249,7 +249,7 @@
 
                     <h2 class="text-lg font-semibold mb-1 text-black">{{$recurso->titulo}}</h2>
 
-                    <p class="text-gray-700">Descripción de la Publicación...</p>                    
+                    <p class="text-gray-700">{{$recurso->descripcion}}</p>                    
 
                     <div class="my-4">
                         @php
