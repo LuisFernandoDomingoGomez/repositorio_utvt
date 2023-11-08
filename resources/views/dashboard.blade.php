@@ -373,88 +373,16 @@
                 <div class="gallery">
                     <h6>Áreas de Estudio</h6>
                     <div class="row">
-                        <!-- Primera fila de imágenes -->
+                        @foreach ($asignaturas as $asignatura )
                         <div class="col-4">
                             <div class="gallery-image">
-                                <img src="https://universidadeuropea.com/resources/media/images/lenguaje-programacion-sql-800x450.2e16d0ba.fill-767x384.jpg" alt="Imagen 1">
+                                <img src="{{ $asignatura->imagen }}" alt="Área de Estudio">
                                 <div class="overlay">
-                                    <h6>Imagen 1</h6>
+                                    <h6>{{ $asignatura->name }}</h6>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4">
-                            <div class="gallery-image">
-                                <img src="https://www.aprender21.com/images/colaboradores/sql.jpeg" alt="Imagen 2">
-                                <div class="overlay">
-                                    <h6>Imagen 2</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="gallery-image">
-                                <img src="https://img-b.udemycdn.com/course/750x422/4110826_7f58_3.jpg" alt="Imagen 3">
-                                <div class="overlay">
-                                    <h6>Imagen 3</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Agrega más imágenes aquí si es necesario -->
-                    </div>
-
-                    <!-- Segunda fila de imágenes -->
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="gallery-image">
-                                <img src="https://fc.aulavirtualpucv.cl/pluginfile.php/108811/mod_resource/content/1/img1.2.png" alt="Imagen 1">
-                                <div class= "overlay">
-                                    <h6>Imagen 1</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="gallery-image">
-                                <img src="https://icrea.xyz/blog/wp-content/uploads/2017/05/OM6UV00-1024x1024.jpg" alt="Imagen 2">
-                                <div class="overlay">
-                                    <h6>Imagen 2</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="gallery-image">
-                                <img src="https://img-b.udemycdn.com/course/750x422/4110826_7f58_3.jpg" alt="Imagen 3">
-                                <div class="overlay">
-                                    <h6>Imagen 3</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tercer fila de imágenes -->
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="gallery-image">
-                                <img src="https://1.bp.blogspot.com/-alSgMPp-mPk/Ti9Bx_Zp4NI/AAAAAAAAABA/Ft-cg0ikizc/s1600/iso.png" alt="Imagen 1">
-                                <div class= "overlay">
-                                    <h6>Normatividad ISO</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="gallery-image">
-                                <img src="https://icrea.xyz/blog/wp-content/uploads/2017/05/OM6UV00-1024x1024.jpg" alt="Imagen 2">
-                                <div class="overlay">
-                                    <h6>Imagen 2</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="gallery-image">
-                                <img src="https://img-b.udemycdn.com/course/750x422/4110826_7f58_3.jpg" alt="Imagen 3">
-                                <div class="overlay">
-                                    <h6>Imagen 3</h6>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
