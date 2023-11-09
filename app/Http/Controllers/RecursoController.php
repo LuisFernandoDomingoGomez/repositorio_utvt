@@ -29,11 +29,15 @@ class RecursoController extends Controller
     public function index(Request $request)
     {
         $busqueda = $request->busqueda;
+        $user_id = auth()->id();
 
-        $recursos = Recurso::where('titulo', 'LIKE', '%' . $busqueda . '%')
-                    ->orWhere('descripcion', 'LIKE', '%' . $busqueda . '%')
-                    ->orderBy('carrera_id', 'asc') // Cambia latest('id') a orderBy('id', 'desc')
-                    ->paginate(15);
+        $recursos = Recurso::where('user_id', $user_id)
+            ->where(function ($query) use ($busqueda) {
+                $query->where('titulo', 'LIKE', '%' . $busqueda . '%')
+                    ->orWhere('descripcion', 'LIKE', '%' . $busqueda . '%');
+            })
+            ->orderBy('carrera_id', 'asc')
+            ->paginate(15);
 
         $data = [
             'recursos' => $recursos,
@@ -41,7 +45,7 @@ class RecursoController extends Controller
         ];
 
         return view('recurso.index', compact('recursos'), $data)
-        ->with('i', (request()->input('page', 1) - 1) * $recursos->perPage());
+            ->with('i', (request()->input('page', 1) - 1) * $recursos->perPage());
     }
 
     public function detectarTipoArchivo($archivo)
