@@ -236,7 +236,7 @@
             <div class="content">
                 <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
                     <h2 class="text-lg font-medium mr-auto">
-                        Gestion de Tematicas
+                        Gestión de Tematicas
                     </h2>
 
                     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
