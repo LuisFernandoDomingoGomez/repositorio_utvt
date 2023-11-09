@@ -234,11 +234,10 @@
         <!-- BEGIN: Content -->
         <div class="content">
             <div class="content">
-                <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+                <div class="intro-y flex flex-col sm:flex-row items-center">
                     <h2 class="text-lg font-medium mr-auto">
-                        Gestion de Recursos
+                        Gestión de Recursos
                     </h2>
-
                     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
                         <a class="btn btn-primary shadow-md mr-2" href="{{ route('recursos.create') }}">Agregar</a>
                         <div class="dropdown ml-auto sm:ml-0">
@@ -257,8 +256,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- BEGIN: HTML Table Data -->
-                <div class="intro-y box p-5 mt-5">
                     <form id="tabulator-html-filter-form" class="d-flex" action="{{ route('recursos.index') }}" method="GET">
                         <div class="input-group" style="max-width: 400px;">
                             <input class="form-control me-2" type="text" name="busqueda" placeholder="Búsqueda" aria-label="Search" style="height: 35px;">
@@ -281,61 +278,88 @@
                         </script>
                     @endif
                     <div class="overflow-x-auto scrollbar-hidden">
-                        <div class="overflow-x-auto">
-                            <table class="table mt-5">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th class="whitespace-nowrap">No.</th>
-                                        <th class="whitespace-nowrap">Titulo</th>
-                                        <th class="whitespace-nowrap">Carrera</th>
-                                        <th class="whitespace-nowrap " align="center">Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                        <div class="overflow-x-auto"><br>
+                            @foreach ($recursos as $recurso )
+                            <div class="intro-y box p-3 mt-2 rounded-lg shadow-lg bg-white">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <div class="w-10 h-10 rounded-full overflow-hidden">
+                                            <img src="{{ asset('avatars/' . $recurso->user->avatar) }}" alt="Foto de Perfil">
+                                        </div>
+                                        <div class="ml-2">
+                                            <a href="#" class="font-medium text-blue-500">{{$recurso->user->name}}</a>
+                                            <div class="text-gray-600">{{$recurso->created_at->isoFormat('D [de] MMMM [de] Y')}}</div>
+                                        </div>
+                                    </div>
+                                    <ul class="flex space-x-4 absolute right-0 mt-2">
+                                        <li>
+                                            <a href="{{ route('recursos.show', $recurso->id) }}" class="text-blue-500">
+                                                <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('recursos.edit', $recurso->id) }}" class="text-blue-500">
+                                                <i data-lucide="check-square" class="w-4 h-4 mr-1"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <form action="{{ route('recursos.destroy', $recurso->id) }}" method="POST" class="formEliminar">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-red-500">
+                                                    <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>
+                                                </button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <br>
+                                <h2 class="text-lg font-semibold mb-1 text-black">{{$recurso->titulo}}</h2>
+                                <p class="text-gray-700">{{$recurso->descripcion}}</p>
+                                <div class="my-4">
                                     @php
-                                        $i = ($recursos->currentPage() - 1) * $recursos->perPage() + 1;
+                                        $extension = pathinfo($recurso->archivo, PATHINFO_EXTENSION);
                                     @endphp
-                                    @foreach ($recursos as $recurso )
-                                    <tr>
-                                        <td>{{ $i++ }}</td>
-                                        <td>{{ $recurso->titulo }}</td>
-                                        <td>{{ $recurso->carrera->name }}</td>
-                                        <td class="table-report__action w-56">
-                                            <div class="flex justify-center items-center">
-                                                <a class="flex items-center mr-3" href="{{ route('recursos.show', $recurso->id) }}">
-                                                    <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
-                                                </a>
-                                                <a class="flex items-center mr-3" href="{{ route('recursos.edit', $recurso->id) }}">
-                                                    <i data-lucide="check-square" class="w-4 h-4 mr-1"></i>
-                                                </a>
-                                                <form action="{{ route('recursos.destroy', $recurso->id) }}" method="POST" class="formEliminar">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="flex items-center text-danger">
-                                                        <i data-lucide="trash-2" class="w-5 h-10 mr-1"></i>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    @if (in_array($extension, ['pdf']))
+                                        <embed src="{{ asset($recurso->archivo) }}" type="application/pdf" width="100%" height="400px" />
+
+                                    @elseif (in_array($extension, ['doc', 'docx']))
+                                        <img src="/dist/images/logos/formatos/logo_word.jpg" alt="Vista previa de Word" class="w-48 h-auto mx-auto rounded-md" style="width: 250px; height: 250px;">
+                                        <a href="{{ asset($recurso->archivo) }}" class="block text-right text-blue-500">Descargar Archivo</a>
+
+                                    @elseif (in_array($extension, ['ppt', 'pptx']))
+                                        <img src="/dist/images/logos/formatos/logo_powerpoint.jpg" alt="Vista previa de PowerPoint" class="w-48 h-auto mx-auto rounded-md" style="width: 250px; height: 250px;">
+                                        <a href="{{ asset($recurso->archivo) }}" class="block text-right text-blue-500">Descargar Archivo</a>
+
+                                    @elseif (in_array($extension, ['xls', 'xlsx']))
+                                        <img src="/dist/images/logos/formatos/logo_excel.jpg" alt="Vista previa de Excel" class="w-48 h-auto mx-auto rounded-md" style="width: 250px; height: 250px;">
+                                        <a href="{{ asset($recurso->archivo) }}" class="block text-right text-blue-500">Descargar Archivo</a>
+
+                                    @elseif (in_array($extension, ['jpg', 'jpeg', 'png', 'gif']))
+                                        <img src="{{ asset($recurso->archivo) }}" alt="Imagen de la Publicación" class="img-fluid mx-auto d-block" style="width: 350px; height: 250px;">
+
+                                    @elseif (in_array($extension, ['mp4', 'avi', 'mov']))
+                                        <video class="w-full h-64 rounded-md" controls>
+                                            <source src="{{ asset($recurso->archivo) }}" type="video/{{$extension}}">
+                                            Tu navegador no soporta el elemento de video.
+                                        </video>
+
+                                    @else
+                                        <img src="https://thumbs.dreamstime.com/b/error-con-la-plantilla-del-dise%C3%B1o-cuaderno-icono-para-el-sitio-web-gr%C3%A1fico-azul-fondo-109996932.jpg" alt="Tipo de archivo no compatible" class="w-full h-64 rounded-md">
+                                    @endif
+                                </div>
+                            </div><br>
+                            @endforeach
                         </div>
                     </div>
-
-                    <!-- Paginacion -->
-                    <div class="card-footer py-4">
-                        <nav class="d-flex justify-content-end" aria-label="...">
-                            {!! $recursos->links() !!}
-                        </nav>
-                    </div>
-
+                <!-- Paginacion -->
+                <div class="card-footer py-4">
+                    <nav class="d-flex justify-content-end" aria-label="...">
+                        {!! $recursos->links() !!}
+                    </nav>
                 </div>
-                <!-- END: HTML Table Data -->
             </div>
         </div>
-        <!-- END: Content -->
     </div>
 
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
