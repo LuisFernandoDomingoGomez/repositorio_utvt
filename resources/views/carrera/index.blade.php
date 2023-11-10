@@ -299,7 +299,7 @@
                                     @foreach ($carreras as $carrera )
                                     <tr>
                                         <td>{{ $i++ }}</td>
-                                        <td><img src="{{asset($carrera->imagen)}}" width="50px"></td>
+                                        <td><img src="{{asset($carrera->imagen)}}" style="width: 50px; height: 50px;"></td>
                                         <td>{{ $carrera->name }}</td>
                                         <td class="table-report__action w-56">
                                             <div class="flex justify-center items-center">
