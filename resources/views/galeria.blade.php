@@ -48,8 +48,8 @@
                     </a>
                 </li>
                 <li class= "nav-item">
-                    <a class="nav-link" href="/indice">
-                        <i class="fas fa-folder"></i> Indice
+                    <a class="nav-link" href="/contenidos">
+                        <i class="fas fa-folder"></i> Contenidos
                     </a>
                 </li>
                 <li class= "nav-item">
