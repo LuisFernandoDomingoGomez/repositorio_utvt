@@ -215,76 +215,50 @@
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <div class="carousel-cards-wrapper">
-                                            <a class="carta" href="#"
-                                                style="--carta-bg-img: url(https://ayudawp.com/wp-content/uploads/2016/05/sintaxis-codigo-html.jpg)">
+                                            @foreach  ($tematicas1Random as $tematica)
+                                            <a class="carta" href="#" style="--carta-bg-img: url('{{ asset($tematica->imagen) }}')">
                                                 <div>
-                                                    <h1>HTML Sintaxis</h1>
-                                                    <p>The syntax of a language is how it works. How to actually write it. Learn HTML syntax…</p>
-                                                    <div class="date">6 Oct 2021</div>
+                                                    <h1>{{ $tematica->name }}</h1>
+                                                    <p>{{ $tematica->carrera->name }} <br> {{ $tematica->recursos_count }} recursos registrados</p>
+                                                    <div class="date">{{ $tematica->created_at->format('d M Y') }}</div>
                                                     <div class="tags">
-                                                        <div class="tag">HTML</div>
+                                                        <div class="tag">{{ $tematica->name }}</div>
                                                     </div>
                                                 </div>
                                             </a>
-                                            <a class="carta" href="#"
-                                                style="--carta-bg-img: url('https://www.danielprimo.io/files/2021-05/1621490872_laravel-bases-de-datos-y-modelo.png')">
-                                                <div>
-                                                    <h1>Laravel - Modelo MVC</h1>
-                                                    <p>Learn about some of the most common Model tags…</p>
-                                                    <div class="date">9 Oct 2021</div>
-                                                    <div class="tags">
-                                                        <div class="tag">Laravel</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a class="carta" href="#"
-                                                style="--carta-bg-img: url('https://www.certus.edu.pe/blog/wp-content/uploads/2021/06/que-es-sql-todo-debes-saber-lenguaje-1160x630.jpg')">
-                                                <div>
-                                                    <h1>Todo sobre SQL</h1>
-                                                    <p>Learn how to use links and images along with file paths…</p>
-                                                    <div class="date">14 Oct 2021</div>
-                                                    <div class="tags">
-                                                        <div class="tag">SQL</div>
-                                                    </div>
-                                                </div>
-                                            </a>
+                                            @endforeach
                                         </div>
                                     </div>
                                     <div class="carousel-item">
                                         <div class="carousel-cards-wrapper">
-                                            <a class="carta" href="#"
-                                                style="--carta-bg-img: url(https://www.openlogic.com/sites/default/files/styles/social_preview_image/public/image/2021-06/image-blog-openlogic-what-is-mongodb.png?itok=hByLkKJk)">
+                                            @foreach  ($tematicas2Random as $tematica)
+                                            <a class="carta" href="#" style="--carta-bg-img: url('{{ asset($tematica->imagen) }}')">
                                                 <div>
-                                                    <h1>Mongo Sintaxis</h1>
-                                                    <p>The syntax of a language is how it works. How to actually write it. Learn Mongo syntax…</p>
-                                                    <div class="date">6 Oct 2021</div>
+                                                    <h1>{{ $tematica->name }}</h1>
+                                                    <p>{{ $tematica->carrera->name }} <br> {{ $tematica->recursos_count }} recursos registrados</p>
+                                                    <div class="date">{{ $tematica->created_at->format('d M Y') }}</div>
                                                     <div class="tags">
-                                                        <div class="tag">Mongo</div>
+                                                        <div class="tag">{{ $tematica->name }}</div>
                                                     </div>
                                                 </div>
                                             </a>
-                                            <a class="carta" href="#"
-                                                style="--carta-bg-img: url('https://community-cdn-digitalocean-com.global.ssl.fastly.net/snN3rbgKF7McfuiQAKcoLWMn')">
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="carousel-cards-wrapper">
+                                            @foreach  ($tematicas3Random as $tematica)
+                                            <a class="carta" href="#" style="--carta-bg-img: url('{{ asset($tematica->imagen) }}')">
                                                 <div>
-                                                    <h1>Vue Js</h1>
-                                                    <p>Learn about some of the most common Vue tags…</p>
-                                                    <div class="date">9 Oct 2021</div>
+                                                    <h1>{{ $tematica->name }}</h1>
+                                                    <p>{{ $tematica->carrera->name }} <br> {{ $tematica->recursos_count }} recursos registrados</p>
+                                                    <div class="date">{{ $tematica->created_at->format('d M Y') }}</div>
                                                     <div class="tags">
-                                                        <div class="tag">Vue Js</div>
+                                                        <div class="tag">{{ $tematica->name }}</div>
                                                     </div>
                                                 </div>
                                             </a>
-                                            <a class="carta" href="#"
-                                                style="--carta-bg-img: url('https://assets.rbl.ms/33364099/origin.jpg')">
-                                                <div>
-                                                    <h1>Python</h1>
-                                                    <p>Learn how to use links and images along with file paths…</p>
-                                                    <div class="date">14 Oct 2021</div>
-                                                    <div class="tags">
-                                                        <div class="tag">Python</div>
-                                                    </div>
-                                                </div>
-                                            </a>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>

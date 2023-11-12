@@ -17,6 +17,19 @@ use App\Http\Requests\UserRequest;
 
 class DashboardController extends Controller
 {
+    public function obtenerTematicasRandomPorSeccion($seccion)
+    {
+        $tematicas = Tematica::withCount('recursos')->get();
+        $grupos = $tematicas->chunk(ceil($tematicas->count() / 3));
+
+        if ($seccion >= 1 && $seccion <= count($grupos)) {
+            $tematicasRandom = $grupos[$seccion - 1]->random(3);
+            return $tematicasRandom;
+        }
+
+        return collect();
+    }
+
     public function index()
     {
         $tematicas = Tematica::withCount('recursos')
@@ -26,11 +39,15 @@ class DashboardController extends Controller
         
         $tematicasMostradas = $tematicas->take(4);
         $tematicasRestantes = $tematicas->slice(4);
+
+        $tematicas1Random = $this->obtenerTematicasRandomPorSeccion(1);
+        $tematicas2Random = $this->obtenerTematicasRandomPorSeccion(2);
+        $tematicas3Random = $this->obtenerTematicasRandomPorSeccion(3);
         
         $recursos = Recurso::where('estado', 'aprobado')->get(); //Solo traer los recursos con el estado "aprobado"
 
         $asignaturas = Asignatura::inRandomOrder()->limit(9)->get();
 
-        return view('dashboard', compact('tematicas', 'recursos', 'asignaturas', 'tematicasMostradas', 'tematicasRestantes'));
+        return view('dashboard', compact('tematicas', 'recursos', 'asignaturas', 'tematicasMostradas', 'tematicasRestantes', 'tematicas1Random', 'tematicas2Random', 'tematicas3Random'));
     }
 }
