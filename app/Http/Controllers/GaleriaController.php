@@ -23,6 +23,9 @@ class GaleriaController extends Controller
             ->orderBy('recursos_count', 'desc')
             ->get();
         
+        $tematicasMostradas = $tematicas->take(4);
+        $tematicasRestantes = $tematicas->slice(4);
+        
         $recursos = Recurso::where('estado', 'aprobado')
             ->where('tipo', 'imagen')
             ->orderBy('created_at', 'desc')
@@ -30,6 +33,6 @@ class GaleriaController extends Controller
 
         $asignaturas = Asignatura::inRandomOrder()->limit(9)->get();
 
-        return view('galeria', compact('tematicas', 'recursos', 'asignaturas'));
+        return view('galeria', compact('tematicas', 'recursos', 'asignaturas', 'tematicasMostradas', 'tematicasRestantes'));
     }
 }

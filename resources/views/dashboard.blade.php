@@ -158,7 +158,7 @@
                     </a>
                 </li>
                 <li class= "nav-item">
-                    <a class="nav-link" href="/contenidos">
+                    <a class="nav-link" href="/contenido">
                         <i class="fas fa-folder"></i> Contenidos
                     </a>
                 </li>

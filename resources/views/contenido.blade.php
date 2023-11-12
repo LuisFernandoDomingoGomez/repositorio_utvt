@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Galeria | UTVT</title>
+    <title>Contenidos | UTVT</title>
     <!-- Stylesheets -->
     <script src="dist/js/jquery.js"></script>
     <link href="dist/css/bootstrap.css" rel="stylesheet">
@@ -16,7 +16,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link href="dist/css/responsive.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 
 <style>
@@ -36,7 +35,6 @@
 
 <body class="home-two">
     <header class="main-header header-two" style="position: relative; z-index: 2; background-color: white;">
-        <!-- Header Upper -->
         <div class="header-upper">
             <div class="auto-container">
                 <div class="main-box clearfix">
@@ -44,6 +42,11 @@
                     <div class="logo-box clearfix">
                         <div class="logo" align="right" style="margin-right: 190px;">
                             <a title="Logo UTVT"><img src="dist/images/utvt_logo.png" alt="no existe" width="85"></a>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <form class="d-flex flex-fill">
+                                <input class="form-control me-2 rounded-pill search-input" type="search" placeholder="Buscar en CuervITos" aria-label="Search" style="width: 600px;">
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -110,23 +113,12 @@
     </aside>
 
     <div class="page-wrapper">
-        <section class="section-two" id="why-token">
-            <div class="container-fluid">
+        <section class="banner-section banner-two">
+            <div class="container">
                 <div class="row">
                     <div class="col-md-11 offset">
-                        <div class="col s12 center-align">
-                            <h1 class="titulo">Galeria</h1><hr>
-                        </div>
-                        <div class="galeria">
-                            @foreach ($recursos as $recurso)
-                            <div class="col s12 m4 l3">
-                                <div class="material-placeholder">
-                                    <img src="{{ asset($recurso->archivo) }}" alt="" class="responsive-img materialboxed"
-                                        style="width: 200px; height: 150px;"
-                                        data-caption="{{$recurso->titulo}} - | {{$recurso->tematica->name}} | - {{$recurso->user->name}}">
-                                </div>
-                            </div>
-                            @endforeach
+                        <div class="title-box-two centered">
+                            <h2>Biblioteca de Contenidos</h2>
                         </div>
                     </div>
                 </div>
@@ -135,11 +127,8 @@
 
         <!-- Barra lateral derecha (right sidebar) -->
         <aside class="right-sidebar">
-            <!-- Contenido del right sidebar -->
             <div class="sidebar-content">
-                <!-- Elementos del right sidebar -->
                 <br><br><br><br>
-                <!-- Menu tentativo de elementos -->
                 <h6>Temas Populares</h6>
                 @foreach ($tematicasMostradas as $tematica)
                     <div class="d-flex align-items-center mb-1">
@@ -191,9 +180,6 @@
     <script src="dist/js/appear.js"></script>
     <script src="dist/js/wow.js"></script>
     <script src="dist/js/custom-script.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="utvt/js/main.js"></script>
 </body>
 
 </html>

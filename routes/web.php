@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ContenidoController;
 use App\Http\Controllers\GaleriaController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +56,10 @@ Route::get('tematica.export', 'App\Http\Controllers\TematicaController@export')-
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
+Route::get('/contenido', [ContenidoController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('contenido');
 
 Route::get('/galeria', [GaleriaController::class, 'index'])
 ->middleware(['auth', 'verified'])

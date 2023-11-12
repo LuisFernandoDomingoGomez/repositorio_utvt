@@ -409,13 +409,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
-
-
-
-
 
         <!--Contact Section-->
         <section class="contact-two" id="contact-section">
