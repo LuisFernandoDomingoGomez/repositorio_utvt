@@ -68,7 +68,7 @@
             margin: 10px 0;
         }
 
-        /* Tamaños de fuente para sección Posts */ 
+        /* Tamaños de fuente */ 
         .fs-4 {
             font-size: 1.25rem;
         }
@@ -356,25 +356,40 @@
 
         <!-- Barra lateral derecha (right sidebar) -->
         <aside class="right-sidebar">
-            <!-- Contenido del right sidebar -->
             <div class="sidebar-content">
                 <!-- Elementos del right sidebar -->
                 <br><br><br><br>
-                <!-- Menu tentativo de elementos -->
                 <h6>Temas Populares</h6>
-                @foreach ($tematicas as $tematica )
-                <div class="d-flex align-items-center">
-                    <div class="w-10 h-10 rounded-circle overflow-hidden" style="width: 50px; height: 50px;">
-                        <img src="{{ $tematica->imagen }}" alt="Imagen - Tematica" style="width: 100%; height: 100%; object-fit: cover; object-position: center center; border-radius: 50%;">
+                @foreach ($tematicasMostradas as $tematica)
+                    <div class="d-flex align-items-center mb-1">
+                        <div class="w-8 h-8 rounded-circle overflow-hidden" style="width: 32px; height: 32px;">
+                            <img src="{{ $tematica->imagen }}" alt="Imagen - Tematica" style="width: 100%; height: 100%; object-fit: cover; object-position: center center; border-radius: 50%;">
+                        </div>
+                        <div class="ml-2">
+                            <div class="text-secondary fs-6">{{ $tematica->name }}</div>
+                            <div class="text-secondary fs-6">{{ $tematica->recursos_count }} recursos registrados</div>
+                        </div>
                     </div>
-                    <div class="ml-2">
-                        <div class="text-secondary fs-5">{{ $tematica->name }}</div>
-                        <div class="text-secondary fs-6">{{ $tematica->recursos_count }} recursos registrados</div>
-                    </div>
-                </div><br>
                 @endforeach
-                <hr>
 
+                @if ($tematicasRestantes->isNotEmpty())
+                    <a id="ver-mas" class="text-blue-500 fs-6 cursor-pointer">Ver más</a>
+                    <a id="ver-menos" class="text-blue-500 fs-6 cursor-pointer" style="display: none;">Ver menos</a>
+                    <div id="tematicas-restantes" style="display: none;">
+                        @foreach ($tematicasRestantes as $tematica)
+                            <div class="d-flex align-items-center mb-1">
+                                <div class="w-8 h-8 rounded-circle overflow-hidden" style="width: 32px; height: 32px;">
+                                    <img src="{{ $tematica->imagen }}" alt="Imagen - Tematica" style="width: 100%; height: 100%; object-fit: cover; object-position: center center; border-radius: 50%;">
+                                </div>
+                                <div class="ml-2">
+                                    <div class="text-secondary fs-6">{{ $tematica->name }}</div>
+                                    <div class="text-secondary fs-6">{{ $tematica->recursos_count }} recursos registrados</div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+                <hr>
                 <!-- Dark Mode
                 <button class="dark-mode-switcher" data-url="/cambiar-modo-oscuro">
                     <span class="dark-mode-switcher__toggle"></span>
@@ -398,8 +413,6 @@
             </div>
         </aside>
     </div>
-
-    <!--End pagewrapper-->
 
     <!--Scroll to top-->
     <div class="scroll-to-top scroll-to-target" data-target="html">
@@ -441,5 +454,19 @@
         if (event.target == appModal) {
             appModal.style.display = "none";
         }
+    });
+</script>
+
+<script>
+    document.getElementById('ver-mas').addEventListener('click', function() {
+        document.getElementById('tematicas-restantes').style.display = 'block';
+        document.getElementById('ver-mas').style.display = 'none';
+        document.getElementById('ver-menos').style.display = 'inline';
+    });
+
+    document.getElementById('ver-menos').addEventListener('click', function() {
+        document.getElementById('tematicas-restantes').style.display = 'none';
+        document.getElementById('ver-mas').style.display = 'inline';
+        document.getElementById('ver-menos').style.display = 'none';
     });
 </script>
