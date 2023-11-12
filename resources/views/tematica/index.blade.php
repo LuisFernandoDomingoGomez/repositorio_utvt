@@ -326,7 +326,7 @@
                                     @foreach ($tematicas as $tematica )
                                     <tr>
                                         <td>{{ $i++ }}</td>
-                                        <td><img src="{{asset($tematica->imagen)}}" width="50px"></td>
+                                        <td><img src="{{asset($tematica->imagen)}}" style="width: 50px; height: 50px;"></td>
                                         <td>{{ $tematica->name }}</td>
                                         <td>{{ $tematica->carrera->name }}</td>
                                         <td class="table-report__action w-56">

@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             CarrerasTableSeeder::class,
             AsignaturasTableSeeder::class,
+            TematicasTableSeeder::class,
             SeederTablePermisos::class,
         ]);
 
