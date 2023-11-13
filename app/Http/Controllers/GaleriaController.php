@@ -21,6 +21,7 @@ class GaleriaController extends Controller
     {
         $tematicas = Tematica::withCount('recursos')
             ->orderBy('recursos_count', 'desc')
+            ->limit(10)
             ->get();
         
         $tematicasMostradas = $tematicas->take(4);

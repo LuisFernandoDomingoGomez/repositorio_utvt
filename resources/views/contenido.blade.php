@@ -9,7 +9,7 @@
     <link href="dist/css/style.css" rel="stylesheet">
     <link href="utvt/css/template.css" rel="stylesheet">
     <link href="utvt/css/responsive.css" rel="stylesheet">
-    <link href="utvt/css/gallery_two.css" rel="stylesheet">
+    <link href="utvt/css/gallery.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     <!-- Responsive -->
@@ -117,8 +117,66 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-11 offset">
-                        <div class="title-box-two centered">
-                            <h2>Biblioteca de Contenidos</h2>
+                        <div class="col-md-12">
+                            <div class="title-box-two centered">
+                                <h3>Biblioteca de Contenidos</h3>
+                            </div>
+                        </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Archivo</th>
+                                        <th>Título</th>
+                                        <th>Tematica</th>
+                                        <th>Carrera</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($recursos as $recurso)
+                                        <tr>
+                                            <td>
+                                                @php
+                                                    $extension = pathinfo($recurso->archivo, PATHINFO_EXTENSION);
+                                                @endphp
+                                                @if (in_array($extension, ['pdf']))
+                                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Icon_pdf_file.svg/1200px-Icon_pdf_file.svg.png" alt="PDF" style="width: 45px; height: 50px;">
+                                                @elseif (in_array($extension, ['doc', 'docx']))
+                                                    <img src="dist/images/icons/formatos/word.png" alt="Word" style="width: 45px; height: 50px;">
+                                                @elseif (in_array($extension, ['ppt', 'pptx']))
+                                                    <img src="dist/images/icons/formatos/powerpoint.png" alt="PowerPoint" style="width: 45px; height: 50px;">
+                                                @elseif (in_array($extension, ['xls', 'xlsx']))
+                                                    <img src="dist/images/icons/formatos/excel.png" alt="Excel" style="width: 45px; height: 50px;">
+                                                @else
+                                                    <img src="https://thumbs.dreamstime.com/b/error-con-la-plantilla-del-dise%C3%B1o-cuaderno-icono-para-el-sitio-web-gr%C3%A1fico-azul-fondo-109996932.jpg" alt="No compatible" class="img-fluid mx-auto d-block" style="width: 50px; height: 50px;">
+                                                @endif
+                                            </td>
+                                            <td>{{ $recurso->titulo }}</td>
+                                            <td><a href="#" style="color: #007863;">{{ $recurso->tematica->name }}</a></td>
+                                            <td>{{ $recurso->carrera->name }}</td>
+                                            <td>
+                                                <a href="{{ asset($recurso->archivo) }}" class="block text-right text-blue-500 btn-ver-ahora" data-pdf-url="{{ asset($recurso->archivo) }}" style="font-size: 0.9rem;">Ver Ahora</a>
+                                            </td>
+                                        </tr>
+                                        <!-- Modal para visualizar PDF -->
+                                        <div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="pdfModalLabel">{{ $recurso->titulo }} - {{$recurso->user->name}}</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <iframe id="pdfViewer" src="" frameborder="0" style="width: 100%; height: 500px;"></iframe>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -159,6 +217,23 @@
                         @endforeach
                     </div>
                 @endif
+                <hr>
+
+                <div class="gallery">
+                    <h6>Áreas de Estudio</h6>
+                    <div class="row">
+                        @foreach ($asignaturas as $asignatura )
+                        <div class="col-4">
+                            <div class="gallery-image">
+                                <img src="{{ $asignatura->imagen }}" alt="Área de Estudio">
+                                <div class="overlay">
+                                    <h6>{{ $asignatura->name }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </aside>
     </div>
@@ -195,5 +270,24 @@
         document.getElementById('tematicas-restantes').style.display = 'none';
         document.getElementById('ver-mas').style.display = 'inline';
         document.getElementById('ver-menos').style.display = 'none';
+    });
+</script>
+
+<script>
+    function openPdfModal(pdfUrl) {
+        $('#pdfViewer').attr('src', pdfUrl);
+        new bootstrap.Modal(document.getElementById('pdfModal')).show();
+    }
+
+    $('.btn-ver-ahora').on('click', function (e) {
+        e.preventDefault();
+
+        var pdfUrl = $(this).data('pdf-url');
+
+        if (pdfUrl.toLowerCase().endsWith('.pdf')) {
+            openPdfModal(pdfUrl);
+        } else {
+            window.location.href = pdfUrl;
+        }
     });
 </script>
