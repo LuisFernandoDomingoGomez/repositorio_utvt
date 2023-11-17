@@ -123,7 +123,7 @@
                                 <div class="material-placeholder">
                                     <img src="{{ asset($recurso->archivo) }}" alt="" class="responsive-img materialboxed"
                                         style="width: 200px; height: 150px;"
-                                        data-caption="{{$recurso->titulo}} - | {{$recurso->tematica->name}} | - {{$recurso->user->name}}">
+                                        data-caption="{{$recurso->titulo}} - | {{$recurso->tematica->name}} | - {{$recurso->autor}}">
                                 </div>
                             </div>
                             @endforeach
