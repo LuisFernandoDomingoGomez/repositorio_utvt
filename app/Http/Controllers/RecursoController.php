@@ -149,25 +149,6 @@ class RecursoController extends Controller
             ->with('success', 'Recuerda que aún debes esperar a que tu publicación sea aceptada por el responsable de validación.');
     }
 
-
-    // Métodos para aprobar y rechazar recursos
-    
-    /*public function approve(Recurso $recurso)
-    {
-        $recurso->update(['estado' => 'aprobado']);
-        // Agregar notificaciones o registros
-        return redirect()->route('recursos.index')
-            ->with('success', 'Recurso aprobado con éxito.');
-    }
-
-    public function reject(Recurso $recurso)
-    {
-        $recurso->update(['estado' => 'rechazado']);
-        // Agregar notificaciones o registros
-        return redirect()->route('recursos.index')
-            ->with('success', 'Recurso rechazado con éxito.');
-    }*/
-
     public function show($id)
     {
         $recurso = Recurso::find($id);
