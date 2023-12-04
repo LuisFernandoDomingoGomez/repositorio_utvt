@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\ContenidoController;
 use App\Http\Controllers\GaleriaController;
 use App\Http\Controllers\VideoController;
@@ -64,6 +65,10 @@ Route::get('/contenido', [ContenidoController::class, 'index'])
 Route::get('/galeria', [GaleriaController::class, 'index'])
 ->middleware(['auth', 'verified'])
 ->name('galeria');
+
+Route::get('/estado', [EstadoController::class, 'index'])
+->middleware(['auth', 'verified'])
+->name('estado');
 
 Route::get('/video', [VideoController::class, 'index'])
 ->middleware(['auth', 'verified'])

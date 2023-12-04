@@ -49,6 +49,12 @@ class SeederTablePermisos extends Seeder
             'crear-recurso',
             'editar-recurso',
             'borrar-recurso',
+
+            //Operaciones para moderar publicaciones
+            'mod-publicacion',
+            'detalles-publicacion',
+            'editar-publicacion',
+            'borrar-publicacion',
         ];
 
         foreach($permisos as $permiso) {

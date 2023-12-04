@@ -52,7 +52,7 @@
                     @foreach ($recursos as $recurso)
                         <div class="list">
                             <video src="{{ asset($recurso->archivo) }}" class="list-video"></video>
-                            <h3 class="list-title">{{$recurso->titulo}} - {{$recurso->user->name}}</h3>
+                            <h3 class="list-title">{{$recurso->titulo}} - {{$recurso->autor}}</h3>
                         </div>
                     @endforeach
                     </div>

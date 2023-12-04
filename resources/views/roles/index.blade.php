@@ -35,7 +35,7 @@
                     class="w-8 h-8 text-white transform -rotate-90"></i> </a>
             <ul class="scrollable__content py-2">
                 <li>
-                    <a href="/" class="menu menu--active">
+                    <a href="/dashboard" class="menu menu--active">
                         <div class="menu__icon"><i data-lucide="home"></i></div>
                         <div class="menu__title">Principal</div>
                     </a>
@@ -94,7 +94,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('roles.index') }}" class="menu">
+                            <a href="/estado" class="menu">
                                 <div class="menu__icon"><i class="fas fa-tasks"></i></div>
                                 <div class="menu__title">Recursos Pendientes</div>
                             </a>
@@ -172,7 +172,7 @@
         <nav class="side-nav">
             <ul>
                 <li>
-                    <a href="/" class="side-menu side-menu--active">
+                    <a href="/dashboard" class="side-menu side-menu--active">
                         <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
                         <div class="side-menu__title">Principal</div>
                     </a>
@@ -234,7 +234,7 @@
                             </a>
                         </li>
                         <li style="margin-left: 7px;">
-                            <a href="{{ route('roles.index') }}" class="side-menu">
+                            <a href="/estado" class="side-menu">
                                 <div class="side-menu__icon"><i class="fas fa-tasks"></i></div>
                                 <div class="side-menu__title">Recursos Pendientes</div>
                             </a>
